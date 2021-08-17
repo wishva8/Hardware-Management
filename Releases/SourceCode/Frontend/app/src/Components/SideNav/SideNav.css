@@ -1,0 +1,17 @@
+.sidebar {
+  width: 280px;
+  position: fixed;
+  height: 100%;
+  background-color: #023d3d;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+}
+.logo-sidebar {
+  width: 80%;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #0c6464;
+  background-color: #ccf1da;
+}
