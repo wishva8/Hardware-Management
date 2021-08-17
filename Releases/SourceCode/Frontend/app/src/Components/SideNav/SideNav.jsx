@@ -5,7 +5,7 @@ import { imagePath } from '../../Services'
 export default function SideNav() {
   return (
     <div>
-      <h1></h1>
+      <h1>Hardware</h1>
     </div>
   )
 }
