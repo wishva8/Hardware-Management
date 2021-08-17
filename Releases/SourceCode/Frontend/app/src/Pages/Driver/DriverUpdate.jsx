@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 
-const vehicleTypes = ["Lorry", "Tipper", "Land Master", "Flat Bed"];
-
-export default class DriverCreate extends Component {
+export default class DriverUpdate extends Component {
   render() {
     return (
-      <div className="CreateDriver">
-        <div className="Driver-Create-Heading-Container">
-          <h3>Add Driver</h3>
+      <div className="UpdateDriver">
+        <div className="Driver-Update-Heading-Container">
+          <h3>Update Driver</h3>
         </div>
-        <div className="Driver-Create-Heading-Container">
+        <div className="Driver-Update-Heading-Container">
           <form onSubmit={"/"}>
             <div className="DriverRow">
               <label className="DiverLabel">License No : </label>
