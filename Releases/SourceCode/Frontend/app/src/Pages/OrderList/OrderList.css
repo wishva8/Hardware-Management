@@ -1,0 +1,28 @@
+.orderListItems{
+    border-radius: 5rem;
+    border-color: #021010;
+    background-color: #012929;
+    border-width: 10px;
+    height: 50px;
+}
+
+.order{
+    width: 58%;
+    color: #9CE6B7;
+}
+
+.orderListItems td:first-child,th:first-child{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px; 
+    /* padding-left: 20px; */
+
+}
+
+.orderListItems td:last-child,th:last-child{
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+
+
+
