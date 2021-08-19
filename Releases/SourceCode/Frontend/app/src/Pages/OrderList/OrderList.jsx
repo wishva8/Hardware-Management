@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import "./OrderList.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
+import Header from "../../Components/Header/Header";
+import SideNav from "../../Components/SideNav/SideNav";
 
 
 
@@ -9,8 +11,13 @@ import { faEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 export default class OrderList extends Component {
     render() {
         return (
-            <div  class= "align-center">
-            <table class="table table-bordered  order">
+
+        <div>
+            <SideNav/>
+        <div className="content-layer">
+          <Header topic="Orders" />
+        <div>
+          <table class="table table-bordered  order">
                 <tr class="orderListItems">
                     <th className = "ps-4">Test 1</th>
                     <th className = "ps-4">Test 2</th>
@@ -52,7 +59,10 @@ export default class OrderList extends Component {
 
                 </tr>
             </table>
-            </div>
+          </div>
+        </div>
+      </div>
+
         )
     }
 }
