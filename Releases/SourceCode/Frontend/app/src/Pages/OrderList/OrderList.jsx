@@ -13,10 +13,10 @@ export default class OrderList extends Component {
         return (
 
         <div>
-        <SideNav/>
+            <SideNav/>
         <div className="content-layer">
-          <Header topic="OrderList" />
-          <div>
+          <Header topic="Orders" />
+        <div>
           <table class="table table-bordered  order">
                 <tr class="orderListItems">
                     <th className = "ps-4">Test 1</th>
