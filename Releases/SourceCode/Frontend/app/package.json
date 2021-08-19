@@ -12,7 +12,10 @@
     "web-vitals": "^1.1.2",
     "axios": "^0.21.1",
     "sweetalert2": "^11.0.18",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11"
   },
   "scripts": {
     "start": "react-scripts start",
