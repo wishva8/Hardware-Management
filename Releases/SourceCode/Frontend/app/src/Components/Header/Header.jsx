@@ -7,7 +7,7 @@ export default function Header(props) {
       <div className="col">
         <h5 className="ms-4 mt-1 text-green">{props.topic ?? ''}</h5>
       </div>
-      <div className="col d-flex justify-content-end">
+      <div className="col d-flex justify-content-end me-4">
         <div className="dropdown">
           <a
             href="#"
