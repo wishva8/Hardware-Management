@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <SideNav />
+          {/* <SideNav /> */}
           <Route path="/orderList">
             <OrderList/>
           </Route>
