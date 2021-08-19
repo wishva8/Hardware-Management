@@ -1,3 +1,10 @@
 body {
   background-color: #021010;
 }
+.content-layer{
+  margin-left: 21%;
+  color: #ffffff;
+}
+.text-green{
+  color: #9CE6B7;
+}
