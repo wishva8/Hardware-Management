@@ -4,13 +4,16 @@
     background-color: #012929;
     border-width: 10px;
     height: 50px;
+    font-size: 18px;
+
 }
 
 .order{
     width: 100%;
     color: #9CE6B7;
     /* margin-top: 8%; */
-    border-radius: 20px;
+    border-radius: 15px;
+    font-size: 18px;
 }
 
 .orderListItems td:first-child,th:first-child{
@@ -22,7 +25,6 @@
     border-bottom-right-radius: 50px;
     border-top-right-radius: 50px;
     width: 7%;
-
 }
 
 
