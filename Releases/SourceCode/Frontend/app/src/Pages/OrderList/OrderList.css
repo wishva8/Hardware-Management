@@ -7,11 +7,13 @@
 }
 
 .order{
-    width: 58%;
+    width: 97%;
     color: #9CE6B7;
-    margin-left: 30%;
-    margin-right: auto;
-    margin-top: 15%;
+    /* margin-left: 30%;
+    margin-right: auto; */
+    margin-top: 8%;
+    padding: 10px;
+    border-radius: 20px;
     
 }
 
@@ -25,8 +27,7 @@
 .orderListItems td:last-child,th:last-child{
     border-bottom-right-radius: 50px;
     border-top-right-radius: 50px;
-    width: 110px;
-    /* padding-right: 5px; */
+
 }
 
 
