@@ -18,6 +18,18 @@ function App() {
           <Route path="/dashboard">
             <AdminDashboard />
           </Route>
+          <Route path="/createDriver">
+            <DriverCreate />
+          </Route>
+          <Route path="/updateDriver">
+            <DriverUpdate />
+          </Route>
+          <Route path="/driverList">
+            <DriverList />
+          </Route>
+          <Route path="/addUser">
+            <AddUser />
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>

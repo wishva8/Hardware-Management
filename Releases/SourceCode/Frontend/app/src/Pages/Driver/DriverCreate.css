@@ -10,7 +10,7 @@
 }
 
 .Driver-Create-Heading-Container {
-  color: #012929;
+  background-color: #012929;
   padding: 15px 10px 10px 10px;
   border: solid 1px #012929;
   /* padding: 20px; */
@@ -21,7 +21,7 @@
 }
 
 .Driver-Create-Body-Container {
-  color: #012929;
+  background-color: #012929;
   padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
   padding: 20px;
@@ -31,7 +31,7 @@
 }
 
 .form-control {
-  border-radius: 15px;
+  border-radius: 10px;
   width: relative;
   background-color: #345454;
   border-color: #9CE6B7;
