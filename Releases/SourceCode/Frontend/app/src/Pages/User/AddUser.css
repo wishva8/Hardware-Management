@@ -1,16 +1,16 @@
-.CreateDriver {
+.AddUser {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
   opacity: 85%;
   background-repeat: no-repeat;
-  /* background-size: cover; */
+  background-size: cover;
   /* margin-top: 100px; */
   background-color: #021010;
 }
 
-.Driver-Create-Heading-Container {
-  color: #012929;
+.User-Create-Heading-Container {
+  background-color: #012929;
   padding: 15px 10px 10px 10px;
   border: solid 1px #012929;
   /* padding: 20px; */
@@ -20,8 +20,8 @@
   margin-bottom: 1%;
 }
 
-.Driver-Create-Body-Container {
-  color: #012929;
+.User-Create-Body-Container {
+  background-color: #012929;
   padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
   padding: 20px;
@@ -33,49 +33,45 @@
 .form-control {
   border-radius: 15px;
   width: relative;
-  background-color: #345454;
-  border-color: #9CE6B7;
 }
 
-.Driver-Button-Reset {
+.User-Button-Reset {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
+  border: none;
   margin: 10px 0;
   width: 22%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 47%;
+  margin-left: 50%;
 }
-.Driver-Button-Add {
+.User-Button-Add {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
+  border: none;
   margin: 10px 0;
-  width: 25%;
+  width: 22%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
   margin-left: 5%;
 }
 
-.Driver-Button-Reset:hover,
-.Driver-Button-Add:hover {
+.User-Button-Reset:hover,
+.User-Button-Add:hover {
   background-color: #4caf50;
   color: white;
   border: 1px solid gray;
   font-weight: bold;
 }
 
-.Add-Driver-Heading {
+.Register-User-Heading {
   text-align: center;
   font-weight: bold;
   color: #9ce6b7;
-}
-
-.col-form-label {
-    color: #9CE6B7;
 }

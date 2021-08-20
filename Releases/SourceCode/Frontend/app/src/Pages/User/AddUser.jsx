@@ -1,28 +1,28 @@
 import React, { Component } from "react";
-import "./DriverUpdate.css";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import "./AddUser.css";
+import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default class DriverUpdate extends Component {
+export default class AddUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenseNo: "",
+      nicNo: "",
       name: "",
       address: "",
-      vehicleNo: "",
-      vehicleType: "",
+      userType: "",
+      email: "",
       phoneNo: "",
     };
   }
-  //   state = {
-  //     licenseNo: "",
+  // state = {
+  //     nicNo: "",
   //     name: "",
   //     address: "",
-  //     vehicleNo: "",
-  //     vehicleType: "",
+  //     userType: "",
+  //     email: "",
   //     phoneNo: ""
-  // };
+  // }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -34,23 +34,23 @@ export default class DriverUpdate extends Component {
 
   render() {
     return (
-      <div className="UpdateDriver">
-        <div className="Driver-Update-Heading-Container">
-          <h3 className="Update-Driver-Heading">Update Driver</h3>
+      <div className="AddUser">
+        <div className="User-Create-Heading-Container">
+          <h3 className="Register-User-Heading">Add User</h3>
         </div>
-        <div className="Driver-Update-Body-Container">
+        <div className="User-Create-Body-Container">
           <form onSubmit={this.handleSubmit}>
             <div className="mb-3 row">
-              <label className="col-sm-3 col-form-label">License No :</label>
+              <label className="col-sm-3 col-form-label">NIC No :</label>
               <div class="col-sm-9">
                 <input
                   class="form-control"
                   type="text"
-                  id="licenseNo"
-                  name="licenseNo"
-                  placeholder="License No"
+                  id="nicNo"
+                  name="nicNo"
+                  placeholder="951234567V"
                   required
-                  value={this.state.licenseNo}
+                  value={this.state.nicNo}
                   onChange={this.handleChange}
                 />
               </div>
@@ -63,7 +63,7 @@ export default class DriverUpdate extends Component {
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Driver Name"
+                  placeholder="John Doe"
                   required
                   value={this.state.name}
                   onChange={this.handleChange}
@@ -78,7 +78,7 @@ export default class DriverUpdate extends Component {
                   type="text"
                   id="address"
                   name="address"
-                  placeholder="Driver Address"
+                  placeholder="110/C, Town Hall, Colombo"
                   required
                   value={this.state.address}
                   onChange={this.handleChange}
@@ -86,33 +86,33 @@ export default class DriverUpdate extends Component {
               </div>
             </div>
             <div className="mb-3 row">
-              <label className="col-sm-3 col-form-label">Vehicle No :</label>
+              <label className="col-sm-3 col-form-label">User Type :</label>
+              <div class="col-sm-9">
+                <select
+                  class="form-control"
+                  value="userType"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                >
+                  <option value="Manager">Manager</option>
+                  <option value="Cashier">Cashier</option>
+                  <option value="Accountant">Accountant </option>
+                </select>
+              </div>
+            </div>
+            <div className="mb-3 row">
+              <label className="col-sm-3 col-form-label">Email :</label>
               <div class="col-sm-9">
                 <input
                   class="form-control"
                   type="text"
-                  id="vehicleNo"
-                  name="vehicleNo"
-                  placeholder="Vehicle No"
+                  id="email"
+                  name="email"
+                  placeholder="abc@abc.com"
                   required
-                  value={this.state.vehicleNo}
+                  value={this.state.email}
                   onChange={this.handleChange}
                 />
-              </div>
-            </div>
-            <div className="mb-3 row">
-              <label className="col-sm-3 col-form-label">Vehicle Type :</label>
-              <div class="col-sm-9">
-                <select
-                  class="form-control"
-                  value={this.state.value}
-                  onChange={this.handleChange}
-                >
-                  <option value="Lorry">Lorry</option>
-                  <option value="Tipper">Tipper</option>
-                  <option value="Land Master">Land Master</option>
-                  <option value="Flat Bed">Flat Bed</option>
-                </select>
               </div>
             </div>
             <div className="mb-3 row">
@@ -131,8 +131,11 @@ export default class DriverUpdate extends Component {
               </div>
             </div>
             <div className="DriverRow">
-              <button type="submit" className="Driver-Button-Update">
-              <FontAwesomeIcon icon={faCheckCircle} /> Update Driver
+              <button type="submit" className="User-Button-Reset">
+              <FontAwesomeIcon icon={faRedo} /> Reset
+              </button>
+              <button type="submit" className="User-Button-Add">
+              <FontAwesomeIcon icon={faPlus} /> Add User
               </button>
             </div>
           </form>
