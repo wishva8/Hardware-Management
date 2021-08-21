@@ -27,17 +27,29 @@ th:last-child {
   border-top-right-radius: 50px;
   width: 7%;
 }
+.Item-Button-Add {
+  background-color: #ccf1da;
+  color: #0c6464;
+  padding: 12px;
+  border: soild 1px #0c6464;
+  margin: 10px 0;
+  width: 12%;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 74%;
+}
 .Item-Button-Report {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
   margin: 10px 0;
-  width: 18%;
+  width: 12%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 5%;
+  margin-left: 2%;
 }
 .Item-Button-Report:hover,
 .Item-Button-Add:hover {
@@ -45,4 +57,8 @@ th:last-child {
   color: white;
   border: 1px solid gray;
   font-weight: bold;
+}
+
+.ItemRow {
+  padding-top: 15px;
 }
