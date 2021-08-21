@@ -1,4 +1,4 @@
-.CreateDriver {
+.CreateItem {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
@@ -9,7 +9,7 @@
   background-color: #021010;
 }
 
-.Driver-Create-Heading-Container {
+.Item-Create-Heading-Container {
   background-color: #012929;
   padding: 15px 10px 10px 10px;
   border: solid 1px #012929;
@@ -18,10 +18,9 @@
   width: 50%;
   margin-left: 25%;
   margin-bottom: 1%;
-  margin-top: 3%;
 }
 
-.Driver-Create-Body-Container {
+.Item-Create-Body-Container {
   background-color: #012929;
   padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
@@ -35,48 +34,48 @@
   border-radius: 10px;
   width: relative;
   background-color: #345454;
-  border-color: #9CE6B7;
+  border-color: #9ce6b7;
 }
 
-.Driver-Button-Reset {
+.Item-Button-Reset {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
   margin: 10px 0;
-  width: 22%;
+  width: 18%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
   margin-left: 47%;
 }
-.Driver-Button-Add {
+.Item-Button-Add {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
   margin: 10px 0;
-  width: 25%;
+  width: 18%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
   margin-left: 5%;
 }
 
-.Driver-Button-Reset:hover,
-.Driver-Button-Add:hover {
+.Item-Button-Reset:hover,
+.Item-Button-Add:hover {
   background-color: #4caf50;
   color: white;
   border: 1px solid gray;
   font-weight: bold;
 }
 
-.Add-Driver-Heading {
+.Add-Item-Heading {
   text-align: center;
   font-weight: bold;
   color: #9ce6b7;
 }
 
 .col-form-label {
-    color: #9CE6B7;
+  color: #9ce6b7;
 }

@@ -1,19 +1,50 @@
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import './App.css';
-import SideNav from './Components/SideNav/SideNav';
-import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard"
+import "./App.css";
+import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
 import OrderList from "./Pages/OrderList/OrderList";
+import DriverCreate from "./Pages/Driver/DriverCreate";
+import DriverUpdate from "./Pages/Driver/DriverUpdate";
+import AddUser from "./Pages/User/AddUser";
+import DriverList from "./Pages/Driver/DriverList";
+import CreateItem from "./Pages/Inventory/CreateItem";
+import UserLogin from "./Pages/User/UserLogin";
+import InventoryList from "./Pages/Inventory/InventoryList";
+import UpdateItems from "./Pages/Inventory/UpdateItems";
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
-          {/* <SideNav /> */}
           <Route path="/orderList">
-            <OrderList/>
+            <OrderList />
           </Route>
-          <Route path="">
+          <Route path="/dashboard">
             <AdminDashboard />
+          </Route>
+          <Route path="/createDriver">
+            <DriverCreate />
+          </Route>
+          <Route path="/updateDriver">
+            <DriverUpdate />
+          </Route>
+          <Route path="/driverList">
+            <DriverList />
+          </Route>
+          <Route path="/addUser">
+            <AddUser />
+          </Route>
+          <Route path="/createItem">
+            <CreateItem />
+          </Route>
+          <Route path="/loginUser">
+            <UserLogin />
+          </Route>
+          <Route path="/inventoryList">
+            <InventoryList />
+          </Route>
+          <Route path="/updateItem">
+            <UpdateItems />
           </Route>
         </Switch>
       </BrowserRouter>
