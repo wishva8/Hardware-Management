@@ -9,7 +9,7 @@ export default function Header(props) {
           <h5 className="ms-4 mt-1 text-green">{props.topic ?? ""}</h5>
         </div>
         <div className="col d-flex justify-content-end">
-          <div className="dropdown">
+          <div className="dropdown me-4">
             <a
               href="#"
               className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"

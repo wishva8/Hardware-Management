@@ -1,19 +1,19 @@
-.CreateDriver {
+.UpdateItem {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
   opacity: 85%;
   background-repeat: no-repeat;
-  /* background-size: cover; */
+  background-size: cover;
   /* margin-top: 100px; */
   background-color: #021010;
 }
 
-.Driver-Create-Heading-Container {
+.Item-Update-Heading-Container {
   background-color: #012929;
-  padding: 15px 10px 10px 10px;
+  padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
-  /* padding: 20px; */
+  padding: 20px;
   border-radius: 20px;
   width: 50%;
   margin-left: 25%;
@@ -21,7 +21,7 @@
   margin-top: 3%;
 }
 
-.Driver-Create-Body-Container {
+.Item-Update-Body-Container {
   background-color: #012929;
   padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
@@ -34,49 +34,31 @@
 .form-control {
   border-radius: 10px;
   width: relative;
-  background-color: #345454;
-  border-color: #9CE6B7;
 }
 
-.Driver-Button-Reset {
+.Item-Button-Update {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
+  border: none;
   margin: 10px 0;
-  width: 22%;
+  width: 30%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 47%;
-}
-.Driver-Button-Add {
-  background-color: #ccf1da;
-  color: #0c6464;
-  padding: 12px;
-  border: soild 1px #0c6464;
-  margin: 10px 0;
-  width: 25%;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 20px;
-  margin-left: 5%;
+  margin-left: 35%;
 }
 
-.Driver-Button-Reset:hover,
-.Driver-Button-Add:hover {
+.Item-Button-Update:hover {
   background-color: #4caf50;
   color: white;
   border: 1px solid gray;
   font-weight: bold;
 }
 
-.Add-Driver-Heading {
+.Update-Item-Heading {
   text-align: center;
   font-weight: bold;
   color: #9ce6b7;
-}
-
-.col-form-label {
-    color: #9CE6B7;
 }
