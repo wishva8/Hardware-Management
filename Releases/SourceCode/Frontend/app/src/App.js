@@ -7,6 +7,7 @@ import DriverUpdate from "./Pages/Driver/DriverUpdate";
 import AddUser from "./Pages/User/AddUser";
 import DriverList from "./Pages/Driver/DriverList";
 import CreateItem from "./Pages/Inventory/CreateItem";
+import UserLogin from "./Pages/User/UserLogin";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/createItem">
             <CreateItem />
+          </Route>
+          <Route path="/loginUser">
+            <UserLogin />
           </Route>
         </Switch>
       </BrowserRouter>

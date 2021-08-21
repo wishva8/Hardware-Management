@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./DriverUpdate.css";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Header from "../../Components/Header/Header";
+import SideNav from "../../Components/SideNav/SideNav";
 
 export default class DriverUpdate extends Component {
   constructor(props) {
@@ -35,6 +37,9 @@ export default class DriverUpdate extends Component {
   render() {
     return (
       <div className="UpdateDriver">
+        <SideNav/>
+        <div className="content-layer">
+          <Header topic="Driver Management" />
         <div className="Driver-Update-Heading-Container">
           <h3 className="Update-Driver-Heading">Update Driver</h3>
         </div>
@@ -137,6 +142,7 @@ export default class DriverUpdate extends Component {
             </div>
           </form>
         </div>
+      </div>
       </div>
     );
   }
