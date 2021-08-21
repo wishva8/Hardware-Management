@@ -35,7 +35,7 @@ function App() {
           <Route path="/createItem">
             <CreateItem />
           </Route>
-          <Route path="/loginUser">
+          <Route path="/userLogin">
             <UserLogin />
           </Route>
         </Switch>

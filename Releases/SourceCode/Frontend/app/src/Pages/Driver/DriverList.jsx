@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import "./DriverList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faTrash,
+  faDownload,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 
@@ -12,15 +17,23 @@ export default class DriverList extends Component {
         <SideNav />
         <div className="content-layer">
           <Header topic="Drivers" />
+          <div className="DriverRow">
+            <button type="submit" className="Driver-Button-List-Add">
+              <FontAwesomeIcon icon={faPlus} /> Add Driver
+            </button>
+            <button type="reset" className="Driver-Button-Report">
+              <FontAwesomeIcon icon={faDownload} /> Report
+            </button>
+          </div>
           <div className="row">
             <table class="table table-bordered  driverList">
               <tr class="driverListItems">
-                <th className="ps-4">Test 1</th>
-                <th className="ps-4">Test 2</th>
-                <th className="ps-4">Test 3</th>
-                <th className="ps-4">Test 4</th>
-                <th className="ps-4">Test 5</th>
-                <th className="ps-4">Test 6</th>
+                <th className="ps-4">License No</th>
+                <th className="ps-4">Name</th>
+                <th className="ps-4">Address</th>
+                <th className="ps-4">Vehicle No</th>
+                <th className="ps-4">Vehicle Type</th>
+                <th className="ps-4">Phone No</th>
                 <th className="ps-4"></th>
               </tr>
               <tr class="orderListItems text-white">
