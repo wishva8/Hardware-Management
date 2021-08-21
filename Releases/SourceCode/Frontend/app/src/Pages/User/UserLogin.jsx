@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./UserLogin.css";
+import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default class UserLogin extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ export default class UserLogin extends Component {
     this.state = {
       username: "",
       password: "",
-      isChecked: true,
+      isChecked: false,
     };
   }
 
@@ -34,9 +35,9 @@ export default class UserLogin extends Component {
         </div>
         <div className="User-Login-Body-Container">
           <form onSubmit={this.handleSubmit}>
-            <div className="mb-3 row">
-              <label className="col-sm-3 col-form-label">Username :</label>
-              <div class="col-sm-9">
+            <div className="mb-4 row">
+              <label className="col-sm-10 col-form-label">Username :</label>
+              <div class="col-sm-10">
                 <input
                   class="form-control"
                   type="text"
@@ -49,9 +50,9 @@ export default class UserLogin extends Component {
                 />
               </div>
             </div>
-            <div className="mb-3 row">
-              <label className="col-sm-3 col-form-label">Password :</label>
-              <div class="col-sm-9">
+            <div className="mb-4 row">
+              <label className="col-sm-10 col-form-label">Password :</label>
+              <div class="col-sm-10">
                 <input
                   class="form-control"
                   type="password"
@@ -65,14 +66,17 @@ export default class UserLogin extends Component {
               </div>
             </div>
 
+            
+  
+            <div className="LoginRow">
+                <div className="checkbox">
             <input
                 type="checkbox"
                 checked={this.state.isChecked}
                 onChange={this.toggleChange}
               />
             <label className="rememberMe">Remember Me</label>
-  
-            <div className="DriverRow">
+            </div>
               <button type="submit" className="User-Button-Login">
                 Login
               </button>
