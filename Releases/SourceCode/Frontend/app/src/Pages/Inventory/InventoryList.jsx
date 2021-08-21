@@ -13,7 +13,7 @@ export default class InventoryList extends Component {
         <SideNav />
         <div className="content-layer">
           <Header topic="Inventory Management" />
-          <div className="ItemRow">
+          <div className="ItemRow text-end">
             <button type="submit" className="Item-Button-Add">
               <FontAwesomeIcon icon={faPlus} /> Add Item
             </button>

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default class OrderList extends Component {
   render() {
@@ -11,7 +12,15 @@ export default class OrderList extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Orders" />
+          <Header topic="Order Management" />
+          <div className="OrderRow text-end">
+            <button type="submit" className="Order-Button-Add">
+              <FontAwesomeIcon icon={faPlus} /> Add Order
+            </button>
+            <button type="submit" className="Order-Button-Report">
+              <FontAwesomeIcon icon={faDownload} /> Report
+            </button>
+          </div>
           <div className="row">
             <table class="table table-bordered  order">
               <tr class="orderListItems">

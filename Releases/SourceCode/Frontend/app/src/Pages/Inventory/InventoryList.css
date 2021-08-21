@@ -37,7 +37,7 @@ th:last-child {
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 74%;
+  /* margin-left: 74%; */
 }
 .Item-Button-Report {
   background-color: #ccf1da;
