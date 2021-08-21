@@ -111,6 +111,7 @@ export default class CreateItem extends Component {
                   <option value1="INV2">INV2</option>
                   <option value1="INV3">INV3</option>
                   <option value1="INV4">INV4</option>
+                  <option value1="INV5">INV5</option>
                 </select>
               </div>
             </div>
