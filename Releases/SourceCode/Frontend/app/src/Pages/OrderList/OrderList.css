@@ -1,31 +1,29 @@
-.orderListItems{
-    border-radius: 5rem;
-    border-color: #021010;
-    background-color: #012929;
-    border-width: 10px;
-    height: 50px;
-    font-size: 18px;
-
+.orderListItems {
+  border-radius: 5rem;
+  border-color: #021010;
+  background-color: #012929;
+  border-width: 10px;
+  height: 50px;
+  font-size: 18px;
 }
 
-.order{
-    width: 100%;
-    color: #9CE6B7;
-    /* margin-top: 8%; */
-    border-radius: 15px;
-    font-size: 18px;
+.order {
+  width: 100%;
+  color: #9ce6b7;
+  /* margin-top: 8%; */
+  border-radius: 15px;
+  font-size: 18px;
 }
 
-.orderListItems td:first-child,th:first-child{
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px; 
+.orderListItems td:first-child,
+th:first-child {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
-.orderListItems td:last-child,th:last-child{
-    border-bottom-right-radius: 50px;
-    border-top-right-radius: 50px;
-    width: 7%;
+.orderListItems td:last-child,
+th:last-child {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  width: 7%;
 }
-
-
-
