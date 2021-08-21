@@ -8,6 +8,7 @@ import AddUser from "./Pages/User/AddUser";
 import DriverList from "./Pages/Driver/DriverList";
 import CreateItem from "./Pages/Inventory/CreateItem";
 import UserLogin from "./Pages/User/UserLogin";
+import InventoryList from "./Pages/Inventory/InventoryList";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/loginUser">
             <UserLogin />
+          </Route>
+          <Route path="/inventoryList">
+            <InventoryList />
           </Route>
         </Switch>
       </BrowserRouter>
