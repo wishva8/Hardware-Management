@@ -1,11 +1,12 @@
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import './App.css';
-import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard"
+import "./App.css";
+import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
 import OrderList from "./Pages/OrderList/OrderList";
-import DriverCreate from './Pages/Driver/DriverCreate';
-import DriverUpdate from './Pages/Driver/DriverUpdate';
-import AddUser from './Pages/User/AddUser';
-import DriverList from './Pages/Driver/DriverList';
+import DriverCreate from "./Pages/Driver/DriverCreate";
+import DriverUpdate from "./Pages/Driver/DriverUpdate";
+import AddUser from "./Pages/User/AddUser";
+import DriverList from "./Pages/Driver/DriverList";
+import CreateItem from "./Pages/Inventory/CreateItem";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/orderList">
-            <OrderList/>
+            <OrderList />
           </Route>
           <Route path="/dashboard">
             <AdminDashboard />
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/addUser">
             <AddUser />
+          </Route>
+          <Route path="/createItem">
+            <CreateItem />
           </Route>
         </Switch>
       </BrowserRouter>
