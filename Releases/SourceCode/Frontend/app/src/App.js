@@ -6,6 +6,7 @@ import DriverCreate from './Pages/Driver/DriverCreate';
 import DriverUpdate from './Pages/Driver/DriverUpdate';
 import AddUser from './Pages/User/AddUser';
 import DriverList from './Pages/Driver/DriverList';
+import UserLogin from "./Pages/User/UserLogin";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/addUser">
             <AddUser />
+          </Route>
+          <Route path="/userLogin">
+            <UserLogin />
           </Route>
         </Switch>
       </BrowserRouter>
