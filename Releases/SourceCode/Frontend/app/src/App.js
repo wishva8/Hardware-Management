@@ -11,6 +11,7 @@ import UserLogin from "./Pages/User/UserLogin";
 import InventoryList from "./Pages/Inventory/InventoryList";
 import UpdateItems from "./Pages/Inventory/UpdateItems";
 import CreateOrder from "./Pages/OrderList/CreateOrder";
+import UpdateOrder from "./Pages/OrderList/UpdateOrder";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route path="/createOrder">
             <CreateOrder />
+          </Route>
+          <Route path="/updateOrder">
+            <UpdateOrder />
           </Route>
         </Switch>
       </BrowserRouter>

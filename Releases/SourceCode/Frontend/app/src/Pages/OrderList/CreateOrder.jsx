@@ -14,7 +14,7 @@ export default class CreateOrder extends Component {
       description: "",
       price: 0,
       orderDate: "",
-      customerName: 0,
+      customerName: "",
     };
   }
   state = {
@@ -23,7 +23,7 @@ export default class CreateOrder extends Component {
     description: "",
     price: 0,
     orderDate: "",
-    customerName: 0,
+    customerName: "",
   };
 
   handleChange = (e) => {
@@ -113,11 +113,11 @@ export default class CreateOrder extends Component {
                     <input
                       class="form-control"
                       type="date"
-                      id="qty"
-                      name="qty"
-                      placeholder="Quantity"
+                      id="OrderDate"
+                      name="OrderDate"
+                      placeholder="Order Date"
                       required
-                      value={this.state.qty}
+                      value={this.state.orderDate}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -130,11 +130,11 @@ export default class CreateOrder extends Component {
                     <input
                       class="form-control"
                       type="text"
-                      id="qty"
-                      name="qty"
-                      placeholder="Quantity"
+                      id="CustomerName"
+                      name="CustomerName"
+                      placeholder="Customer Name"
                       required
-                      value={this.state.qty}
+                      value={this.state.customerName}
                       onChange={this.handleChange}
                     />
                   </div>
