@@ -38,12 +38,49 @@ export default class AdminDashboard extends Component {
       s = "0" + s;
     }
     var timeArrange = h + ":" + m + ":" + s + " " + am;
-    // alert(timeArrange)
+
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var month = monthNames[time.getMonth()];
+    const dateName = [
+      "th",
+      "st",
+      "nd",
+      "rd",
+      "th",
+      "th",
+      "th",
+      "th",
+      "th",
+      "th",
+    ];
+    // test.toString().split("").pop();
+    var date =
+      time.getDate() + dateName[time.getDate().toString().split("").pop()];
+
+    var year = time.getFullYear();
+
+    var dateArrange = date + " of " + month + ", " + year;
+    // console.log(year);
     // const timeTag = document.getElementById("time");
     // timeTag.value = timeArrange;
     // console.log(timeTag);
     const timeTag = document.getElementById("time");
+    const dateTag = document.getElementById("date");
     timeTag.innerHTML = timeArrange;
+    dateTag.innerHTML = dateArrange;
     // this.setState({ time: timeArrange });
   }
   render() {
@@ -79,7 +116,8 @@ export default class AdminDashboard extends Component {
             </div>
             <div className="col">
               <div className="row widget-2 text-end">
-                <h2 id="time">{this.state.time ?? ""}</h2>
+                <h1 id="time" style={{fontWeight:"400"}}></h1>
+                <h3 id="date" style={{fontWeight:"400"}}></h3>
               </div>
               <div className="row widget-3">sdfsfsdfgs</div>
             </div>
