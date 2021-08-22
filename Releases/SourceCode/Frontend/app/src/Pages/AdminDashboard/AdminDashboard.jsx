@@ -24,9 +24,18 @@ export default class AdminDashboard extends Component {
     var m = time.getMinutes();
     var s = time.getSeconds();
     var am = "AM";
+    if (h == 12) {
+      var am = "PM";
+    } else if (h > 12) {
+      h = h - 12;
+      var am = "PM";
+    }
     if (h > 12) {
       h = h - 12;
       var am = "PM";
+    }
+    if (s < 9) {
+      s = "0" + s;
     }
     var timeArrange = h + ":" + m + ":" + s + " " + am;
     // alert(timeArrange)
@@ -70,7 +79,7 @@ export default class AdminDashboard extends Component {
             </div>
             <div className="col">
               <div className="row widget-2 text-end">
-                <h2 id="time">{this.state.time??''}</h2>
+                <h2 id="time">{this.state.time ?? ""}</h2>
               </div>
               <div className="row widget-3">sdfsfsdfgs</div>
             </div>
