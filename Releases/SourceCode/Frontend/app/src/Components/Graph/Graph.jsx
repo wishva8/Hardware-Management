@@ -18,7 +18,7 @@ export default function Graph(props) {
     rotation: 170,
   };
   return (
-    <div style={{ width: "218px" }}>
+    <div style={{ width: "280px" }}>
       <h1 className="text-green" style={{ fontWeight: 100 }}>
         {props.data.name ?? ""}
       </h1>
