@@ -5,6 +5,8 @@ import com.hardwaremanagement.app.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/driver")
@@ -18,4 +20,6 @@ public class DriverController {
         return driverService.addDriver(driver);
     }
 
+    @GetMapping("/allDrivers")
+    public List<Driver> getAllDrivers(){ return driverService.getAllDrivers();}
 }

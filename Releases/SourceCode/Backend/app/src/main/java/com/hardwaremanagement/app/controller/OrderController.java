@@ -22,8 +22,6 @@ public class OrderController {
         return orderService.addOrder(order);
     }
 
-//    @GetMapping("/getAllOrders")
-//    public List getAllOrders(){
-//
-//    }
+    @GetMapping("/allOrders")
+    public List<Order> getAllOrders(){return orderService.getAllOrders();}
 }
