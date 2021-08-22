@@ -34,7 +34,7 @@ export default class AdminDashboard extends Component {
       h = h - 12;
       var am = "PM";
     }
-    if (s < 9) {
+    if (s < 10) {
       s = "0" + s;
     }
     var timeArrange = h + ":" + m + ":" + s + " " + am;
@@ -116,10 +116,65 @@ export default class AdminDashboard extends Component {
             </div>
             <div className="col">
               <div className="row widget-2 text-end">
-                <h1 id="time" style={{fontWeight:"400"}}></h1>
-                <h3 id="date" style={{fontWeight:"400"}}></h3>
+                <h1 id="time" style={{ fontWeight: "400" }}></h1>
+                <h3 id="date" style={{ fontWeight: "400" }}></h3>
               </div>
-              <div className="row widget-3">sdfsfsdfgs</div>
+              <div className="row widget-3">
+                <div className="p-3 ps-4">
+                  <h4 className="text-green">Today Deliveries</h4>
+                  <div className="mt-4">
+                    <div className="row">
+                      <div className="col-3">
+                        <p> 10:30 AM</p>
+                      </div>
+                      <div className="col-6">
+                        <p>519/C, Aggona, Mulleriyawa</p>
+                      </div>
+                      <div className="col-3">
+                        <p>Pending</p>
+                      </div>
+                      <hr style={{ border: "dotted  1px #9CE6B7" }} />
+                    </div>
+
+                    <div className="row">
+                      <div className="col-3">
+                        <p> 10:30 AM</p>
+                      </div>
+                      <div className="col-6">
+                        <p>519/C, Aggona, Mulleriyawa</p>
+                      </div>
+                      <div className="col-3">
+                        <p>Pending</p>
+                      </div>
+                      <hr style={{ border: "dotted  1px #9CE6B7" }} />
+                    </div>
+                    <div className="row">
+                      <div className="col-3">
+                        <p> 10:30 AM</p>
+                      </div>
+                      <div className="col-6">
+                        <p>519/C, Aggona, Mulleriyawa</p>
+                      </div>
+                      <div className="col-3">
+                        <p>Pending</p>
+                      </div>
+                      <hr style={{ border: "dotted  1px #9CE6B7" }} />
+                    </div>
+                    <div className="row">
+                      <div className="col-3">
+                        <p> 10:30 AM</p>
+                      </div>
+                      <div className="col-6">
+                        <p>519/C, Aggona, Mulleriyawa</p>
+                      </div>
+                      <div className="col-3">
+                        <p>Pending</p>
+                      </div>
+                      <hr style={{ border: "dotted  1px #9CE6B7" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
