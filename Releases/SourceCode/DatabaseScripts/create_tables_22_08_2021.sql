@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS orders(
 CREATE TABLE IF NOT EXISTS deliveries(
 delivery_no INT AUTO_INCREMENT NOT NULL,
 order_no INT(10) NOT NULL,
-d_description VARCHAR(50) NOT NULL,
+description VARCHAR(50) NOT NULL,
 address VARCHAR(50) NOT NULL,
 customer_name VARCHAR(50) NOT NULL,
 customer_phone VARCHAR(50) NOT NULL,
@@ -50,14 +50,14 @@ PRIMARY KEY(licence_no)
 );
 
 CREATE TABLE IF NOT EXISTS users(
-nic VARCHAR(20) NOT NULL,
+nic_no VARCHAR(20) NOT NULL,
 name VARCHAR(20) NOT NULL,
-address VARCHAR(50) NOT NULL,
+address VARCHAR(500) NOT NULL,
 user_type int NOT NULL,
 email VARCHAR(30) NOT NULL,
 phone_no VARCHAR(10) NOT NULL,
 
-PRIMARY KEY(nic)
+PRIMARY KEY(nic_no)
 );
 
 
