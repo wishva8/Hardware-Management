@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import "./DriverCreate.css";
+import "./CreateDelivery.css";
 import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 
-export default class DriverCreate extends Component {
+export default class CreateDelivery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenseNo: "",
-      name: "",
+      deliveryNo: "",
+      orderNo: "",
+      description: "",
       address: "",
-      vehicleNo: "",
-      vehicleType: "",
-      phoneNo: "",
+      customerName: "",
+      customerPhone: "",
     };
   }
 
@@ -25,64 +25,75 @@ export default class DriverCreate extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      licenseNo: this.state.licenseNo,
-      name: this.state.name,
+      deliveryNo: this.state.deliveryNo,
+      orderNo: this.state.orderNo,
+      description: this.state.description,
       address: this.state.address,
-      vehicleNo: this.state.vehicleNo,
-      vehicleType: this.state.vehicleType,
-      phoneNo: this.state.phoneNo,
+      customerName: this.state.customerName,
+      customerPhone: this.state.customerPhone,
     };
     console.log(data);
   };
 
   reset() {
     const res = {
-      licenseNo: "",
-      name: "",
+      deliveryNo: "",
+      orderNo: "",
+      description: "",
       address: "",
-      vehicleNo: "",
-      vehicleType: "",
-      phoneNo: "",
+      customerName: "",
+      customerPhone: "",
     };
   }
-
   render() {
     return (
-      <div className="CreateDriver">
+      <div className="CreateDelivery">
         <SideNav />
         <div className="content-layer">
-          <Header topic="Driver Management" />
-          <div className="Driver-Create-Heading-Container">
-            <h3 className="Add-Driver-Heading">Add Driver</h3>
+          <Header topic="Delivery Management" />
+          <div className="Delivery-Create-Heading-Container">
+            <h3 className="Add-Delivery-Heading">Add Delivery</h3>
           </div>
-          <div className="Driver-Create-Body-Container">
+          <div className="Delivery-Create-Body-Container">
             <form onSubmit={this.handleSubmit}>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">License No :</label>
+                <label className="col-sm-3 col-form-label">Delivery No :</label>
                 <div className="col-sm-9">
                   <input
                     className="form-control"
                     type="text"
-                    id="licenseNo"
-                    name="licenseNo"
-                    placeholder="License No"
+                    id="deliveryNo"
+                    name="deliveryNo"
+                    placeholder="Delivery No."
                     required
-                    // value={this.state.licenseNo}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Name :</label>
+                <label className="col-sm-3 col-form-label">Order No. :</label>
                 <div className="col-sm-9">
                   <input
                     className="form-control"
                     type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Driver Name"
+                    id="orderNo"
+                    name="orderNo"
+                    placeholder="Order No."
                     required
-                    // value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">Description :</label>
+                <div className="col-sm-9">
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="Description"
+                    name="Description"
+                    placeholder="Description"
+                    required
                     onChange={this.handleChange}
                   />
                 </div>
@@ -93,73 +104,56 @@ export default class DriverCreate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Driver Address"
+                    id="Address"
+                    name="Address"
+                    placeholder="Address"
                     required
-                    // value={this.state.address}
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Vehicle No :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="vehicleNo"
-                    name="vehicleNo"
-                    placeholder="Vehicle No"
-                    required
-                    // value={this.state.vehicleNo}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
               <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">
-                  Vehicle Type :
+                  Customer Name :
                 </label>
-                <div className="ui fluid col-sm-9">
-                  <select
-                    className="form-control"
-                    name="vehicleType"
-                    // value={this.state.vehicleType}
-                    onChange={this.handleChange}
-                  >
-                    <option value="Lorry">Lorry</option>
-                    <option value="Tipper">Tipper</option>
-                    <option value="Land Master">Land Master</option>
-                    <option value="Flat Bed">Flat Bed</option>
-                  </select>
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Phone No :</label>
                 <div className="col-sm-9">
                   <input
                     className="form-control"
-                    type="Number"
-                    id="phoneNo"
-                    name="phoneNo"
-                    placeholder="0766157878"
+                    type="text"
+                    id="customerName"
+                    name="customerName"
+                    placeholder="Customer Name"
                     required
-                    // value={this.state.phoneNo}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div className="DriverRow text-end">
+              <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">
+                  Customer Phone :
+                </label>
+                <div className="col-sm-9">
+                  <input
+                    className="form-control"
+                    type="Number"
+                    id="customerPhone"
+                    name="customerPhone"
+                    placeholder="0766157878"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="DeliveryRow text-end">
                 <button
                   type="reset"
-                  className="Driver-Button-Reset"
+                  className="Delivery-Button-Reset"
                   onClick={this.reset}
                 >
                   <FontAwesomeIcon icon={faRedo} /> Reset
                 </button>
-                <button type="submit" className="Driver-Button-Add">
-                  <FontAwesomeIcon icon={faPlus} /> Add Driver
+                <button type="submit" className="Delivery-Button-Add">
+                  <FontAwesomeIcon icon={faPlus} /> Add Delivery
                 </button>
               </div>
             </form>

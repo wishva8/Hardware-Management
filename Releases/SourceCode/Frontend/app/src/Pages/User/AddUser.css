@@ -18,6 +18,7 @@
   width: 50%;
   margin-left: 25%;
   margin-bottom: 1%;
+  margin-top: 3%;
 }
 
 .User-Create-Body-Container {
@@ -46,7 +47,6 @@
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 50%;
 }
 .User-Button-Add {
   background-color: #ccf1da;
