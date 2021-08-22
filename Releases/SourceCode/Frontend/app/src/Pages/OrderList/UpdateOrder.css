@@ -1,4 +1,4 @@
-.LoginUser {
+.UpdateOrder {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
@@ -9,26 +9,26 @@
   background-color: #021010;
 }
 
-.User-Login-Heading-Container {
+.Order-Update-Heading-Container {
   background-color: #012929;
-  padding: 15px 10px 10px 10px;
+  padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
-  /* padding: 20px; */
+  padding: 20px;
   border-radius: 20px;
-  width: 40%;
-  margin-left: 30%;
-  margin-bottom: 2%;
-  margin-top: 10%;
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 1%;
+  margin-top: 3%;
 }
 
-.User-Login-Body-Container {
+.Order-Update-Body-Container {
   background-color: #012929;
   padding: 5px 10px 15px 10px;
   border: solid 1px #012929;
   padding: 20px;
   border-radius: 15px;
-  width: 40%;
-  margin-left: 30%;
+  width: 50%;
+  margin-left: 25%;
 }
 
 .form-control {
@@ -36,42 +36,29 @@
   width: relative;
 }
 
-.User-Button-Login {
+.Order-Button-Update {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
   border: none;
   margin: 10px 0;
-  width: 15%;
+  width: 30%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 7%;
+  margin-left: 35%;
 }
 
-.User-Button-Login:hover {
+.Order-Button-Update:hover {
   background-color: #4caf50;
   color: white;
   border: 1px solid gray;
   font-weight: bold;
 }
 
-.Login-User-Heading {
+.Update-Order-Heading {
   text-align: center;
   font-weight: bold;
   color: #9ce6b7;
-}
-
-.rememberMe {
-  color: #9ce6b7;
-  padding-left: 5px;
-}
-
-.mb-4 {
-  margin-left: 5%;
-}
-
-.checkbox {
-    margin-left: 7%;
 }
