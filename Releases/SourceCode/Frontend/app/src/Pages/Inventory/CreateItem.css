@@ -37,7 +37,7 @@
   border-color: #9ce6b7;
 }
 
-.Item-Button-Reset {
+.Item-Button-Inventory-Reset {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
@@ -47,9 +47,8 @@
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  margin-left: 47%;
 }
-.Item-Button-Add {
+.Item-Button-Inventory-Add {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
@@ -62,8 +61,8 @@
   margin-left: 5%;
 }
 
-.Item-Button-Reset:hover,
-.Item-Button-Add:hover {
+.Item-Button-Inventory-Reset:hover,
+.Item-Button-Inventory-Add:hover {
   background-color: #4caf50;
   color: white;
   border: 1px solid gray;

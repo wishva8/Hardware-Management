@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./UserLogin.css";
-import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { imagePath } from "../../Services";
 
 export default class UserLogin extends Component {
   constructor(props) {
@@ -30,6 +30,9 @@ export default class UserLogin extends Component {
   render() {
     return (
       <div className="UserLogin">
+          <div className="d-flex justify-content-center">
+            <img src={imagePath + `logo.png`} alt="" className="logo-login" />
+          </div>
         <div className="User-Login-Heading-Container">
           <h3 className="Login-User-Heading">Admin Login</h3>
         </div>
@@ -57,7 +60,7 @@ export default class UserLogin extends Component {
                   class="form-control"
                   type="password"
                   id="password"
-                  name="passowrd"
+                  name="password"
                   placeholder="Password"
                   required
                   value={this.state.password}
@@ -65,9 +68,6 @@ export default class UserLogin extends Component {
                 />
               </div>
             </div>
-
-            
-  
             <div className="LoginRow">
                 <div className="checkbox">
             <input
