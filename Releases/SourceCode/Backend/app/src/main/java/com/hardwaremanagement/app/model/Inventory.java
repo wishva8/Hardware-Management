@@ -16,13 +16,13 @@ public class Inventory {
     @Column(name = "item_category")
     private String itemCategory;
 
-    @Column(name = "description")
+    @Column(name = "item_description")
     private String description;
 
     @Column(name = "unit_price")
     private float unitPrice;
 
-    @Column(name = "quantity")
+    @Column(name = "item_quantity")
     private int quantity;
 
     public Inventory() {

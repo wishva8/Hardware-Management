@@ -1,7 +1,14 @@
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/Inventory.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/service/InventoryService.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/User.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/Order.java
 /Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/controller/OrderController.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/Delivery.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/repository/InventoryRepository.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/Driver.java
 /Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/SpmappApplication.java
 /Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/service/impl/OrderServiceImpl.java
-/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/OrderDao.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/service/impl/InventoryServiceImpl.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/controller/InventoryController.java
 /Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/service/OrderService.java
-/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/Order.java
 /Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/repository/OrderRepository.java

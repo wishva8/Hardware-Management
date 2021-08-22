@@ -10,13 +10,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderId;
 
-    @Column(name = "description")
+    @Column(name = "order_description")
     private String description;
 
     @Column(name = "item_id")
     private String itemId;
 
-    @Column(name = "quanitity")
+    @Column(name = "quantity")
     private int quantity;
 
     @Column(name = "unit_price")
@@ -34,9 +34,8 @@ public class Order {
     @Column(name = "customer_phone")
     private String customerPhoneNo;
 
-    @Column(name = "status")
+    @Column(name = "order_status")
     private boolean status;
-
 
     public Order() {
     }

@@ -25,16 +25,20 @@ public class Delivery {
     @Column(name = "customer_phone")
     private String customerPhoneNumber;
 
-    public Delivery() {
-    }
+    @Column(name = "d_status")
+    private boolean status;
 
-    public Delivery(int deliveryNo, int orderNo, String description, String address, String customerName, String customerPhoneNumber) {
+    public Delivery(int deliveryNo, int orderNo, String description, String address, String customerName, String customerPhoneNumber, boolean status) {
         this.deliveryNo = deliveryNo;
         this.orderNo = orderNo;
         this.description = description;
         this.address = address;
         this.customerName = customerName;
         this.customerPhoneNumber = customerPhoneNumber;
+        this.status = status;
+    }
+
+    public Delivery() {
     }
 
     public int getDeliveryNo() {
@@ -83,5 +87,13 @@ public class Delivery {
 
     public void setCustomerPhoneNumber(String customerPhoneNumber) {
         this.customerPhoneNumber = customerPhoneNumber;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
