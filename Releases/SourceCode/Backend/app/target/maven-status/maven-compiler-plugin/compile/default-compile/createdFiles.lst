@@ -7,8 +7,12 @@ com/hardwaremanagement/app/repository/DriverRepository.class
 com/hardwaremanagement/app/controller/DriverController.class
 com/hardwaremanagement/app/model/Driver.class
 com/hardwaremanagement/app/service/impl/OrderServiceImpl.class
+com/hardwaremanagement/app/repository/DeliveryRepository.class
+com/hardwaremanagement/app/service/DeliveryService.class
+com/hardwaremanagement/app/controller/DeliveryController.class
 com/hardwaremanagement/app/model/Inventory.class
 com/hardwaremanagement/app/model/Delivery.class
+com/hardwaremanagement/app/service/impl/DeliveryServiceImpl.class
 com/hardwaremanagement/app/service/InventoryService.class
 com/hardwaremanagement/app/SpmappApplication.class
 com/hardwaremanagement/app/repository/OrderRepository.class
