@@ -1,1 +1,7 @@
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/controller/OrderController.java
 /Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/SpmappApplication.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/service/impl/OrderServiceImpl.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/OrderDao.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/service/OrderService.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/model/Order.java
+/Users/tironelorence/Desktop/Projects/Hardware-Management/Releases/SourceCode/Backend/app/src/main/java/com/hardwaremanagement/app/repository/OrderRepository.java
