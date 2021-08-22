@@ -27,5 +27,37 @@
     width: 7%;
 }
 
+.Driver-Button-Report {
+    background-color: #ccf1da;
+    color: #0c6464;
+    padding: 12px;
+    border: soild 1px #0c6464;
+    margin: 10px 0;
+    width: 12%;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 2%;
+  }
+  .Driver-Button-List-Add {
+    background-color: #ccf1da;
+    color: #0c6464;
+    padding: 12px;
+    border: soild 1px #0c6464;
+    margin: 10px 0;
+    width: 12%;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 74%;
+  }
+  
+  .Driver-Button-Report:hover,
+  .Driver-Button-Add:hover {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid gray;
+    font-weight: bold;
+  }
 
 
