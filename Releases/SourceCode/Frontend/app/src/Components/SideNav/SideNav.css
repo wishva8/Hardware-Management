@@ -13,11 +13,13 @@
 .logo-sidebar {
   width: 80%;
 }
-.nav-pills .nav-link.active,
+/* .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: #0c6464;
-  background-color: #ccf1da;
-}
+} */
 .nav-pills .nav-link {
   border-radius: 15px;
+}
+.active {
+  color: #0c6464 !important;
+  background-color: #ccf1da !important;
 }
