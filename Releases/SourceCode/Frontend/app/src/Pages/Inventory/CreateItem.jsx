@@ -4,6 +4,7 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
+import axios from "axios";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -29,6 +30,10 @@ export default class CreateItem extends Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  componentDidMount() {
+    axios.post("http://localhost:9091/inventory/addItem").then((result) => {});
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
