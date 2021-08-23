@@ -4,6 +4,7 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
+import axios from "axios";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -30,28 +31,32 @@ export default class CreateItem extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidMount() {
+    axios.post("http://localhost:9091/inventory/addItem").then((result) => {});
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       itemNo: this.state.itemNo,
-    itemCategory: this.state.itemCategory,
-    description: this.state.description,
-    unitPrice: this.state.unitPrice,
-    inventoryNo: this.state.inventoryNo,
-    qty: this.state.qty,
-    }
-    console.log(data)
+      itemCategory: this.state.itemCategory,
+      description: this.state.description,
+      unitPrice: this.state.unitPrice,
+      inventoryNo: this.state.inventoryNo,
+      qty: this.state.qty,
+    };
+    console.log(data);
   };
 
   reset() {
     const res = {
-        itemNo: "",
-    itemCategory: "",
-    description: "",
-    unitPrice: 0,
-    inventoryNo: "",
-    qty: 0,
-    }
+      itemNo: "",
+      itemCategory: "",
+      description: "",
+      unitPrice: 0,
+      inventoryNo: "",
+      qty: 0,
+    };
   }
   render() {
     return (
@@ -167,7 +172,11 @@ export default class CreateItem extends Component {
                   </div>
                 </div>
                 <div className="ItemRow text-end">
-                  <button type="reset" className="Item-Button-Inventory-Reset" onClick={this.reset}>
+                  <button
+                    type="reset"
+                    className="Item-Button-Inventory-Reset"
+                    onClick={this.reset}
+                  >
                     <FontAwesomeIcon icon={faRedo} /> Reset
                   </button>
                   <button type="submit" className="Item-Button-Inventory-Add">
