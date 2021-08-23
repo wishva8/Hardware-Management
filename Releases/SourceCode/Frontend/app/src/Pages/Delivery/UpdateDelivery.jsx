@@ -1,49 +1,49 @@
 import React, { Component } from "react";
-import "./DriverUpdate.css";
+import "./UpdateDelivery.css";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 
-export default class DriverUpdate extends Component {
+export default class UpdateDelivery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenseNo: "",
-      name: "",
+      deliveryNo: "",
+      orderNo: "",
+      description: "",
       address: "",
-      vehicleNo: "",
-      vehicleType: "",
-      phoneNo: "",
+      customerName: "",
+      customerPhone: "",
     };
   }
-  //   state = {
-  //     licenseNo: "",
-  //     name: "",
-  //     address: "",
-  //     vehicleNo: "",
-  //     vehicleType: "",
-  //     phoneNo: ""
-  // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = (e) => {
-    alert(this.state.value);
+    e.preventDefault();
+    const data = {
+      deliveryNo: this.state.deliveryNo,
+      orderNo: this.state.orderNo,
+      description: this.state.description,
+      address: this.state.address,
+      customerName: this.state.customerName,
+      customerPhone: this.state.customerPhone,
+    };
+    console.log(data);
   };
-
   render() {
     return (
-      <div className="UpdateDriver">
+      <div className="UpdateDelivery">
         <SideNav />
         <div className="content-layer">
-          <Header topic="Driver Management" />
-          <div className="Driver-Update-Heading-Container">
-            <h3 className="Update-Driver-Heading">Update Driver</h3>
+          <Header topic="Delivery Management" />
+          <div className="Delivery-Update-Heading-Container">
+            <h3 className="Update-Delivery-Heading">Update Delivery</h3>
           </div>
-          <div className="Driver-Update-Body-Container">
+          <div className="Delivery-Update-Body-Container">
             <form onSubmit={this.handleSubmit}>
               <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">License No :</label>
@@ -137,9 +137,9 @@ export default class DriverUpdate extends Component {
                   />
                 </div>
               </div>
-              <div className="DriverRow">
-                <button type="submit" className="Driver-Button-Update">
-                  <FontAwesomeIcon icon={faCheckCircle} /> Update Driver
+              <div className="DeliveryRow">
+                <button type="submit" className="Delivery-Button-Update">
+                  <FontAwesomeIcon icon={faCheckCircle} /> Update Delivery
                 </button>
               </div>
             </form>

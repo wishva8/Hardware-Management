@@ -12,6 +12,9 @@ import InventoryList from "./Pages/Inventory/InventoryList";
 import UpdateItems from "./Pages/Inventory/UpdateItems";
 import CreateOrder from "./Pages/OrderList/CreateOrder";
 import UpdateOrder from "./Pages/OrderList/UpdateOrder";
+import CreateDelivery from "./Pages/Delivery/CreateDelivery";
+import DeliveryList from "./Pages/Delivery/DeliveryList";
+import UpdateDelivery from "./Pages/Delivery/UpdateDelivery";
 
 function App() {
   return (
@@ -53,6 +56,15 @@ function App() {
           </Route>
           <Route path="/updateOrder">
             <UpdateOrder />
+          </Route>
+          <Route path="/createDelivery">
+            <CreateDelivery />
+          </Route>
+          <Route path="/deliveryList">
+            <DeliveryList />
+          </Route>
+          <Route path="/updateDelivery">
+            <UpdateDelivery />
           </Route>
         </Switch>
       </BrowserRouter>
