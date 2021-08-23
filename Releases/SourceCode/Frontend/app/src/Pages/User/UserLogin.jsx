@@ -24,7 +24,12 @@ export default class UserLogin extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(this.state.value);
+    const data = {
+      username: this.state.username,
+    password: this.state.password,
+    isChecked: this.state.isChecked,
+    }
+    console.log(data);
   };
 
   render() {
@@ -40,9 +45,9 @@ export default class UserLogin extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="mb-4 row">
               <label className="col-sm-10 col-form-label">Username :</label>
-              <div class="col-sm-10">
+              <div className="col-sm-10">
                 <input
-                  class="form-control"
+                  className="form-control"
                   type="text"
                   id="username"
                   name="username"
@@ -55,9 +60,9 @@ export default class UserLogin extends Component {
             </div>
             <div className="mb-4 row">
               <label className="col-sm-10 col-form-label">Password :</label>
-              <div class="col-sm-10">
+              <div className="col-sm-10">
                 <input
-                  class="form-control"
+                  className="form-control"
                   type="password"
                   id="password"
                   name="password"

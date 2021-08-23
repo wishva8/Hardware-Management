@@ -31,7 +31,7 @@ export default class DriverCreate extends Component {
       vehicleNo: this.state.vehicleNo,
       vehicleType: this.state.vehicleType,
       phoneNo: this.state.phoneNo,
-    }
+    };
     console.log(data);
   };
 
@@ -121,7 +121,7 @@ export default class DriverCreate extends Component {
                 <label className="col-sm-3 col-form-label">
                   Vehicle Type :
                 </label>
-                <div className="ui fluid col-sm-9" >
+                <div className="ui fluid col-sm-9">
                   <select
                     className="form-control"
                     name="vehicleType"
@@ -151,7 +151,11 @@ export default class DriverCreate extends Component {
                 </div>
               </div>
               <div className="DriverRow text-end">
-                <button type="reset" className="Driver-Button-Reset" onClick={this.reset}>
+                <button
+                  type="reset"
+                  className="Driver-Button-Reset"
+                  onClick={this.reset}
+                >
                   <FontAwesomeIcon icon={faRedo} /> Reset
                 </button>
                 <button type="submit" className="Driver-Button-Add">

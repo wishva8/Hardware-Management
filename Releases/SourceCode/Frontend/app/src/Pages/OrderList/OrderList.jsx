@@ -22,29 +22,23 @@ export default class OrderList extends Component {
             </button>
           </div>
           <div className="row">
-            <table class="table table-bordered  order">
-              <tr class="orderListItems">
-                <th className="ps-4">Test 1</th>
-                <th className="ps-4">Test 2</th>
-                <th className="ps-4">Test 3</th>
-                <th className="ps-4">Test 4</th>
-                <th className="ps-4">Test 5</th>
-                <th className="ps-4">Test 6</th>
+            <table className="table table-bordered  order">
+              <tr className="orderListItems">
+                <th className="ps-4">Order Id</th>
+                <th className="ps-4">Description</th>
+                <th className="ps-4">Item No</th>
+                <th className="ps-4">Unit Price</th>
+                <th className="ps-4">Total Price</th>
+                <th className="ps-4">Date</th>
+                <th className="ps-4">Customer Name</th>
+                <th className="ps-4">Customer Phone No</th>
+                <th className="ps-4">Status</th>
                 <th className="ps-4"></th>
               </tr>
-              <tr class="orderListItems text-white">
+              <tr className="orderListItems text-white">
                 <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">
-                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                  <FontAwesomeIcon size="2x" icon={faTrash} />
-                </td>
-              </tr>
-              <tr class="orderListItems text-white">
                 <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>
@@ -56,7 +50,25 @@ export default class OrderList extends Component {
                   <FontAwesomeIcon size="2x" icon={faTrash} />
                 </td>
               </tr>
-              <tr class="orderListItems text-white">
+              <tr className="orderListItems text-white">
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">
+                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                  <FontAwesomeIcon size="2x" icon={faTrash} />
+                </td>
+              </tr>
+              <tr className="orderListItems text-white">
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
+                <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>
                 <td className="ps-4">Test</td>

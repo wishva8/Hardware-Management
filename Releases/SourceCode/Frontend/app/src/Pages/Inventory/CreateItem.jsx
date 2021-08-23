@@ -34,24 +34,24 @@ export default class CreateItem extends Component {
     e.preventDefault();
     const data = {
       itemNo: this.state.itemNo,
-    itemCategory: this.state.itemCategory,
-    description: this.state.description,
-    unitPrice: this.state.unitPrice,
-    inventoryNo: this.state.inventoryNo,
-    qty: this.state.qty,
-    }
-    console.log(data)
+      itemCategory: this.state.itemCategory,
+      description: this.state.description,
+      unitPrice: this.state.unitPrice,
+      inventoryNo: this.state.inventoryNo,
+      qty: this.state.qty,
+    };
+    console.log(data);
   };
 
   reset() {
     const res = {
-        itemNo: "",
-    itemCategory: "",
-    description: "",
-    unitPrice: 0,
-    inventoryNo: "",
-    qty: 0,
-    }
+      itemNo: "",
+      itemCategory: "",
+      description: "",
+      unitPrice: 0,
+      inventoryNo: "",
+      qty: 0,
+    };
   }
   render() {
     return (
@@ -167,7 +167,11 @@ export default class CreateItem extends Component {
                   </div>
                 </div>
                 <div className="ItemRow text-end">
-                  <button type="reset" className="Item-Button-Inventory-Reset" onClick={this.reset}>
+                  <button
+                    type="reset"
+                    className="Item-Button-Inventory-Reset"
+                    onClick={this.reset}
+                  >
                     <FontAwesomeIcon icon={faRedo} /> Reset
                   </button>
                   <button type="submit" className="Item-Button-Inventory-Add">
