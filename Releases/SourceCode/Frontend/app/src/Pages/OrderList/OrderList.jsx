@@ -5,8 +5,37 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { getOrders } from "../../Services/orders";
+import axios from "axios";
+import { orderURL } from "../../Services/endpoints";
+
 
 export default class OrderList extends Component {
+  state = {
+    orderId: "",
+    description: "",
+    itemId: "",
+    quantity: "",
+    unitPrice: "",
+    totalPrice: "",
+    date: "",
+    customerName: "",
+    customerPhoneNo: "",
+    status: "",
+    orders: [],
+  };
+
+  async componentDidMount() {
+    const orders = axios.get(orderURL).then((result) => {
+      // console.log(result.data);
+      this.setState({
+        orders: result.data,
+      });
+    });
+
+    console.log(this.state.orders);
+  }
+
   render() {
     return (
       <div>
@@ -24,7 +53,7 @@ export default class OrderList extends Component {
           <div className="row">
             <table class="table table-bordered  order">
               <tr class="orderListItems">
-                <th className="ps-4">Test 1</th>
+                <th className="ps-4">{console.log(this.state.orders)}</th>
                 <th className="ps-4">Test 2</th>
                 <th className="ps-4">Test 3</th>
                 <th className="ps-4">Test 4</th>
