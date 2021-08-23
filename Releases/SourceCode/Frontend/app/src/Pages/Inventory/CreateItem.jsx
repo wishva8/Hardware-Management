@@ -4,6 +4,7 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
+import axios from "axios";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -17,22 +18,46 @@ export default class CreateItem extends Component {
       qty: 0,
     };
   }
-  state = {
-    itemNo: "",
-    itemCategory: "",
-    description: "",
-    unitPrice: 0,
-    inventoryNo: "",
-    qty: 0,
-  };
+  // state = {
+  //   itemNo: "",
+  //   itemCategory: "",
+  //   description: "",
+  //   unitPrice: 0,
+  //   inventoryNo: "",
+  //   qty: 0,
+  // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidMount() {
+    axios.post("http://localhost:9091/inventory/addItem").then((result) => {});
+  }
+
   handleSubmit = (e) => {
-    alert(this.state.value);
+    e.preventDefault();
+    const data = {
+      itemNo: this.state.itemNo,
+      itemCategory: this.state.itemCategory,
+      description: this.state.description,
+      unitPrice: this.state.unitPrice,
+      inventoryNo: this.state.inventoryNo,
+      qty: this.state.qty,
+    };
+    console.log(data);
   };
+
+  reset() {
+    const res = {
+      itemNo: "",
+      itemCategory: "",
+      description: "",
+      unitPrice: 0,
+      inventoryNo: "",
+      qty: 0,
+    };
+  }
   render() {
     return (
       <div>
@@ -47,15 +72,15 @@ export default class CreateItem extends Component {
               <form onSubmit={this.handleSubmit}>
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Item No. :</label>
-                  <div class="col-sm-9">
+                  <div className="col-sm-9">
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       id="itemNo"
                       name="itemNo"
                       placeholder="Item No"
                       required
-                      value={this.state.itemNo}
+                      // value={this.state.itemNo}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -64,10 +89,11 @@ export default class CreateItem extends Component {
                   <label className="col-sm-3 col-form-label">
                     Item Category :
                   </label>
-                  <div class="ui fluid col-sm-9" role="listbox" tabindex="0">
+                  <div className="ui fluid col-sm-9">
                     <select
-                      class="form-control"
-                      value={this.state.value}
+                      className="form-control"
+                      name="itemCategory"
+                      // value={this.state.value}
                       onChange={this.handleChange}
                     >
                       <option value="Electrical">Electrical</option>
@@ -81,15 +107,15 @@ export default class CreateItem extends Component {
                   <label className="col-sm-3 col-form-label">
                     Description :
                   </label>
-                  <div class="col-sm-9">
+                  <div className="col-sm-9">
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       id="description"
                       name="description"
                       placeholder="Item Description"
                       required
-                      value={this.state.description}
+                      // value={this.state.description}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -98,15 +124,15 @@ export default class CreateItem extends Component {
                   <label className="col-sm-3 col-form-label">
                     Unit Price :
                   </label>
-                  <div class="col-sm-9">
+                  <div className="col-sm-9">
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="Number"
                       id="unitPrice"
                       name="unitPrice"
                       placeholder="Unit Price"
                       required
-                      value={this.state.unitPrice}
+                      // value={this.state.unitPrice}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -115,10 +141,11 @@ export default class CreateItem extends Component {
                   <label className="col-sm-3 col-form-label">
                     Inventory No:
                   </label>
-                  <div class="ui fluid col-sm-9" role="listbox" tabindex="0">
+                  <div className="ui fluid col-sm-9">
                     <select
-                      class="form-control"
-                      value={this.state.value1}
+                      className="form-control"
+                      name="inventoryNo"
+                      // value={this.state.value1}
                       onChange={this.handleChange}
                     >
                       <option value1="INV1">INV1</option>
@@ -131,24 +158,28 @@ export default class CreateItem extends Component {
                 </div>
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Quantity :</label>
-                  <div class="col-sm-9">
+                  <div className="col-sm-9">
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="Number"
                       id="qty"
                       name="qty"
                       placeholder="Quantity"
                       required
-                      value={this.state.qty}
+                      // value={this.state.qty}
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
-                <div className="ItemRow">
-                  <button type="reset" className="Item-Button-Reset">
+                <div className="ItemRow text-end">
+                  <button
+                    type="reset"
+                    className="Item-Button-Inventory-Reset"
+                    onClick={this.reset}
+                  >
                     <FontAwesomeIcon icon={faRedo} /> Reset
                   </button>
-                  <button type="submit" className="Item-Button-Add">
+                  <button type="submit" className="Item-Button-Inventory-Add">
                     <FontAwesomeIcon icon={faPlus} /> Add Item
                   </button>
                 </div>

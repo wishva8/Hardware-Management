@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./UserLogin.css";
-import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { imagePath } from "../../Services";
 
 export default class UserLogin extends Component {
   constructor(props) {
@@ -24,12 +24,20 @@ export default class UserLogin extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(this.state.value);
+    const data = {
+      username: this.state.username,
+    password: this.state.password,
+    isChecked: this.state.isChecked,
+    }
+    console.log(data);
   };
 
   render() {
     return (
       <div className="UserLogin">
+          <div className="d-flex justify-content-center">
+            <img src={imagePath + `logo.png`} alt="" className="logo-login" />
+          </div>
         <div className="User-Login-Heading-Container">
           <h3 className="Login-User-Heading">Admin Login</h3>
         </div>
@@ -37,9 +45,9 @@ export default class UserLogin extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="mb-4 row">
               <label className="col-sm-10 col-form-label">Username :</label>
-              <div class="col-sm-10">
+              <div className="col-sm-10">
                 <input
-                  class="form-control"
+                  className="form-control"
                   type="text"
                   id="username"
                   name="username"
@@ -52,12 +60,12 @@ export default class UserLogin extends Component {
             </div>
             <div className="mb-4 row">
               <label className="col-sm-10 col-form-label">Password :</label>
-              <div class="col-sm-10">
+              <div className="col-sm-10">
                 <input
-                  class="form-control"
+                  className="form-control"
                   type="password"
                   id="password"
-                  name="passowrd"
+                  name="password"
                   placeholder="Password"
                   required
                   value={this.state.password}
@@ -65,9 +73,6 @@ export default class UserLogin extends Component {
                 />
               </div>
             </div>
-
-            
-  
             <div className="LoginRow">
                 <div className="checkbox">
             <input
