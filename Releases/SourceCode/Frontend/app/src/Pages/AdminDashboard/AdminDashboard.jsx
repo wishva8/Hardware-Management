@@ -98,7 +98,7 @@ export default class AdminDashboard extends Component {
                 <div className="col mt-5 text-center">
                   <h5>Pending</h5>
                   <h1 className="stat-number">12</h1>
-                  <h5>Compelte</h5>
+                  <h5>Complete</h5>
                   <h1 className="stat-number">06</h1>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default class AdminDashboard extends Component {
                 <div className="col mt-5 text-center">
                   <h5>Pending</h5>
                   <h1 className="stat-number">06</h1>
-                  <h5>Compelte</h5>
+                  <h5>Complete</h5>
                   <h1 className="stat-number">02</h1>
                 </div>
                 <div className="col">
