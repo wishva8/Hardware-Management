@@ -1,6 +1,10 @@
 // import { baseURL } from "."
 
 export const baseURL = "http://localhost:9091/";
-export const controllerURL = baseURL + "orders/";
-export const orderURL = controllerURL + "allOrders";
-export const addOrderURL = controllerURL + "addOrder";
+export const orderControllerURL = baseURL + "orders/";
+export const orderURL = orderControllerURL + "allOrders";
+export const addOrderURL = orderControllerURL + "addOrder";
+
+export const driverControllerURL = baseURL + "driver/";
+export const driverURL = driverControllerURL + "allDrivers";
+export const addDriverURL = driverControllerURL + "addDriver";

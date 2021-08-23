@@ -9,9 +9,31 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { driverURL } from "../../Services/endpoints";
 
 export default class DriverList extends Component {
+  state = {
+    licenceNo: "",
+    name: "",
+    address: "",
+    vehicleNo: "",
+    vehicleType: "",
+    phoneNo: "",
+    drivers: [],
+  };
+
+  async componentDidMount() {
+    const drivers = await axios.get(driverURL).then((result) => {
+      console.log(result.data);
+      this.setState({
+        drivers: result.data,
+      });
+    });
+  }
+
   render() {
+    const { drivers} = this.state;
     return (
       <div>
         <SideNav />
@@ -36,42 +58,20 @@ export default class DriverList extends Component {
                 <th className="ps-4">Phone No</th>
                 <th className="ps-4"></th>
               </tr>
-              <tr class="orderListItems text-white">
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
+              {drivers.map((driver) => {
+              return (<tr key={driver.licenseNo} class="orderListItems text-white">
+                <td className="ps-4">{driver.licenceNo}</td>
+                <td className="ps-4">{driver.name}</td>
+                <td className="ps-4">{driver.address}</td>
+                <td className="ps-4">{driver.vehicleNo}</td>
+                <td className="ps-4">{driver.vehicleType}</td>
+                <td className="ps-4">{driver.phoneNo}</td>
                 <td className="ps-4">
                   <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
                   <FontAwesomeIcon size="2x" icon={faTrash} />
                 </td>
-              </tr>
-              <tr class="orderListItems text-white">
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">
-                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                  <FontAwesomeIcon size="2x" icon={faTrash} />
-                </td>
-              </tr>
-              <tr class="orderListItems text-white">
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">
-                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                  <FontAwesomeIcon size="2x" icon={faTrash} />
-                </td>
-              </tr>
+              </tr>)
+              })}
             </table>
           </div>
         </div>
