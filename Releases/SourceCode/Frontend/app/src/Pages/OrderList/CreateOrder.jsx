@@ -39,6 +39,8 @@ export default class CreateOrder extends Component {
       status: this.state.status,
     };
     console.log(data);
+
+    const res = addOrderURL(data);
   };
 
   reset() {
