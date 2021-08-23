@@ -4,14 +4,17 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
+import axios from "axios";
+import { addOrderURL } from "../../Services/endpoints";
 
 export default class CreateOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orderId: "",
+      //orderId: "",
       description: "",
-      itemNo: "",
+      itemId: "",
+      quantity: 35,
       unitPrice: 0,
       totalPrice: 0,
       date: "",
@@ -28,9 +31,10 @@ export default class CreateOrder extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      orderId: this.state.orderId,
+      //orderId: this.state.orderId,
       description: this.state.description,
-      itemNo: this.state.itemNo,
+      itemId: this.state.itemId,
+      quantity: this.state.quantity,
       unitPrice: this.state.unitPrice,
       totalPrice: this.state.totalPrice,
       date: this.state.date,
@@ -40,14 +44,14 @@ export default class CreateOrder extends Component {
     };
     console.log(data);
 
-    const res = addOrderURL(data);
+    const res = axios.post(addOrderURL, data);
   };
 
   reset() {
     const res = {
-      orderId: "",
+      //orderId: "",
       description: "",
-      itemNo: "",
+      itemId: "",
       unitPrice: 0,
       totalPrice: 0,
       date: "",
@@ -70,21 +74,6 @@ export default class CreateOrder extends Component {
             <div className="Order-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
                 <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">Order Id. :</label>
-                  <div className="col-sm-9">
-                    <input
-                      className="form-control"
-                      type="text"
-                      id="orderId"
-                      name="orderId"
-                      placeholder="Order Id"
-                      required
-                      // value={this.state.OrderNo}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
-                <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Description :
                   </label>
@@ -106,7 +95,7 @@ export default class CreateOrder extends Component {
                   <div className="ui fluid col-sm-9">
                     <select
                       className="form-control"
-                      name="itemNo"
+                      name="itemId"
                       // value={this.state.value}
                       onChange={this.handleChange}
                     >
@@ -209,7 +198,7 @@ export default class CreateOrder extends Component {
                       // value={this.state.value}
                       onChange={this.handleChange}
                     >
-                      <option value="Pending">Pending</option>
+                      <option value="false">false</option>
                       <option value="Shipped">Shipped</option>
                       <option value="Delivered">Delivered</option>
                       <option value="Cancelled">Cancelled</option>
