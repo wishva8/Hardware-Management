@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
+import { addInventoryURL } from "../../Services/endpoints";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class CreateItem extends Component {
       description: "",
       unitPrice: 0,
       inventoryNo: "",
-      qty: 0,
+      quantity: 0,
     };
   }
   // state = {
@@ -31,9 +32,9 @@ export default class CreateItem extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  componentDidMount() {
-    axios.post("http://localhost:9091/inventory/addItem").then((result) => {});
-  }
+  // componentDidMount() {
+  //   axios.post("http://localhost:9091/inventory/addItem").then((result) => {});
+  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -43,9 +44,10 @@ export default class CreateItem extends Component {
       description: this.state.description,
       unitPrice: this.state.unitPrice,
       inventoryNo: this.state.inventoryNo,
-      qty: this.state.qty,
+      quantity: this.state.quantity,
     };
     console.log(data);
+    const res = axios.post(addInventoryURL, data);
   };
 
   reset() {
@@ -55,7 +57,7 @@ export default class CreateItem extends Component {
       description: "",
       unitPrice: 0,
       inventoryNo: "",
-      qty: 0,
+      quantity: 0,
     };
   }
   render() {
@@ -162,8 +164,8 @@ export default class CreateItem extends Component {
                     <input
                       className="form-control"
                       type="Number"
-                      id="qty"
-                      name="qty"
+                      id="quantity"
+                      name="quantity"
                       placeholder="Quantity"
                       required
                       // value={this.state.qty}

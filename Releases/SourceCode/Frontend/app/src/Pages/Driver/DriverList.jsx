@@ -33,7 +33,7 @@ export default class DriverList extends Component {
   }
 
   render() {
-    const { drivers} = this.state;
+    const {drivers} = this.state;
     return (
       <div>
         <SideNav />
@@ -48,8 +48,8 @@ export default class DriverList extends Component {
             </button>
           </div>
           <div className="row">
-            <table class="table table-bordered  driverList">
-              <tr class="driverListItems">
+            <table className="table table-bordered  driverList">
+              <tr className="driverListItems">
                 <th className="ps-4">License No</th>
                 <th className="ps-4">Name</th>
                 <th className="ps-4">Address</th>
@@ -59,7 +59,7 @@ export default class DriverList extends Component {
                 <th className="ps-4"></th>
               </tr>
               {drivers.map((driver) => {
-              return (<tr key={driver.licenseNo} class="orderListItems text-white">
+              return (<tr key={driver.licenseNo} className="orderListItems text-white">
                 <td className="ps-4">{driver.licenceNo}</td>
                 <td className="ps-4">{driver.name}</td>
                 <td className="ps-4">{driver.address}</td>
