@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
+import { addinventoryURL } from "../../Services/endpoints";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class CreateItem extends Component {
       description: "",
       unitPrice: 0,
       inventoryNo: "",
-      qty: 0,
+      quantity: 0,
     };
   }
   // state = {
@@ -24,16 +25,12 @@ export default class CreateItem extends Component {
   //   description: "",
   //   unitPrice: 0,
   //   inventoryNo: "",
-  //   qty: 0,
+  //   quantity: 0,
   // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  componentDidMount() {
-    axios.post("http://localhost:9091/inventory/addItem").then((result) => {});
-  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -42,10 +39,12 @@ export default class CreateItem extends Component {
       itemCategory: this.state.itemCategory,
       description: this.state.description,
       unitPrice: this.state.unitPrice,
-      inventoryNo: this.state.inventoryNo,
-      qty: this.state.qty,
+      // inventoryNo: this.state.inventoryNo,
+      quantity: this.state.quantity,
     };
-    console.log(data);
+    console.log("Data to send", data);
+
+    const res = axios.post(addinventoryURL, data);
   };
 
   reset() {
@@ -54,8 +53,8 @@ export default class CreateItem extends Component {
       itemCategory: "",
       description: "",
       unitPrice: 0,
-      inventoryNo: "",
-      qty: 0,
+      // inventoryNo: "",
+      quantity: 0,
     };
   }
   render() {
@@ -137,7 +136,7 @@ export default class CreateItem extends Component {
                     />
                   </div>
                 </div>
-                <div className="mb-3 row">
+                {/* <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Inventory No:
                   </label>
@@ -155,18 +154,18 @@ export default class CreateItem extends Component {
                       <option value1="INV5">INV5</option>
                     </select>
                   </div>
-                </div>
+                </div> */}
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Quantity :</label>
                   <div className="col-sm-9">
                     <input
                       className="form-control"
                       type="Number"
-                      id="qty"
-                      name="qty"
+                      id="quantity"
+                      name="quantity"
                       placeholder="Quantity"
                       required
-                      // value={this.state.qty}
+                      // value={this.state.quantity}
                       onChange={this.handleChange}
                     />
                   </div>
