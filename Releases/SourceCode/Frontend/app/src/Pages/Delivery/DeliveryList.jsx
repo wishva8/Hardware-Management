@@ -9,8 +9,31 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import { Redirect } from "react-router-dom";
 
 export default class DeliveryList extends Component {
+  state = {
+    deliveryNo: "",
+    orderNo: "",
+    description: "",
+    address: "",
+    customerName: "",
+    customerPhone: "",
+    deliveries: [],
+    redirect: false,
+  };
+
+  setRedirect = () => {
+    this.setState ({
+      redirect: true,
+    })
+  }
+
+  renderRedirect = () => {
+    if(this.state.redirect) {
+      return <Redirect to="/createDelivery" />
+    }
+  }
   render() {
     return (
       <div>
@@ -18,7 +41,8 @@ export default class DeliveryList extends Component {
         <div className="content-layer">
           <Header topic="Delivery Management" />
           <div className="DeliveryRow">
-            <button type="submit" className="Delivery-Button-List-Add" onClick={e => window.location.href='/createDelivery'}>
+            {this.renderRedirect()}
+            <button type="submit" className="Delivery-Button-List-Add" onClick={this.setRedirect}>
               <FontAwesomeIcon icon={faPlus} /> Add Delivery
             </button>
             <button type="reset" className="Delivery-Button-Report">
