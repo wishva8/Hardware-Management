@@ -9,9 +9,32 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { deliveryURL } from "../../Services/endpoints";
 
 export default class DeliveryList extends Component {
+  state = {
+    deliveryNo: "",
+    orderNo: "",
+    description: "",
+    address: "",
+    customerName: "",
+    customerPhoneNumber: "",
+    status: "0",
+    deliveries: [],
+  };
+
+  async componentDidMount() {
+    const delivery = await axios.get(deliveryURL).then((result) => {
+      this.setState({
+        delivery: result.data,
+      });
+      console.log("Display data", result.data);
+    });
+  }
+
   render() {
+    const { deliveries } = this.state;
     return (
       <div>
         <SideNav />
@@ -28,50 +51,33 @@ export default class DeliveryList extends Component {
           <div className="row">
             <table class="table table-bordered  DeliveryList">
               <tr class="DeliveryListItems">
-                <th className="ps-4">Delivery No</th>
                 <th className="ps-4">Order No</th>
                 <th className="ps-4">Description</th>
                 <th className="ps-4">Address</th>
                 <th className="ps-4">Customer Name</th>
                 <th className="ps-4">Customer Phone</th>
+                <th className="ps-4">Status</th>
                 <th className="ps-4"></th>
               </tr>
-              <tr class="orderListItems text-white">
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">
-                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                  <FontAwesomeIcon size="2x" icon={faTrash} />
-                </td>
-              </tr>
-              <tr class="orderListItems text-white">
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">
-                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                  <FontAwesomeIcon size="2x" icon={faTrash} />
-                </td>
-              </tr>
-              <tr class="orderListItems text-white">
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">Test</td>
-                <td className="ps-4">
-                  <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                  <FontAwesomeIcon size="2x" icon={faTrash} />
-                </td>
-              </tr>
+              {deliveries.map((delivery) => {
+                return (
+                  <tr
+                    key={delivery.orderNo}
+                    className="DeliveryListItems text-white"
+                  >
+                    <td className="ps-4">{delivery.orderNo}</td>
+                    <td className="ps-4">{delivery.description}</td>
+                    <td className="ps-4">{delivery.address}</td>
+                    <td className="ps-4">{delivery.unitPrice}</td>
+                    <td className="ps-4">{delivery.inventoryNo}</td>
+                    <td className="ps-4">{delivery.quantity}</td>
+                    <td className="ps-4">
+                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                      <FontAwesomeIcon size="2x" icon={faTrash} />
+                    </td>
+                  </tr>
+                );
+              })}
             </table>
           </div>
         </div>

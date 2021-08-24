@@ -17,3 +17,8 @@ export const addDriverURL = driverControllerURL + "addDriver";
 export const inventoryControllerURL = baseURL + "inventory/";
 export const inventoryURL = inventoryControllerURL + "allInventory";
 export const addinventoryURL = inventoryControllerURL + "addItem";
+
+//Delivery APIs
+export const deliveryControllerURL = baseURL + "delivery/";
+export const deliveryURL = deliveryControllerURL + "allDeliveries";
+export const addDeliveryURL = deliveryControllerURL + "addDelivery";
