@@ -70,7 +70,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/delivery"
+              to="/deliveryList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >

@@ -4,17 +4,20 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { addDeliveryURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class CreateDelivery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deliveryNo: "",
       orderNo: "",
       description: "",
       address: "",
       customerName: "",
-      customerPhone: "",
+      customerPhoneNumber: 0,
+      status: 0,
     };
   }
 
@@ -25,24 +28,33 @@ export default class CreateDelivery extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      deliveryNo: this.state.deliveryNo,
       orderNo: this.state.orderNo,
       description: this.state.description,
       address: this.state.address,
       customerName: this.state.customerName,
-      customerPhone: this.state.customerPhone,
+      customerPhoneNumber: this.state.customerPhoneNumber,
+      status: this.state.status,
     };
-    console.log(data);
+    console.log("Data to send", data);
+
+    const res = axios.post(addDeliveryURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
   };
 
   reset() {
     const res = {
-      deliveryNo: "",
       orderNo: "",
       description: "",
       address: "",
       customerName: "",
-      customerPhone: "",
+      customerPhoneNumber: "",
+      status: "",
     };
   }
   render() {
@@ -56,20 +68,6 @@ export default class CreateDelivery extends Component {
           </div>
           <div className="Delivery-Create-Body-Container">
             <form onSubmit={this.handleSubmit}>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Delivery No :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="deliveryNo"
-                    name="deliveryNo"
-                    placeholder="Delivery No."
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
               <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">Order No. :</label>
                 <div className="col-sm-9">
@@ -90,8 +88,8 @@ export default class CreateDelivery extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="Description"
-                    name="Description"
+                    id="description"
+                    name="description"
                     placeholder="Description"
                     required
                     onChange={this.handleChange}
@@ -104,8 +102,8 @@ export default class CreateDelivery extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="Address"
-                    name="Address"
+                    id="address"
+                    name="address"
                     placeholder="Address"
                     required
                     onChange={this.handleChange}
@@ -136,8 +134,8 @@ export default class CreateDelivery extends Component {
                   <input
                     className="form-control"
                     type="Number"
-                    id="customerPhone"
-                    name="customerPhone"
+                    id="customerPhoneNumber"
+                    name="customerPhoneNumber"
                     placeholder="0766157878"
                     required
                     onChange={this.handleChange}

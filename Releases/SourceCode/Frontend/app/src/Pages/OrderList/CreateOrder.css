@@ -35,6 +35,8 @@
   width: relative;
   background-color: #345454;
   border-color: #9ce6b7;
+  color: white;
+  opacity: 0.9;
 }
 
 .Order-Button-Reset {
@@ -55,7 +57,7 @@
   padding: 12px;
   border: soild 1px #0c6464;
   margin: 10px 0;
-  width: 20%;
+  width: 22%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
@@ -78,4 +80,9 @@
 
 .col-form-label {
   color: #9ce6b7;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
