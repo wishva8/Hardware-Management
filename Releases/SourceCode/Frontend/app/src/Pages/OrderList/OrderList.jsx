@@ -8,6 +8,7 @@ import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { getOrders } from "../../Services/orders";
 import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
+import { Redirect } from "react-router-dom";
 
 export default class OrderList extends Component {
   state = {
@@ -22,6 +23,7 @@ export default class OrderList extends Component {
     customerPhoneNo: "",
     status: "",
     orders: [],
+    redirect: false,
   };
 
   async componentDidMount() {
@@ -31,12 +33,21 @@ export default class OrderList extends Component {
         orders: result.data,
       });
     });
+  }
 
-    // console.log(this.state.orders);
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/createOrder" />
+    }
   }
 
   render() {
-    //  const data=this.state.orders;
     const { orders } = this.state;
     return (
       <div>
@@ -44,7 +55,8 @@ export default class OrderList extends Component {
         <div className="content-layer">
           <Header topic="Order Management" />
           <div className="OrderRow text-end">
-            <button type="submit" className="Order-Button-Add">
+            {this.renderRedirect()}
+            <button type="submit" className="Order-Button-Add" onClick={this.setRedirect}>
               <FontAwesomeIcon icon={faPlus} /> Add Order
             </button>
             <button type="submit" className="Order-Button-Report">

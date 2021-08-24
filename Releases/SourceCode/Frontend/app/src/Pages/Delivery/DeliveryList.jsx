@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { deliveryURL } from "../../Services/endpoints";
 
@@ -41,7 +42,8 @@ export default class DeliveryList extends Component {
         <div className="content-layer">
           <Header topic="Delivery Management" />
           <div className="DeliveryRow">
-            <button type="submit" className="Delivery-Button-List-Add">
+            {this.renderRedirect()}
+            <button type="submit" className="Delivery-Button-List-Add" onClick={this.setRedirect}>
               <FontAwesomeIcon icon={faPlus} /> Add Delivery
             </button>
             <button type="reset" className="Delivery-Button-Report">

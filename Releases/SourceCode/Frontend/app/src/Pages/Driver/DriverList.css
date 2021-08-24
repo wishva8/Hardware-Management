@@ -54,7 +54,7 @@ th:last-child {
 }
 
 .Driver-Button-Report:hover,
-.Driver-Button-Add:hover {
+.Driver-Button-List-Add:hover {
   background-color: #4caf50;
   color: white;
   border: 1px solid gray;

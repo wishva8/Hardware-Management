@@ -11,6 +11,7 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { driverURL } from "../../Services/endpoints";
+import { Redirect } from "react-router-dom";
 
 export default class DriverList extends Component {
   state = {
@@ -21,6 +22,7 @@ export default class DriverList extends Component {
     vehicleType: "",
     phoneNo: "",
     drivers: [],
+    redirect: false,
   };
 
   async componentDidMount() {
@@ -32,6 +34,18 @@ export default class DriverList extends Component {
     });
   }
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    })
+  }
+
+  renderRedirect = () => {
+    if(this.state.redirect) {
+      return <Redirect to="/createDriver" />
+    }
+  }
+
   render() {
     const {drivers} = this.state;
     return (
@@ -40,7 +54,8 @@ export default class DriverList extends Component {
         <div className="content-layer">
           <Header topic="Drivers" />
           <div className="DriverRow">
-            <button type="submit" className="Driver-Button-List-Add">
+            {this.renderRedirect()}
+            <button type="submit" className="Driver-Button-List-Add" onClick={this.setRedirect}>
               <FontAwesomeIcon icon={faPlus} /> Add Driver
             </button>
             <button type="reset" className="Driver-Button-Report">
