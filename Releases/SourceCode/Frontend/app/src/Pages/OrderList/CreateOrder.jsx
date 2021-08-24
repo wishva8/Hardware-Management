@@ -6,6 +6,7 @@ import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
 import { addOrderURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class CreateOrder extends Component {
   constructor(props) {
@@ -14,13 +15,13 @@ export default class CreateOrder extends Component {
       //orderId: "",
       description: "",
       itemId: "",
-      quantity: 35,
+      quantity: 0,
       unitPrice: 0,
       totalPrice: 0,
       date: "",
       customerName: "",
       customerPhoneNo: "",
-      status: "",
+      status: 0,
     };
   }
 
@@ -42,9 +43,16 @@ export default class CreateOrder extends Component {
       customerPhoneNo: this.state.customerPhoneNo,
       status: this.state.status,
     };
-    console.log(data);
+    console.log("Data to send", data);
 
-    const res = axios.post(addOrderURL, data);
+    const res = axios.post(addOrderURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful!!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
   };
 
   reset() {
@@ -57,7 +65,6 @@ export default class CreateOrder extends Component {
       date: "",
       customerName: "",
       customerPhoneNo: "",
-      status: "",
     };
   }
 
@@ -73,23 +80,6 @@ export default class CreateOrder extends Component {
             </div>
             <div className="Order-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
-                <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">
-                    Description :
-                  </label>
-                  <div className="col-sm-9">
-                    <textarea
-                      className="form-control"
-                      type="text"
-                      id="description"
-                      name="description"
-                      placeholder="Order Description"
-                      required
-                      // value={this.state.description}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Item No. :</label>
                   <div className="ui fluid col-sm-9">
@@ -190,19 +180,33 @@ export default class CreateOrder extends Component {
                   </div>
                 </div>
                 <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">Status :</label>
+                  <label className="col-sm-3 col-form-label">Quantity :</label>
                   <div className="ui fluid col-sm-9">
-                    <select
+                    <input
                       className="form-control"
-                      name="status"
+                      name="quantity"
+                      type="number"
+                      placeholder="Quantity"
                       // value={this.state.value}
                       onChange={this.handleChange}
-                    >
-                      <option value="false">false</option>
-                      <option value="Shipped">Shipped</option>
-                      <option value="Delivered">Delivered</option>
-                      <option value="Cancelled">Cancelled</option>
-                    </select>
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 row">
+                  <label className="col-sm-3 col-form-label">
+                    Description :
+                  </label>
+                  <div className="col-sm-9">
+                    <textarea
+                      className="form-control"
+                      type="text"
+                      id="description"
+                      name="description"
+                      placeholder="Order Description"
+                      required
+                      // value={this.state.description}
+                      onChange={this.handleChange}
+                    />
                   </div>
                 </div>
                 <div className="OrderRow text-end">

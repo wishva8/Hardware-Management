@@ -6,6 +6,7 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { addDriverURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class DriverCreate extends Component {
   constructor(props) {
@@ -35,7 +36,14 @@ export default class DriverCreate extends Component {
       phoneNo: this.state.phoneNo,
     };
     console.log(data);
-    const res = axios.post(addDriverURL, data);
+    const res = axios.post(addDriverURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
   };
 
   reset() {

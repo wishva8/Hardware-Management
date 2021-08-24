@@ -35,7 +35,9 @@
   border-radius: 10px;
   width: relative;
   background-color: #345454;
-  border-color: #9CE6B7;
+  border-color: #9ce6b7;
+  color: white;
+  opacity: 0.9;
 }
 
 .Driver-Button-Reset {
@@ -77,5 +79,10 @@
 }
 
 .col-form-label {
-    color: #9CE6B7;
+  color: #9ce6b7;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

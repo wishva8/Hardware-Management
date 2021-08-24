@@ -24,7 +24,7 @@ export default function Header(props) {
                 height="32"
                 className="rounded-circle me-2"
               />
-              <strong>mdo</strong>
+              <strong>Savvy</strong>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-dark text-small shadow"

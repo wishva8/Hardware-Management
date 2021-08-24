@@ -33,14 +33,14 @@ export default class InventoryList extends Component {
   setRedirect = () => {
     this.setState({
       redirect: true,
-    })
-  }
+    });
+  };
 
   renderRedirect = () => {
-    if(this.state.redirect) {
-      return <Redirect to="/createItem" />
+    if (this.state.redirect) {
+      return <Redirect to="/createItem" />;
     }
-  }
+  };
   render() {
     const { items } = this.state;
     return (
@@ -50,7 +50,11 @@ export default class InventoryList extends Component {
           <Header topic="Inventory Management" />
           <div className="ItemRow text-end">
             {this.renderRedirect()}
-            <button type="submit" className="Item-Button-Add" onClick={this.setRedirect}>
+            <button
+              type="submit"
+              className="Item-Button-Add"
+              onClick={this.setRedirect}
+            >
               <FontAwesomeIcon icon={faPlus} /> Add Item
             </button>
             <button type="submit" className="Item-Button-Report">
@@ -64,7 +68,6 @@ export default class InventoryList extends Component {
                 <th className="ps-4">Description</th>
                 <th className="ps-4">Item Category</th>
                 <th className="ps-4">Unit Price</th>
-                <th className="ps-4">Inventory No.</th>
                 <th className="ps-4">Quantity</th>
                 <th className="ps-4"></th>
               </tr>
@@ -78,7 +81,6 @@ export default class InventoryList extends Component {
                     <td className="ps-4">{item.description}</td>
                     <td className="ps-4">{item.itemCategory}</td>
                     <td className="ps-4">{item.unitPrice}</td>
-                    <td className="ps-4">{item.inventoryNo}</td>
                     <td className="ps-4">{item.quantity}</td>
                     <td className="ps-4">
                       <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
