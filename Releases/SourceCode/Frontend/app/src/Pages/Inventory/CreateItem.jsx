@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
-import { addinventoryURL } from "../../Services/endpoints";
+import { addInventoryURL } from "../../Services/endpoints";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -45,6 +45,7 @@ export default class CreateItem extends Component {
     console.log("Data to send", data);
 
     const res = axios.post(addinventoryURL, data);
+    const res = axios.post(addInventoryURL, data);
   };
 
   reset() {
