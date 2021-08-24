@@ -18,7 +18,7 @@ export default class DeliveryList extends Component {
         <div className="content-layer">
           <Header topic="Delivery Management" />
           <div className="DeliveryRow">
-            <button type="submit" className="Delivery-Button-List-Add">
+            <button type="submit" className="Delivery-Button-List-Add" onClick={e => window.location.href='/createDelivery'}>
               <FontAwesomeIcon icon={faPlus} /> Add Delivery
             </button>
             <button type="reset" className="Delivery-Button-Report">

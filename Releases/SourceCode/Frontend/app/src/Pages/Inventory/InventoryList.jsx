@@ -7,6 +7,7 @@ import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { inventoryURL } from "../../Services/endpoints";
+import { Redirect } from "react-router-dom";
 
 export default class InventoryList extends Component {
   state = {
@@ -17,6 +18,7 @@ export default class InventoryList extends Component {
     inventoryNo: "",
     quantity: 0,
     items: [],
+    redirect: false,
   };
 
   async componentDidMount() {
@@ -27,6 +29,18 @@ export default class InventoryList extends Component {
       });
     });
   }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    })
+  }
+
+  renderRedirect = () => {
+    if(this.state.redirect) {
+      return <Redirect to="/createItem" />
+    }
+  }
   render() {
     const { items } = this.state;
     return (
@@ -35,7 +49,8 @@ export default class InventoryList extends Component {
         <div className="content-layer">
           <Header topic="Inventory Management" />
           <div className="ItemRow text-end">
-            <button type="submit" className="Item-Button-Add">
+            {this.renderRedirect()}
+            <button type="submit" className="Item-Button-Add" onClick={this.setRedirect}>
               <FontAwesomeIcon icon={faPlus} /> Add Item
             </button>
             <button type="submit" className="Item-Button-Report">
