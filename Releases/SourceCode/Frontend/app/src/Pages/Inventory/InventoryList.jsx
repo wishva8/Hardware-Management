@@ -21,10 +21,10 @@ export default class InventoryList extends Component {
 
   async componentDidMount() {
     const items = await axios.get(inventoryURL).then((result) => {
-      console.log(result.data);
       this.setState({
         items: result.data,
       });
+      //console.log(result.data);
     });
   }
   render() {
