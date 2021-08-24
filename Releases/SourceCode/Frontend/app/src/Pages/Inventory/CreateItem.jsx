@@ -103,7 +103,7 @@ export default class CreateItem extends Component {
                     </select>
                   </div>
                 </div>
-                <div className="mb-5 row">
+                <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Description :
                   </label>
