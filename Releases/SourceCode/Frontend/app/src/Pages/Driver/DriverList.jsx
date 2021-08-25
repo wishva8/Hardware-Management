@@ -7,7 +7,7 @@ import {
   faDownload,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import Header from "../../Components/Header/Header";
+import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { driverURL } from "../../Services/endpoints";
@@ -52,7 +52,7 @@ export default class DriverList extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Drivers" />
+          <SearchHeader topic="Drivers" />
           <div className="DriverRow">
             {this.renderRedirect()}
             <button type="submit" className="Driver-Button-List-Add" onClick={this.setRedirect}>
