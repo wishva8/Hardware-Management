@@ -36,6 +36,8 @@
   width: relative;
   background-color: #345454;
   border-color: #9ce6b7;
+  color: white;
+  opacity: 0.9;
 }
 
 .Delivery-Button-Reset {
@@ -78,4 +80,9 @@
 
 .col-form-label {
   color: #9ce6b7;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

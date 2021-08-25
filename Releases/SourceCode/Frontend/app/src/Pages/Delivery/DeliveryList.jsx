@@ -85,7 +85,9 @@ export default class DeliveryList extends Component {
                     <td className="ps-4">{delivery.address}</td>
                     <td className="ps-4">{delivery.customerName}</td>
                     <td className="ps-4">{delivery.customerPhoneNumber}</td>
-                    <td className="ps-4">{delivery.status}</td>
+                    <td className="ps-4">
+                      {delivery.status ? "Completed" : "Pending"}
+                    </td>
                     <td className="ps-4">
                       <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
                       <FontAwesomeIcon size="2x" icon={faTrash} />

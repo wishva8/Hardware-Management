@@ -95,7 +95,9 @@ export default class OrderList extends Component {
                     <td className="ps-4">{order.date}</td>
                     <td className="ps-4">{order.customerName}</td>
                     <td className="ps-4">{order.customerPhoneNo}</td>
-                    <td className="ps-4">{order.status}</td>
+                    <td className="ps-4">
+                      {order.status ? "Completed" : "Pending"}
+                    </td>
                     <td className="ps-4">
                       <FontAwesomeIcon size="2x" icon={faEdit} />
                       <FontAwesomeIcon size="2x" icon={faTrash} />

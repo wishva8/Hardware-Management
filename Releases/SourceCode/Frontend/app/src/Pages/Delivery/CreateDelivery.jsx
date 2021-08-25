@@ -6,6 +6,7 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { addDeliveryURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class CreateDelivery extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class CreateDelivery extends Component {
       address: "",
       customerName: "",
       customerPhoneNumber: 0,
-      status: "0",
+      status: 0,
     };
   }
 
@@ -36,7 +37,14 @@ export default class CreateDelivery extends Component {
     };
     console.log("Data to send", data);
 
-    const res = axios.post(addDeliveryURL, data);
+    const res = axios.post(addDeliveryURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
   };
 
   reset() {
@@ -129,20 +137,6 @@ export default class CreateDelivery extends Component {
                     id="customerPhoneNumber"
                     name="customerPhoneNumber"
                     placeholder="0766157878"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Status:</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="status"
-                    name="status"
-                    placeholder="Delivery No."
                     required
                     onChange={this.handleChange}
                   />

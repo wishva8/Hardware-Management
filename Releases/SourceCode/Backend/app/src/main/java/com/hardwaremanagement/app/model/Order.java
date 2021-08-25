@@ -26,7 +26,7 @@ public class Order {
     private float totalPrice;
 
     @Column(name = "order_date")
-    private Date date;
+    private String date;
 
     @Column(name = "customer_name")
     private String customerName;
@@ -40,7 +40,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderId, String description, String itemId, int quantity, float unitPrice, float totalPrice, Date date, String customerName, String customerPhoneNo, boolean status) {
+    public Order(int orderId, String description, String itemId, int quantity, float unitPrice, float totalPrice, String date, String customerName, String customerPhoneNo, boolean status) {
         this.orderId = orderId;
         this.description = description;
         this.itemId = itemId;
@@ -101,11 +101,11 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
