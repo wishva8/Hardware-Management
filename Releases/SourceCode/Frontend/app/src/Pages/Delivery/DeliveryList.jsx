@@ -7,7 +7,7 @@ import {
   faDownload,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import Header from "../../Components/Header/Header";
+import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { deliveryURL } from "../../Services/endpoints";
@@ -49,7 +49,7 @@ export default class DeliveryList extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Delivery Management" />
+          <SearchHeader topic="Delivery Management" />
           <div className="DeliveryRow text-end">
             {this.renderRedirect()}
             <button
