@@ -89,6 +89,7 @@ export default class CreateOrder extends Component {
                       // value={this.state.value}
                       onChange={this.handleChange}
                     >
+                      <option hidden>-Select-</option>
                       <option value="ITM001">ITM001</option>
                       <option value="ITM002">ITM002</option>
                       <option value="ITM003">ITM003</option>
