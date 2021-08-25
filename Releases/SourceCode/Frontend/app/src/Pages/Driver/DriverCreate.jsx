@@ -4,12 +4,15 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { addDriverURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class DriverCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenseNo: "",
+      licenceNo: "",
       name: "",
       address: "",
       vehicleNo: "",
@@ -25,7 +28,7 @@ export default class DriverCreate extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      licenseNo: this.state.licenseNo,
+      licenceNo: this.state.licenceNo,
       name: this.state.name,
       address: this.state.address,
       vehicleNo: this.state.vehicleNo,
@@ -33,11 +36,19 @@ export default class DriverCreate extends Component {
       phoneNo: this.state.phoneNo,
     };
     console.log(data);
+    const res = axios.post(addDriverURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
   };
 
   reset() {
     const res = {
-      licenseNo: "",
+      licenceNo: "",
       name: "",
       address: "",
       vehicleNo: "",
@@ -63,8 +74,8 @@ export default class DriverCreate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="licenseNo"
-                    name="licenseNo"
+                    id="licenceNo"
+                    name="licenceNo"
                     placeholder="License No"
                     required
                     // value={this.state.licenseNo}
@@ -128,6 +139,7 @@ export default class DriverCreate extends Component {
                     // value={this.state.vehicleType}
                     onChange={this.handleChange}
                   >
+                    <option hidden>-Select-</option>
                     <option value="Lorry">Lorry</option>
                     <option value="Tipper">Tipper</option>
                     <option value="Land Master">Land Master</option>
@@ -143,6 +155,7 @@ export default class DriverCreate extends Component {
                     type="Number"
                     id="phoneNo"
                     name="phoneNo"
+                    pattern="[0-9]{10}"
                     placeholder="0766157878"
                     required
                     // value={this.state.phoneNo}

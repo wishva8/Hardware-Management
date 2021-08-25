@@ -4,6 +4,9 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
+import axios from "axios";
+import { addinventoryURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class CreateItem extends Component {
   constructor(props) {
@@ -14,7 +17,7 @@ export default class CreateItem extends Component {
       description: "",
       unitPrice: 0,
       inventoryNo: "",
-      qty: 0,
+      quantity: 0,
     };
   }
   // state = {
@@ -23,7 +26,7 @@ export default class CreateItem extends Component {
   //   description: "",
   //   unitPrice: 0,
   //   inventoryNo: "",
-  //   qty: 0,
+  //   quantity: 0,
   // };
 
   handleChange = (e) => {
@@ -34,24 +37,33 @@ export default class CreateItem extends Component {
     e.preventDefault();
     const data = {
       itemNo: this.state.itemNo,
-    itemCategory: this.state.itemCategory,
-    description: this.state.description,
-    unitPrice: this.state.unitPrice,
-    inventoryNo: this.state.inventoryNo,
-    qty: this.state.qty,
-    }
-    console.log(data)
+      itemCategory: this.state.itemCategory,
+      description: this.state.description,
+      unitPrice: this.state.unitPrice,
+      // inventoryNo: this.state.inventoryNo,
+      quantity: this.state.quantity,
+    };
+    console.log("Data to send", data);
+
+    const res = axios.post(addinventoryURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
   };
 
   reset() {
     const res = {
-        itemNo: "",
-    itemCategory: "",
-    description: "",
-    unitPrice: 0,
-    inventoryNo: "",
-    qty: 0,
-    }
+      itemNo: "",
+      itemCategory: "",
+      description: "",
+      unitPrice: 0,
+      // inventoryNo: "",
+      quantity: 0,
+    };
   }
   render() {
     return (
@@ -75,7 +87,7 @@ export default class CreateItem extends Component {
                       name="itemNo"
                       placeholder="Item No"
                       required
-                      // value={this.state.itemNo}
+                      value={this.state.itemNo}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -88,9 +100,11 @@ export default class CreateItem extends Component {
                     <select
                       className="form-control"
                       name="itemCategory"
+                      placeholder="Item Category"
                       // value={this.state.value}
                       onChange={this.handleChange}
                     >
+                      <option hidden>-Select-</option>
                       <option value="Electrical">Electrical</option>
                       <option value="Tools">Tools</option>
                       <option value="Paint">Paint</option>
@@ -98,7 +112,7 @@ export default class CreateItem extends Component {
                     </select>
                   </div>
                 </div>
-                <div className="mb-5 row">
+                <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Description :
                   </label>
@@ -132,7 +146,7 @@ export default class CreateItem extends Component {
                     />
                   </div>
                 </div>
-                <div className="mb-3 row">
+                {/* <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Inventory No:
                   </label>
@@ -150,24 +164,28 @@ export default class CreateItem extends Component {
                       <option value1="INV5">INV5</option>
                     </select>
                   </div>
-                </div>
+                </div> */}
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Quantity :</label>
                   <div className="col-sm-9">
                     <input
                       className="form-control"
                       type="Number"
-                      id="qty"
-                      name="qty"
+                      id="quantity"
+                      name="quantity"
                       placeholder="Quantity"
                       required
-                      // value={this.state.qty}
+                      // value={this.state.quantity}
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
                 <div className="ItemRow text-end">
-                  <button type="reset" className="Item-Button-Inventory-Reset" onClick={this.reset}>
+                  <button
+                    type="reset"
+                    className="Item-Button-Inventory-Reset"
+                    onClick={this.reset}
+                  >
                     <FontAwesomeIcon icon={faRedo} /> Reset
                   </button>
                   <button type="submit" className="Item-Button-Inventory-Add">

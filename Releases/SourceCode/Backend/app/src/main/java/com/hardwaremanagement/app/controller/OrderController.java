@@ -17,7 +17,7 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @PostMapping("addOrder")
+    @PostMapping("/addOrder")
     public Order createOrder(@RequestBody Order order){
         return orderService.addOrder(order);
     }

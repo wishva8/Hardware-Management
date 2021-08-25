@@ -15,11 +15,11 @@ public class InventoryController {
     @Autowired
     InventoryService inventoryService;
 
-    @PostMapping("addItem")
+    @PostMapping("/addItem")
     public Inventory addInventory(@RequestBody Inventory inventory){
         return inventoryService.addInventoryItem(inventory);
     }
 
-    @GetMapping("allInventory")
+    @GetMapping("/allInventory")
     public List<Inventory> getAllInventory(){return inventoryService.getAllInventories();}
 }
