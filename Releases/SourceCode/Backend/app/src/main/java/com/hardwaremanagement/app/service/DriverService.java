@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface DriverService {
 
-    public Driver addDriver(Driver driver);
-    public List<Driver> getAllDrivers();
+    Driver addDriver(Driver driver);
+    List<Driver> getAllDrivers();
+    Driver updateDriver(Driver driver);
+    boolean deleteDriver(String id);
+    Driver getDriverById(String id);
 }

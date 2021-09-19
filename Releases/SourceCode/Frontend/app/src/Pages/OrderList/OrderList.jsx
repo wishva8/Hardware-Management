@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./OrderList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Header from "../../Components/Header/Header";
+import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { getOrders } from "../../Services/orders";
@@ -53,7 +53,7 @@ export default class OrderList extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Order Management" />
+          <SearchHeader topic="Order Management" />
           <div className="OrderRow text-end">
             {this.renderRedirect()}
             <button

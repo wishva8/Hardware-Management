@@ -139,6 +139,7 @@ export default class DriverCreate extends Component {
                     // value={this.state.vehicleType}
                     onChange={this.handleChange}
                   >
+                    <option hidden>-Select-</option>
                     <option value="Lorry">Lorry</option>
                     <option value="Tipper">Tipper</option>
                     <option value="Land Master">Land Master</option>
@@ -154,6 +155,7 @@ export default class DriverCreate extends Component {
                     type="Number"
                     id="phoneNo"
                     name="phoneNo"
+                    pattern="[0-9]{10}"
                     placeholder="0766157878"
                     required
                     // value={this.state.phoneNo}
