@@ -4,6 +4,8 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default class UpdateDelivery extends Component {
   constructor(props) {
@@ -22,18 +24,61 @@ export default class UpdateDelivery extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      deliveryNo: this.state.deliveryNo,
-      orderNo: this.state.orderNo,
-      description: this.state.description,
-      address: this.state.address,
-      customerName: this.state.customerName,
-      customerPhone: this.state.customerPhone,
-    };
-    console.log(data);
-  };
+  // async componentDidMount() {
+  //   const items = await axios.get().then((result) => {
+  //     this.setState({
+  //       items: result.data,
+  //     });
+  //     //console.log(result.data);
+  //   });
+  // }
+
+  // delete(Id) {
+  //   axios.delete("").then(() => {
+  //     Swal.fire({
+  //       icon: "question",
+  //       title: "Do you want to delete this item?",
+  //     }).then(() => {
+  //       window.location.reloaad(false);
+  //     });
+  //     this.componentDidMount();
+  //   });
+  // }
+  // edit(id) {
+  //   axios.get("").then((res) => {
+  //     this.setState({
+  //       deliveryNo: res.data.deliveryNo,
+  //       orderNo: res.data.orderNo,
+  //       description: res.data.description,
+  //       address: res.data.address,
+  //       customerName: res.data.customerName,
+  //       customerPhone: res.data.customerPhone,
+  //     });
+  //   });
+  // }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const data = {
+
+  //     deliveryNo: this.state.deliveryNo,
+  //     orderNo: this.state.orderNo,
+  //     description: this.state.description,
+  //     customerName: this.state.customerName,
+  //     customerPhone: this.state.customerPhone,
+  //   };
+  //   console.log("Data to send", data);
+
+  //   const res = axios.put(addOrderURL, data).then(() => {
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Update Successful!!!",
+  //     }).then(() => {
+  //       window.location.reload(false);
+  //     });
+  //   });
+  // };
+
   render() {
     return (
       <div className="UpdateDelivery">
