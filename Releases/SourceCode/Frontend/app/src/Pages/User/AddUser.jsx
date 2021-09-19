@@ -156,6 +156,7 @@ export default class AddUser extends Component {
                     // value={this.state.value}
                     onChange={this.handleChange}
                   >
+                    <option hidden>-Select-</option>
                     <option value="Manager">Manager</option>
                     <option value="Cashier">Cashier</option>
                     <option value="Accountant">Accountant </option>
@@ -167,7 +168,7 @@ export default class AddUser extends Component {
                 <div className="col-sm-9">
                   <input
                     className="form-control"
-                    type="text"
+                    type="email"
                     id="email"
                     name="email"
                     placeholder="abc@abc.com"
@@ -182,7 +183,8 @@ export default class AddUser extends Component {
                 <div className="col-sm-9">
                   <input
                     className="form-control"
-                    type="Number"
+                    type="tel"
+                    pattern="[0-9]{10}"
                     id="phoneNo"
                     name="phoneNo"
                     placeholder="0766157878"
@@ -200,6 +202,7 @@ export default class AddUser extends Component {
                     type="password"
                     id="password"
                     name="password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Password"
                     required
                     // value={this.state.password}

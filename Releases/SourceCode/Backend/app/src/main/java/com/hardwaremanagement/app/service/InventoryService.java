@@ -2,15 +2,18 @@ package com.hardwaremanagement.app.service;
 
 import com.hardwaremanagement.app.model.Inventory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 public interface InventoryService {
 
-    public Inventory addInventoryItem(Inventory inventory);
-    public List<Inventory> getAllInventories();
+    Inventory addInventoryItem(Inventory inventory);
+    List<Inventory> getAllInventories();
+    Inventory updateInverntory(Inventory inventory);
+    boolean deleteInventory(int id);
+    Optional<Inventory> getInventoryById(int id);
 }

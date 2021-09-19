@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./InventoryList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Header from "../../Components/Header/Header";
+import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -47,7 +47,7 @@ export default class InventoryList extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Inventory Management" />
+          <SearchHeader topic="Inventory Management" />
           <div className="ItemRow text-end">
             {this.renderRedirect()}
             <button

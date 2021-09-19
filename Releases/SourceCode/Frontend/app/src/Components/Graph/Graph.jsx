@@ -19,7 +19,7 @@ export default function Graph(props) {
   };
   return (
     <div style={{ width: "280px" }}>
-      <h1 className="text-green" style={{ fontWeight: 100 }}>
+      <h1 className="text-green" style={{ fontWeight: 100 ,fontSize:"52px"}}>
         {props.data.name ?? ""}
       </h1>
       <Doughnut

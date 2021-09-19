@@ -13,7 +13,7 @@ export default function SideNav() {
   return (
     <div>
       <div className="d-flex flex-column flex-shrink-0 p-3 sidebar">
-        {/* <Link to="/dashboard"> */}
+        <Link to="/dashboard">
         <a
           href="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
@@ -23,7 +23,7 @@ export default function SideNav() {
           </div>
           <span className="fs-4"></span>
         </a>
-        {/* </Link> */}
+        </Link>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li>

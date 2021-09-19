@@ -137,6 +137,7 @@ export default class CreateDelivery extends Component {
                     id="customerPhoneNumber"
                     name="customerPhoneNumber"
                     placeholder="0766157878"
+                    pattern="[0-9]{10}"
                     required
                     onChange={this.handleChange}
                   />

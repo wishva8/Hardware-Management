@@ -87,7 +87,7 @@ export default class CreateItem extends Component {
                       name="itemNo"
                       placeholder="Item No"
                       required
-                      // value={this.state.itemNo}
+                      value={this.state.itemNo}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -100,9 +100,11 @@ export default class CreateItem extends Component {
                     <select
                       className="form-control"
                       name="itemCategory"
+                      placeholder="Item Category"
                       // value={this.state.value}
                       onChange={this.handleChange}
                     >
+                      <option hidden>-Select-</option>
                       <option value="Electrical">Electrical</option>
                       <option value="Tools">Tools</option>
                       <option value="Paint">Paint</option>
