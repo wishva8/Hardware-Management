@@ -22,4 +22,13 @@ public class DriverController {
 
     @GetMapping("/allDrivers")
     public List<Driver> getAllDrivers(){ return driverService.getAllDrivers();}
+
+    @PutMapping("/updateDrivers")
+    public Driver updateDriver(@RequestBody Driver driver) { return driverService.updateDriver(driver);}
+
+    @GetMapping("/getDriverById/{id}")
+    public Driver getDriverById(@PathVariable String id){ return driverService.getDriverById(id);}
+
+    @DeleteMapping("/deleteDriverById/{id}")
+    public boolean deleteDriverById(@PathVariable String id){ return  driverService.deleteDriver(id);}
 }
