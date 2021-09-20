@@ -8,6 +8,7 @@ import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { inventoryURL } from "../../Services/endpoints";
 import { Redirect } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default class InventoryList extends Component {
   state = {
@@ -28,6 +29,53 @@ export default class InventoryList extends Component {
       });
       //console.log(result.data);
     });
+  }
+
+  delete(inventoryNo) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your file has been deleted.",
+            "success"
+          );
+          axios
+            .delete(
+              "http://localhost:9091/inventory/deleteDeliveryById/" +
+                inventoryNo
+            )
+            .then(() => {
+              this.componentDidMount();
+            });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your item record is safe :)",
+            "error"
+          );
+        }
+      });
   }
 
   setRedirect = () => {
@@ -84,7 +132,11 @@ export default class InventoryList extends Component {
                     <td className="ps-4">{item.quantity}</td>
                     <td className="ps-4">
                       <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                      <FontAwesomeIcon size="2x" icon={faTrash} />
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faTrash}
+                        onClick={(e) => this.delete(item.inventoryNo)}
+                      />
                     </td>
                   </tr>
                 );

@@ -60,3 +60,9 @@ th:last-child {
   border: 1px solid gray;
   font-weight: bold;
 }
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin-right: 15px;
+}

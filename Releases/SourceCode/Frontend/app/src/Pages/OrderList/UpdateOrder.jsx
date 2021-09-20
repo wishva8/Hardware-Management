@@ -4,6 +4,9 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { addOrderURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class UpdateOrder extends Component {
   constructor(props) {
@@ -20,6 +23,67 @@ export default class UpdateOrder extends Component {
       status: "",
     };
   }
+  // async componentDidMount() {
+  //   const items = await axios.get().then((result) => {
+  //     this.setState({
+  //       items: result.data,
+  //     });
+  //     //console.log(result.data);
+  //   });
+  // }
+
+  // delete(Id) {
+  //   axios.delete("").then(() => {
+  //     Swal.fire({
+  //       icon: "question",
+  //       title: "Do you want to delete this item?",
+  //     }).then(() => {
+  //       window.location.reloaad(false);
+  //     });
+  //     this.componentDidMount();
+  //   });
+  // }
+  // edit(id) {
+  //   axios.get("").then((res) => {
+  //     this.setState({
+  //       orderId: res.data.orderId,
+  //       description: res.data.description,
+  //       itemNo: res.data.itemNo,
+  //       unitPrice: res.data.unitPrice,
+  //       totalPrice: res.data.totalPrice,
+  //       date: res.data.date,
+  //       customerName: res.data.customerName,
+  //       customerPhoneNo: res.data.customerPhoneNo,
+  //       status: res.data.status,
+  //     });
+  //   });
+  // }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const data = {
+  //     //orderId: this.state.orderId,
+  //     description: this.state.description,
+  //     itemId: this.state.itemId,
+  //     quantity: this.state.quantity,
+  //     unitPrice: this.state.unitPrice,
+  //     totalPrice: this.state.totalPrice,
+  //     date: this.state.date,
+  //     customerName: this.state.customerName,
+  //     customerPhoneNo: this.state.customerPhoneNo,
+  //     status: this.state.status,
+  //   };
+  //   console.log("Data to send", data);
+
+  //   const res = axios.put(addOrderURL, data).then(() => {
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Update Successful!!!",
+  //     }).then(() => {
+  //       window.location.reload(false);
+  //     });
+  //   });
+  // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
