@@ -32,19 +32,6 @@ export default class InventoryList extends Component {
   }
 
   delete(inventoryNo) {
-    // axios
-    //   .delete(
-    //     "http://localhost:9091/inventory/deleteDeliveryById/" + inventoryNo
-    //   )
-    //   .then(() => {
-    //     Swal.fire({
-    //       icon: "question",
-    //       title: "Do you want to delete this item?",
-    //     }).then(() => {
-    //       window.location.reloaad(true);
-    //     });
-    //     this.componentDidMount();
-    //   });
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
