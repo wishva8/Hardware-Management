@@ -37,17 +37,6 @@ export default class UpdateItems extends Component {
   //   });
   // }
 
-  // delete(Id) {
-  //   axios.delete("").then(() => {
-  //     Swal.fire({
-  //       icon: "question",
-  //       title: "Do you want to delete this item?",
-  //     }).then(() => {
-  //       window.location.reloaad(false);
-  //     });
-  //     this.componentDidMount();
-  //   });
-  // }
   // edit(id) {
   //   axios.get("").then((res) => {
   //     this.setState({

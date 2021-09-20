@@ -62,3 +62,9 @@ th:last-child {
 .ItemRow {
   padding-top: 15px;
 }
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin-right: 15px;
+}
