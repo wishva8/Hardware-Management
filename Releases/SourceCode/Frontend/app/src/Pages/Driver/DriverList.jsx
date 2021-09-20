@@ -59,7 +59,7 @@ export default class DriverList extends Component {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are you sure?",
+        title: "Are you want to delete " + licenceNo + " order?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -71,7 +71,7 @@ export default class DriverList extends Component {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your driver " + licenceNo + " has been deleted.",
             "success"
           );
           axios
@@ -82,13 +82,10 @@ export default class DriverList extends Component {
               console.log(licenceNo);
               this.componentDidMount();
             });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your item record is safe :)",
+            "Your " + licenceNo + " driver record is safe :)",
             "error"
           );
         }

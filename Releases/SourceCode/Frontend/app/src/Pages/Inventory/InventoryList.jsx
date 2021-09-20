@@ -42,7 +42,7 @@ export default class InventoryList extends Component {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are you sure?",
+        title: "Are you want to delete " + inventoryNo + " item?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -54,7 +54,7 @@ export default class InventoryList extends Component {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your item " + inventoryNo + " has been deleted.",
             "success"
           );
           axios
@@ -65,13 +65,10 @@ export default class InventoryList extends Component {
             .then(() => {
               this.componentDidMount();
             });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your item record is safe :)",
+            "Your " + inventoryNo + " ineventory record is safe :)",
             "error"
           );
         }

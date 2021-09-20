@@ -51,7 +51,7 @@ export default class DeliveryList extends Component {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are you sure?",
+        title: "Are you want to delete " + deliveryNo + " delivery?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -63,7 +63,7 @@ export default class DeliveryList extends Component {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your delivery " + deliveryNo + " has been deleted.",
             "success"
           );
           axios
@@ -79,12 +79,13 @@ export default class DeliveryList extends Component {
         ) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your item record is safe :)",
+            "Your " + deliveryNo + " delivery record is safe :)",
             "error"
           );
         }
       });
   }
+
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to="/createDelivery" />;
