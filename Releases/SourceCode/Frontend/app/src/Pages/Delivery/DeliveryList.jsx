@@ -71,7 +71,6 @@ export default class DeliveryList extends Component {
               "http://localhost:9091/delivery/deleteDeliveryById/" + deliveryNo
             )
             .then(() => {
-              console.log(deliveryNo);
               this.componentDidMount();
             });
         } else if (
