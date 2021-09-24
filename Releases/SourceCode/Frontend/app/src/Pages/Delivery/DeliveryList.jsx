@@ -12,9 +12,11 @@ import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { deliveryURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
+import Swal from "sweetalert2";
 
 export default class DeliveryList extends Component {
   state = {
+    deliveryNo: 0,
     orderNo: "",
     description: "",
     address: "",
@@ -37,6 +39,52 @@ export default class DeliveryList extends Component {
       redirect: true,
     });
   };
+
+  delete(deliveryNo) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you want to delete " + deliveryNo + " delivery?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your delivery " + deliveryNo + " has been deleted.",
+            "success"
+          );
+          axios
+            .delete(
+              "http://localhost:9091/delivery/deleteDeliveryById/" + deliveryNo
+            )
+            .then(() => {
+              this.componentDidMount();
+            });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your " + deliveryNo + " delivery record is safe :)",
+            "error"
+          );
+        }
+      });
+  }
 
   renderRedirect = () => {
     if (this.state.redirect) {
@@ -90,7 +138,11 @@ export default class DeliveryList extends Component {
                     </td>
                     <td className="ps-4">
                       <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                      <FontAwesomeIcon size="2x" icon={faTrash} />
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faTrash}
+                        onClick={(e) => this.delete(delivery.deliveryNo)}
+                      />
                     </td>
                   </tr>
                 );

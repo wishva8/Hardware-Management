@@ -5,11 +5,15 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 public interface OrderService{
 
-    public Order addOrder(Order order);
-    public List<Order> getAllOrders();
+    Order addOrder(Order order);
+    List<Order> getAllOrders();
+    Order updateOrder(Order order);
+    boolean deleteOrder(int id);
+    Optional<Order> getOrderById(int id);
 }

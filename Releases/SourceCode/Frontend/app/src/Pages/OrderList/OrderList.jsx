@@ -9,6 +9,7 @@ import { getOrders } from "../../Services/orders";
 import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
 import { Redirect } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default class OrderList extends Component {
   state = {
@@ -46,6 +47,47 @@ export default class OrderList extends Component {
       return <Redirect to="/createOrder" />;
     }
   };
+
+  delete(orderId) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you want to delete " + orderId + " order?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your order " + orderId + " has been deleted.",
+            "success"
+          );
+          axios
+            .delete("http://localhost:9091/orders/deleteOrderById/" + orderId)
+            .then(() => {
+              this.componentDidMount();
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your " + orderId + " order record is safe :)",
+            "error"
+          );
+        }
+      });
+  }
 
   render() {
     const { orders } = this.state;
@@ -100,7 +142,11 @@ export default class OrderList extends Component {
                     </td>
                     <td className="ps-4">
                       <FontAwesomeIcon size="2x" icon={faEdit} />
-                      <FontAwesomeIcon size="2x" icon={faTrash} />
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faTrash}
+                        onClick={(e) => this.delete(order.orderId)}
+                      />
                     </td>
                   </tr>
                 );

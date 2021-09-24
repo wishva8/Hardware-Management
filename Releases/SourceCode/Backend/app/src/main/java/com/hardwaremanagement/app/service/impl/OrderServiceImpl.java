@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,5 +24,21 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAllOrders() {
         return (List<Order>) orderRepository.findAll();
+    }
+
+    @Override
+    public Order updateOrder(Order order) {
+        return orderRepository.save(order);
+    }
+
+    @Override
+    public boolean deleteOrder(int id) {
+        orderRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public Optional<Order> getOrderById(int id) {
+        return orderRepository.findById(id);
     }
 }

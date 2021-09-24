@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -22,4 +23,13 @@ public class InventoryController {
 
     @GetMapping("/allInventory")
     public List<Inventory> getAllInventory(){return inventoryService.getAllInventories();}
+
+    @PutMapping("/updateInventoryDetails")
+    public Inventory updateInventory(@RequestBody Inventory inventory) { return inventoryService.updateInverntory(inventory);}
+
+    @GetMapping("/getInventoryById/{id}")
+    public Optional<Inventory> getInventoryById(@PathVariable int id){ return inventoryService.getInventoryById(id);}
+
+    @DeleteMapping("/deleteDeliveryById/{id}")
+    public boolean deleteInventoryById(@PathVariable int id){ return  inventoryService.deleteInventory(id);}
 }

@@ -4,6 +4,8 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export default class UpdateItems extends Component {
   constructor(props) {
@@ -25,6 +27,50 @@ export default class UpdateItems extends Component {
     inventoryNo: "",
     qty: 0,
   };
+
+  // async componentDidMount() {
+  //   const items = await axios.get().then((result) => {
+  //     this.setState({
+  //       items: result.data,
+  //     });
+  //     //console.log(result.data);
+  //   });
+  // }
+
+  // edit(id) {
+  //   axios.get("").then((res) => {
+  //     this.setState({
+  //       itemNo: res.data.itemNo,
+  //       itemCategory: res.data.itemCategory,
+  //       description: res.data.description,
+  //       unitPrice: res.data.unitPrice,
+  //       inventoryNo: res.data.inventoryNo,
+  //       qty: res.data.qty,
+  //     });
+  //   });
+  // }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const data = {
+
+  //     itemNo: this.state.itemNo,
+  //     orderNo: this.state.description,
+  //     description: this.state.address,
+  //     customerName: this.state.customerName,
+  //     customerPhone: this.state.customerPhone,
+  //   };
+  //   console.log("Data to send", data);
+
+  //   const res = axios.put(addOrderURL, data).then(() => {
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Update Successful!!!",
+  //     }).then(() => {
+  //       window.location.reload(false);
+  //     });
+  //   });
+  // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
