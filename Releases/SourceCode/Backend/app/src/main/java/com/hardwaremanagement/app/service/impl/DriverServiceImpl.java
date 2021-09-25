@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,16 +28,17 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver updateDriver(Driver driver) {
-        return null;
+        return driverRepository.save(driver);
     }
 
     @Override
     public boolean deleteDriver(String id) {
-        return false;
+         driverRepository.deleteById(id);
+        return true;
     }
 
     @Override
-    public Driver getDriverById(String id) {
-        return null;
+    public Optional<Driver> getDriverById(String id) {
+        return driverRepository.findById(id);
     }
 }

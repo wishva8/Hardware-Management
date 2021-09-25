@@ -28,6 +28,6 @@ public class InventoryController {
     @GetMapping("/getInventoryById/{id}")
     public Optional<Inventory> getInventoryById(@PathVariable int id){ return inventoryService.getInventoryById(id);}
 
-    @DeleteMapping("/deleteDeliveryById/{id}")
+    @DeleteMapping("/deleteInventoryById/{id}")
     public boolean deleteInventoryById(@PathVariable int id){ return  inventoryService.deleteInventory(id);}
 }

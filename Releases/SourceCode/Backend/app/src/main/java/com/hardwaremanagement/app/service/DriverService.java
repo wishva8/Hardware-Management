@@ -3,6 +3,7 @@ package com.hardwaremanagement.app.service;
 import com.hardwaremanagement.app.model.Driver;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DriverService {
 
@@ -10,5 +11,5 @@ public interface DriverService {
     List<Driver> getAllDrivers();
     Driver updateDriver(Driver driver);
     boolean deleteDriver(String id);
-    Driver getDriverById(String id);
+    Optional<Driver> getDriverById(String id);
 }

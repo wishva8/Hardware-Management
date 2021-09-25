@@ -10,11 +10,15 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { deliveryURL } from "../../Services/endpoints";
+import { deleteDeliveryURL, deliveryURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
+import Swal from "sweetalert2";
+import generatePDF from "./DeliverReportGenaration";
+import { Link } from "react-router-dom";
 
 export default class DeliveryList extends Component {
   state = {
+    deliveryNo: 0,
     orderNo: "",
     description: "",
     address: "",
@@ -25,12 +29,54 @@ export default class DeliveryList extends Component {
   };
 
   async componentDidMount() {
-    const deliveries = await axios.get(deliveryURL).then((result) => {
+    await axios.get(deliveryURL).then((result) => {
       this.setState({
         deliveries: result.data,
       });
       console.log("Display data", result.data);
     });
+  }
+
+  delete(deliveryNo) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you want to delete " + deliveryNo + " delivery?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your delivery " + deliveryNo + " has been deleted.",
+            "success"
+          );
+          axios.delete(deleteDeliveryURL + deliveryNo).then(() => {
+            this.componentDidMount();
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your " + deliveryNo + " delivery record is safe :)",
+            "error"
+          );
+        }
+      });
   }
   setRedirect = () => {
     this.setState({
@@ -43,6 +89,7 @@ export default class DeliveryList extends Component {
       return <Redirect to="/createDelivery" />;
     }
   };
+
   render() {
     const { deliveries } = this.state;
     return (
@@ -51,15 +98,21 @@ export default class DeliveryList extends Component {
         <div className="content-layer">
           <SearchHeader topic="Delivery Management" />
           <div className="DeliveryRow text-end">
-            {this.renderRedirect()}
+            {/* {this.renderRedirect()} */}
             <button
-              type="submit"
+              type="button"
               className="Delivery-Button-List-Add"
-              onClick={this.setRedirect}
+              // onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Delivery
             </button>
-            <button type="reset" className="Delivery-Button-Report">
+            <button
+              type="button"
+              className="Delivery-Button-Report"
+              onClick={() => {
+                generatePDF(this.state.deliveries);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
@@ -89,8 +142,27 @@ export default class DeliveryList extends Component {
                       {delivery.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
-                      <FontAwesomeIcon size="2x" icon={faTrash} />
+                      <Link
+                        to={{
+                          pathname: "/updateDelivery",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem(
+                              "updateId",
+                              delivery.deliveryNo
+                            );
+                          }}
+                        />
+                      </Link>
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faTrash}
+                        onClick={(e) => this.delete(delivery.deliveryNo)}
+                      />
                     </td>
                   </tr>
                 );

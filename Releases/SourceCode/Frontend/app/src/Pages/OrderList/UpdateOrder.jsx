@@ -4,6 +4,9 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { getOrderURLbyID, updateOrderURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class UpdateOrder extends Component {
   constructor(props) {
@@ -11,23 +14,66 @@ export default class UpdateOrder extends Component {
     this.state = {
       orderId: "",
       description: "",
-      itemNo: "",
+      quantity: "",
+      itemId: "",
       unitPrice: 0,
       totalPrice: 0,
       date: "",
       customerName: "",
       customerPhoneNo: "",
       status: "",
+      orders: [],
     };
   }
+  async componentDidMount() {
+    let id = localStorage.getItem("updateId");
+    await axios.get(getOrderURLbyID + id).then((result) => {
+      this.setState({
+        orderId: result.data.orderId,
+        description: result.data.description,
+        itemId: result.data.itemId,
+        quantity: result.data.quantity,
+        unitPrice: result.data.unitPrice,
+        totalPrice: result.data.totalPrice,
+        date: result.data.date,
+        customerName: result.data.customerName,
+        customerPhoneNo: result.data.customerPhoneNo,
+        status: result.data.status,
+      });
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let id = localStorage.getItem("updateId");
+    const data = {
+      orderId: id,
+      description: this.state.description,
+      itemId: this.state.itemId,
+      quantity: this.state.quantity,
+      unitPrice: this.state.unitPrice,
+      totalPrice: this.state.totalPrice,
+      date: this.state.date,
+      customerName: this.state.customerName,
+      customerPhoneNo: this.state.customerPhoneNo,
+      status: this.state.status,
+    };
+    console.log("Data to send", data);
+
+    axios.put(updateOrderURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Update Successful!!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = (e) => {
-    alert(this.state.value);
-  };
   render() {
     return (
       <div>
@@ -36,7 +82,7 @@ export default class UpdateOrder extends Component {
           <Header topic="Order Management" />
           <div className="CreateOrder">
             <div className="Order-Create-Heading-Container">
-              <h3 className="Add-Order-Heading">Add Order</h3>
+              <h3 className="Add-Order-Heading">Update Order</h3>
             </div>
             <div className="Order-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
@@ -49,8 +95,9 @@ export default class UpdateOrder extends Component {
                       id="orderId"
                       name="orderId"
                       placeholder="Order Id"
+                      readOnly="true"
                       required
-                      // value={this.state.OrderNo}
+                      value={this.state.orderId}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -67,25 +114,39 @@ export default class UpdateOrder extends Component {
                       name="description"
                       placeholder="Order Description"
                       required
-                      // value={this.state.description}
+                      value={this.state.description}
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Item No. :</label>
-                  <div className="ui fluid col-sm-9">
-                    <select
+                  <div className="col-sm-9">
+                    <input
                       className="form-control"
-                      name="itemNo"
-                      // value={this.state.value}
+                      type="text"
+                      id="itemId"
+                      name="itemId"
+                      placeholder="Item No."
+                      required
+                      value={this.state.itemId}
                       onChange={this.handleChange}
-                    >
-                      <option value="ITM001">ITM001</option>
-                      <option value="ITM002">ITM002</option>
-                      <option value="ITM003">ITM003</option>
-                      <option value="ITM004">ITM004</option>
-                    </select>
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 row">
+                  <label className="col-sm-3 col-form-label">Quantity :</label>
+                  <div className="col-sm-9">
+                    <input
+                      className="form-control"
+                      type="Number"
+                      id="quantity"
+                      name="quantity"
+                      placeholder="Quantity"
+                      required
+                      value={this.state.quantity}
+                      onChange={this.handleChange}
+                    />
                   </div>
                 </div>
                 <div className="mb-3 row">
@@ -100,7 +161,7 @@ export default class UpdateOrder extends Component {
                       name="unitPrice"
                       placeholder="Unit Price"
                       required
-                      // value={this.state.unitPrice}
+                      value={this.state.unitPrice}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -117,7 +178,7 @@ export default class UpdateOrder extends Component {
                       name="totalPrice"
                       placeholder="Total Price"
                       required
-                      // value={this.state.unitPrice}
+                      value={this.state.totalPrice}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -132,7 +193,7 @@ export default class UpdateOrder extends Component {
                       name="date"
                       placeholder="Order Date"
                       required
-                      // value={this.state.orderDate}
+                      value={this.state.date}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -149,7 +210,7 @@ export default class UpdateOrder extends Component {
                       name="customerName"
                       placeholder="Customer Name"
                       required
-                      // value={this.state.customerName}
+                      value={this.state.customerName}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -166,7 +227,7 @@ export default class UpdateOrder extends Component {
                       name="customerPhoneNo"
                       placeholder="Customer Phone Number"
                       required
-                      // value={this.state.customerName}
+                      value={this.state.customerPhoneNo}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -177,7 +238,7 @@ export default class UpdateOrder extends Component {
                     <select
                       className="form-control"
                       name="status"
-                      // value={this.state.value}
+                      value={this.state.status}
                       onChange={this.handleChange}
                     >
                       <option value="Pending">Pending</option>

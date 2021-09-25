@@ -30,7 +30,7 @@ export default function SearchHeader(props) {
                 height="32"
                 className="rounded-circle me-2"
               />
-              <strong>mdo</strong>
+              <strong>Admin</strong>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-dark text-small shadow"
