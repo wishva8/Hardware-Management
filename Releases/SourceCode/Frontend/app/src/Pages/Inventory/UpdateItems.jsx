@@ -6,7 +6,6 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import {
   getInventoryURLbyID,
   updateInventoryURL,
@@ -17,14 +16,6 @@ export default class UpdateItems extends Component {
     super(props);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.state = {
-    //   itemNo: "",
-    //   itemCategory: "",
-    //   description: "",
-    //   unitPrice: 0,
-    //   inventoryNo: "",
-    //   qty: 0,
-    // };
   }
   state = {
     itemNo: "",
@@ -53,7 +44,9 @@ export default class UpdateItems extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let invenID = localStorage.getItem("updateId");
     const data = {
+      inventoryNo: invenID,
       itemNo: this.state.itemNo,
       itemCategory: this.state.itemCategory,
       description: this.state.description,
@@ -61,8 +54,6 @@ export default class UpdateItems extends Component {
       quantity: this.state.quantity,
     };
     console.log("Data to send", data);
-
-    let invenID = localStorage.getItem("updateId");
     axios.put(updateInventoryURL, data).then((res) => {
       console.log(res.data);
       Swal.fire({

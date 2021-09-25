@@ -8,6 +8,8 @@ export const orderControllerURL = baseURL + "orders/";
 export const orderURL = orderControllerURL + "allOrders";
 export const addOrderURL = orderControllerURL + "addOrder";
 export const deleteOrderURL = orderControllerURL + "deleteOrderById/";
+export const getOrderURLbyID = orderControllerURL + "getOrderById/";
+export const updateOrderURL = orderControllerURL + "updateOrderDetails";
 
 //Driver APIs
 export const driverControllerURL = baseURL + "driver/";

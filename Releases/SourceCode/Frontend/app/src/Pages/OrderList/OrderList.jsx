@@ -8,7 +8,7 @@ import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { getOrders } from "../../Services/orders";
 import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import { deleteOrderURL } from "../../Services/endpoints";
 
@@ -140,7 +140,19 @@ export default class OrderList extends Component {
                       {order.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />
+                      <Link
+                        to={{
+                          pathname: "/updateOrder",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem("updateId", order.orderId);
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}
