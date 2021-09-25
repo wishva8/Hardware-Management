@@ -14,6 +14,7 @@ import axios from "axios";
 import { deleteDriverURL, driverURL } from "../../Services/endpoints";
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import generatePDFDriver from "./DriverReport";
 
 export default class DriverList extends Component {
   state = {
@@ -104,7 +105,12 @@ export default class DriverList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Driver
             </button>
-            <button type="reset" className="Driver-Button-Report">
+            <button
+              className="Driver-Button-Report"
+              onClick={() => {
+                generatePDFDriver(this.state.drivers);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>

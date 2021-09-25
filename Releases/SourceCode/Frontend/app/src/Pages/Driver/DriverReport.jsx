@@ -4,33 +4,33 @@ import "jspdf-autotable";
 // from our API call
 
 // define a generatePDF function that accepts a tickets argument
-const generatePDFItems = (items) => {
+const generatePDFDriver = (drivers) => {
   // initialize jsPDF
   const doc = new jsPDF();
 
   // define the columns we want and their titles
   const tableColumn = [
-    "Inventory No.",
-    "Item No.",
-    "Item Category",
-    "Description",
-    "Unit Price",
-    "Quantity",
+    "License No.",
+    "Driver Name.",
+    "Address",
+    "Vehicle No.",
+    "Vehicle Type",
+    "Phone",
   ];
   // define an empty array of rows
   const tableRows = [];
 
   // for each ticket pass all its data into an array
 
-  if (items && items.length > 0) {
-    items.forEach((item) => {
+  if (drivers && drivers.length > 0) {
+    drivers.forEach((driver) => {
       const dateRow = [
-        item.inventoryNo,
-        item.itemNo,
-        item.itemCategory,
-        item.description,
-        item.unitPrice,
-        item.quantity,
+        driver.licenceNo,
+        driver.name,
+        driver.address,
+        driver.vehicleNo,
+        driver.vehicleType,
+        driver.phoneNo,
       ];
       // push each tickcet's info into a row
       tableRows.push(dateRow);
@@ -43,10 +43,10 @@ const generatePDFItems = (items) => {
     const dateStr =
       date[0] + date[1] + date[2] + date[3] + date[4] + date[5] + date[6];
     // ticket title. and margin-top + margin-left
-    doc.text("Detail Inventory Report", 14, 15);
+    doc.text("Detail Driver Report", 14, 15);
     // we define the name of our PDF file.
     doc.save(`report_${dateStr}.pdf`);
   }
 };
 
-export default generatePDFItems;
+export default generatePDFDriver;
