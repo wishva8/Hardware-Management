@@ -12,7 +12,7 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { deleteDriverURL, driverURL } from "../../Services/endpoints";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default class DriverList extends Component {
@@ -132,7 +132,19 @@ export default class DriverList extends Component {
                     <td className="ps-4">{driver.vehicleType}</td>
                     <td className="ps-4">{driver.phoneNo}</td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                      <Link
+                        to={{
+                          pathname: "/updateDriver",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem("updateId", driver.licenceNo);
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

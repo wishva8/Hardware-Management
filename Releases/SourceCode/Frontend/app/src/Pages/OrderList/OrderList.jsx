@@ -5,7 +5,6 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { getOrders } from "../../Services/orders";
 import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
 import { Link, Redirect } from "react-router-dom";
@@ -29,7 +28,7 @@ export default class OrderList extends Component {
   };
 
   async componentDidMount() {
-    const orders = await axios.get(orderURL).then((result) => {
+    await axios.get(orderURL).then((result) => {
       // console.log(result.data);
       this.setState({
         orders: result.data,

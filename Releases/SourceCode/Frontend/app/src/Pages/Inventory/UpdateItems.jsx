@@ -29,17 +29,15 @@ export default class UpdateItems extends Component {
 
   async componentDidMount() {
     let invenID = localStorage.getItem("updateId");
-    const items = await axios
-      .get(getInventoryURLbyID + invenID)
-      .then((result) => {
-        this.setState({
-          itemNo: result.data.itemNo,
-          itemCategory: result.data.itemCategory,
-          description: result.data.description,
-          unitPrice: result.data.unitPrice,
-          quantity: result.data.quantity,
-        });
+    await axios.get(getInventoryURLbyID + invenID).then((result) => {
+      this.setState({
+        itemNo: result.data.itemNo,
+        itemCategory: result.data.itemCategory,
+        description: result.data.description,
+        unitPrice: result.data.unitPrice,
+        quantity: result.data.quantity,
       });
+    });
   }
 
   handleSubmit = (e) => {

@@ -16,6 +16,8 @@ export const driverControllerURL = baseURL + "driver/";
 export const driverURL = driverControllerURL + "allDrivers";
 export const addDriverURL = driverControllerURL + "addDriver";
 export const deleteDriverURL = driverControllerURL + "deleteDriverById/";
+export const getDriverURLbyId = driverControllerURL + "getDriverById/";
+export const updateDriverURL = driverControllerURL + "updateDrivers";
 
 //Inventory APIs
 export const inventoryControllerURL = baseURL + "inventory/";
@@ -32,3 +34,5 @@ export const deliveryControllerURL = baseURL + "delivery/";
 export const deliveryURL = deliveryControllerURL + "allDeliveries";
 export const addDeliveryURL = deliveryControllerURL + "addDelivery";
 export const deleteDeliveryURL = deliveryControllerURL + "deleteDeliveryById/";
+export const getDeliveryURLbyId = deliveryControllerURL + "getDriverById/";
+export const updateDeliveryURL = deliveryControllerURL + "updateDrivers";

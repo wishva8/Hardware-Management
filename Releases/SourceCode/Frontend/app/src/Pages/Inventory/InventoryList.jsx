@@ -26,7 +26,7 @@ export default class InventoryList extends Component {
   }
 
   async componentDidMount() {
-    const items = await axios.get(inventoryURL).then((result) => {
+    await axios.get(inventoryURL).then((result) => {
       this.setState({
         items: result.data,
       });
@@ -133,7 +133,7 @@ export default class InventoryList extends Component {
                         }}
                       >
                         <FontAwesomeIcon
-                          size="2x"
+                          size="1x"
                           icon={faEdit}
                           onClick={() => {
                             localStorage.setItem("updateId", item.inventoryNo);
