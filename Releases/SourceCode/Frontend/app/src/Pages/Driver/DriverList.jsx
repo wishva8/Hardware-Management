@@ -11,9 +11,10 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { driverURL } from "../../Services/endpoints";
-import { Redirect } from "react-router-dom";
+import { deleteDriverURL, driverURL } from "../../Services/endpoints";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import generatePDFDriver from "./DriverReport";
 
 export default class DriverList extends Component {
   state = {
@@ -59,7 +60,7 @@ export default class DriverList extends Component {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are you sure?",
+        title: "Are you want to delete " + licenceNo + " order?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -71,24 +72,17 @@ export default class DriverList extends Component {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your driver " + licenceNo + " has been deleted.",
             "success"
           );
-          axios
-            .delete(
-              "http://localhost:9091/driver/deleteDriverById/" + licenceNo
-            )
-            .then(() => {
-              console.log(licenceNo);
-              this.componentDidMount();
-            });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+          axios.delete(deleteDriverURL + licenceNo).then(() => {
+            console.log(licenceNo);
+            this.componentDidMount();
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your item record is safe :)",
+            "Your " + licenceNo + " driver record is safe :)",
             "error"
           );
         }
@@ -111,12 +105,17 @@ export default class DriverList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Driver
             </button>
-            <button type="reset" className="Driver-Button-Report">
+            <button
+              className="Driver-Button-Report"
+              onClick={() => {
+                generatePDFDriver(this.state.drivers);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
           <div className="row">
-            <table className="table table-bordered  driverList">
+            <table className="table table-bordered  driverList" id="myTable">
               <tr className="driverListItems">
                 <th className="ps-4">License No</th>
                 <th className="ps-4">Name</th>
@@ -139,7 +138,19 @@ export default class DriverList extends Component {
                     <td className="ps-4">{driver.vehicleType}</td>
                     <td className="ps-4">{driver.phoneNo}</td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                      <Link
+                        to={{
+                          pathname: "/updateDriver",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem("updateId", driver.licenceNo);
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

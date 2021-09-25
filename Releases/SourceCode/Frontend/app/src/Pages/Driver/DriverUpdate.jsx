@@ -6,12 +6,13 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { getDriverURLbyId, updateDriverURL } from "../../Services/endpoints";
 
 export default class DriverUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenseNo: "",
+      licenceNo: "",
       name: "",
       address: "",
       vehicleNo: "",
@@ -19,55 +20,42 @@ export default class DriverUpdate extends Component {
       phoneNo: "",
     };
   }
-  // async componentDidMount() {
-  //   const items = await axios.get().then((result) => {
-  //     this.setState({
-  //       items: result.data,
-  //     });
-  //     //console.log(result.data);
-  //   });
-  // }
+  async componentDidMount() {
+    let id = localStorage.getItem("updateId");
+    await axios.get(getDriverURLbyId + id).then((result) => {
+      this.setState({
+        licenceNo: result.data.licenceNo,
+        name: result.data.name,
+        address: result.data.address,
+        vehicleNo: result.data.vehicleNo,
+        vehicleType: result.data.vehicleType,
+        phoneNo: result.data.phoneNo,
+      });
+    });
+  }
 
-  // edit(id) {
-  //   axios.get("").then((res) => {
-  //     this.setState({
-  //       licenseNo: res.data.licenseNo,
-  //       name: res.data.name,
-  //       address: res.data.address,
-  //       vehicleNo: res.data.vehicleNo,
-  //       vehicleType: res.data.vehicleType,
-  //       phoneNo: res.data.phoneNo,
-  //     });
-  //   });
-  // }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const data = {
-
-  //     licenseNo: this.state.licenseNo,
-  //     name: this.state.name,
-  //     address: this.state.address,
-  //     vehicleNo: this.state.vehicleNo,
-  //     vehicleType: this.state.customerPhone,
-  //   };
-  //   console.log("Data to send", data);
-  //   const res = axios.put(addOrderURL, data).then(() => {
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Update Successful!!!",
-  //     }).then(() => {
-  //       window.location.reload(false);
-  //     });
-  //   });
-  // };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      licenceNo: this.state.licenceNo,
+      name: this.state.name,
+      address: this.state.address,
+      vehicleNo: this.state.vehicleNo,
+      vehicleType: this.state.vehicleType,
+      phoneNo: this.state.phoneNo,
+    };
+    axios.put(updateDriverURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Update Successful!!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleSubmit = (e) => {
-    alert(this.state.value);
   };
 
   render() {
@@ -87,11 +75,12 @@ export default class DriverUpdate extends Component {
                   <input
                     class="form-control"
                     type="text"
-                    id="licenseNo"
-                    name="licenseNo"
+                    id="licenceNo"
+                    name="licenceNo"
+                    readOnly="true"
                     placeholder="License No"
                     required
-                    value={this.state.licenseNo}
+                    value={this.state.licenceNo}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -148,7 +137,7 @@ export default class DriverUpdate extends Component {
                 <div class="col-sm-9">
                   <select
                     class="form-control"
-                    value={this.state.value}
+                    value={this.state.vehicleType}
                     onChange={this.handleChange}
                   >
                     <option value="Lorry">Lorry</option>

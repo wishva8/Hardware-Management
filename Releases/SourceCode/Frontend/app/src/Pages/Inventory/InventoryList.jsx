@@ -6,28 +6,31 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { inventoryURL } from "../../Services/endpoints";
-import { Redirect } from "react-router-dom";
+import { deleteInventoryURL, inventoryURL } from "../../Services/endpoints";
+import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import generatePDFItems from "./InventoryReport";
 
 export default class InventoryList extends Component {
-  state = {
-    itemNo: "",
-    itemCategory: "",
-    description: "",
-    unitPrice: 0,
-    inventoryNo: "",
-    quantity: 0,
-    items: [],
-    redirect: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemNo: "",
+      itemCategory: "",
+      description: "",
+      unitPrice: 0,
+      inventoryNo: "",
+      quantity: 0,
+      items: [],
+      redirect: false,
+    };
+  }
 
   async componentDidMount() {
-    const items = await axios.get(inventoryURL).then((result) => {
+    await axios.get(inventoryURL).then((result) => {
       this.setState({
         items: result.data,
       });
-      //console.log(result.data);
     });
   }
 
@@ -42,7 +45,7 @@ export default class InventoryList extends Component {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are you sure?",
+        title: "Are you want to delete " + inventoryNo + " item?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -54,24 +57,16 @@ export default class InventoryList extends Component {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your item " + inventoryNo + " has been deleted.",
             "success"
           );
-          axios
-            .delete(
-              "http://localhost:9091/inventory/deleteDeliveryById/" +
-                inventoryNo
-            )
-            .then(() => {
-              this.componentDidMount();
-            });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+          axios.delete(deleteInventoryURL + inventoryNo).then(() => {
+            this.componentDidMount();
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your item record is safe :)",
+            "Your " + inventoryNo + " ineventory record is safe :)",
             "error"
           );
         }
@@ -105,13 +100,19 @@ export default class InventoryList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Item
             </button>
-            <button type="submit" className="Item-Button-Report">
+            <button
+              className="Item-Button-Report"
+              onClick={() => {
+                generatePDFItems(this.state.items);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
           <div className="row">
-            <table className="table table-bordered  Inventory">
+            <table className="table table-bordered  Inventory" id="myTable">
               <tr className="InventoryListItems">
+                <th className="ps-4">Inventory ID</th>
                 <th className="ps-4">Item No.</th>
                 <th className="ps-4">Description</th>
                 <th className="ps-4">Item Category</th>
@@ -125,13 +126,26 @@ export default class InventoryList extends Component {
                     key={item.itemNo}
                     className="InventoryListItems text-white"
                   >
+                    <td className="ps-4">{item.inventoryNo}</td>
                     <td className="ps-4">{item.itemNo}</td>
                     <td className="ps-4">{item.description}</td>
                     <td className="ps-4">{item.itemCategory}</td>
                     <td className="ps-4">{item.unitPrice}</td>
                     <td className="ps-4">{item.quantity}</td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                      <Link
+                        to={{
+                          pathname: "/updateItem",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem("updateId", item.inventoryNo);
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

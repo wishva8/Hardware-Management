@@ -6,79 +6,68 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
+import {
+  getInventoryURLbyID,
+  updateInventoryURL,
+} from "../../Services/endpoints";
 
 export default class UpdateItems extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      itemNo: "",
-      itemCategory: "",
-      description: "",
-      unitPrice: 0,
-      inventoryNo: "",
-      qty: 0,
-    };
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   state = {
     itemNo: "",
     itemCategory: "",
     description: "",
     unitPrice: 0,
-    inventoryNo: "",
-    qty: 0,
+    inventoryNo: 0,
+    quantity: 0,
+    items: [],
   };
 
-  // async componentDidMount() {
-  //   const items = await axios.get().then((result) => {
-  //     this.setState({
-  //       items: result.data,
-  //     });
-  //     //console.log(result.data);
-  //   });
-  // }
+  async componentDidMount() {
+    let invenID = localStorage.getItem("updateId");
+    await axios.get(getInventoryURLbyID + invenID).then((result) => {
+      this.setState({
+        inventoryNo: result.data.inventoryNo,
+        itemNo: result.data.itemNo,
+        itemCategory: result.data.itemCategory,
+        description: result.data.description,
+        unitPrice: result.data.unitPrice,
+        quantity: result.data.quantity,
+      });
+    });
+  }
 
-  // edit(id) {
-  //   axios.get("").then((res) => {
-  //     this.setState({
-  //       itemNo: res.data.itemNo,
-  //       itemCategory: res.data.itemCategory,
-  //       description: res.data.description,
-  //       unitPrice: res.data.unitPrice,
-  //       inventoryNo: res.data.inventoryNo,
-  //       qty: res.data.qty,
-  //     });
-  //   });
-  // }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const data = {
-
-  //     itemNo: this.state.itemNo,
-  //     orderNo: this.state.description,
-  //     description: this.state.address,
-  //     customerName: this.state.customerName,
-  //     customerPhone: this.state.customerPhone,
-  //   };
-  //   console.log("Data to send", data);
-
-  //   const res = axios.put(addOrderURL, data).then(() => {
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Update Successful!!!",
-  //     }).then(() => {
-  //       window.location.reload(false);
-  //     });
-  //   });
-  // };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let invenID = localStorage.getItem("updateId");
+    const data = {
+      inventoryNo: invenID,
+      itemNo: this.state.itemNo,
+      itemCategory: this.state.itemCategory,
+      description: this.state.description,
+      unitPrice: this.state.unitPrice,
+      quantity: this.state.quantity,
+    };
+    console.log("Data to send", data);
+    axios.put(updateInventoryURL, data).then((res) => {
+      console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Update Successful!!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = (e) => {
-    alert(this.state.value);
-  };
   render() {
     return (
       <div className="UpdateItem">
@@ -90,6 +79,24 @@ export default class UpdateItems extends Component {
           </div>
           <div className="Item-Update-Body-Container">
             <form onSubmit={this.handleSubmit}>
+              <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">
+                  Inventory No. :
+                </label>
+                <div class="col-sm-9">
+                  <input
+                    class="form-control"
+                    type="Number"
+                    id="inventoryNo"
+                    name="inventoryNo"
+                    readOnly="true"
+                    placeholder="Inventory No."
+                    required
+                    value={this.state.inventoryNo}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
               <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">Item No. :</label>
                 <div class="col-sm-9">
@@ -112,7 +119,8 @@ export default class UpdateItems extends Component {
                 <div class="ui fluid col-sm-9" role="listbox" tabindex="0">
                   <select
                     class="form-control"
-                    value={this.state.value}
+                    name="itemCategory"
+                    value={this.state.itemCategory}
                     onChange={this.handleChange}
                   >
                     <option value="Electrical">Electrical</option>
@@ -153,40 +161,34 @@ export default class UpdateItems extends Component {
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Inventory No:</label>
-                <div class="ui fluid col-sm-9" role="listbox" tabindex="0">
-                  <select
-                    class="form-control"
-                    value={this.state.value1}
-                    onChange={this.handleChange}
-                  >
-                    <option value1="INV1">INV1</option>
-                    <option value1="INV2">INV2</option>
-                    <option value1="INV3">INV3</option>
-                    <option value1="INV4">INV4</option>
-                    <option value1="INV5">INV5</option>
-                  </select>
-                </div>
-              </div>
-              <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">Quantity :</label>
                 <div class="col-sm-9">
                   <input
                     class="form-control"
                     type="Number"
-                    id="qty"
-                    name="qty"
+                    id="quantity"
+                    name="quantity"
                     placeholder="Quantity"
                     required
-                    value={this.state.qty}
+                    value={this.state.quantity}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
               <div className="ItemRow">
-                <button type="submit" className="Item-Button-Update">
+                {/* <Link
+                  to={{
+                    pathname: "/inventoryList",
+                  }}
+                > */}
+                <button
+                  type="submit"
+                  className="Item-Button-Update"
+                  onClick={{}}
+                >
                   <FontAwesomeIcon icon={faCheckCircle} /> Update Item
                 </button>
+                {/* </Link> */}
               </div>
             </form>
           </div>

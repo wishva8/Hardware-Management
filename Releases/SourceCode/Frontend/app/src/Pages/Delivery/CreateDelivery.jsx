@@ -133,7 +133,7 @@ export default class CreateDelivery extends Component {
                 <div className="col-sm-9">
                   <input
                     className="form-control"
-                    type="Number"
+                    type="tel"
                     id="customerPhoneNumber"
                     name="customerPhoneNumber"
                     placeholder="0766157878"
