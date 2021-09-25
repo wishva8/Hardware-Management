@@ -11,7 +11,7 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { driverURL } from "../../Services/endpoints";
+import { deleteDriverURL, driverURL } from "../../Services/endpoints";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -74,14 +74,10 @@ export default class DriverList extends Component {
             "Your driver " + licenceNo + " has been deleted.",
             "success"
           );
-          axios
-            .delete(
-              "http://localhost:9091/driver/deleteDriverById/" + licenceNo
-            )
-            .then(() => {
-              console.log(licenceNo);
-              this.componentDidMount();
-            });
+          axios.delete(deleteDriverURL + licenceNo).then(() => {
+            console.log(licenceNo);
+            this.componentDidMount();
+          });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",

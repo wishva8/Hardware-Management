@@ -10,6 +10,7 @@ import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import { deleteOrderURL } from "../../Services/endpoints";
 
 export default class OrderList extends Component {
   state = {
@@ -74,11 +75,9 @@ export default class OrderList extends Component {
             "Your order " + orderId + " has been deleted.",
             "success"
           );
-          axios
-            .delete("http://localhost:9091/orders/deleteOrderById/" + orderId)
-            .then(() => {
-              this.componentDidMount();
-            });
+          axios.delete(deleteOrderURL + orderId).then(() => {
+            this.componentDidMount();
+          });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",

@@ -6,21 +6,24 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { inventoryURL } from "../../Services/endpoints";
-import { Redirect } from "react-router-dom";
+import { deleteInventoryURL, inventoryURL } from "../../Services/endpoints";
+import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default class InventoryList extends Component {
-  state = {
-    itemNo: "",
-    itemCategory: "",
-    description: "",
-    unitPrice: 0,
-    inventoryNo: "",
-    quantity: 0,
-    items: [],
-    redirect: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemNo: "",
+      itemCategory: "",
+      description: "",
+      unitPrice: 0,
+      inventoryNo: "",
+      quantity: 0,
+      items: [],
+      redirect: false,
+    };
+  }
 
   async componentDidMount() {
     const items = await axios.get(inventoryURL).then((result) => {
@@ -57,14 +60,9 @@ export default class InventoryList extends Component {
             "Your item " + inventoryNo + " has been deleted.",
             "success"
           );
-          axios
-            .delete(
-              "http://localhost:9091/inventory/deleteDeliveryById/" +
-                inventoryNo
-            )
-            .then(() => {
-              this.componentDidMount();
-            });
+          axios.delete(deleteInventoryURL + inventoryNo).then(() => {
+            this.componentDidMount();
+          });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
@@ -128,7 +126,20 @@ export default class InventoryList extends Component {
                     <td className="ps-4">{item.unitPrice}</td>
                     <td className="ps-4">{item.quantity}</td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                      <Link
+                        to={{
+                          pathname: "/updateItem",
+                          data: item.inventoryNo,
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="2x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem("updateId", item.inventoryNo);
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

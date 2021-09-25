@@ -8,43 +8,60 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default class UpdateDelivery extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deliveryNo: "",
-      orderNo: "",
-      description: "",
-      address: "",
-      customerName: "",
-      customerPhone: "",
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.
+  // }
+  state = {
+    deliveryNo: 0,
+    orderNo: "",
+    description: "",
+    address: "",
+    customerName: "",
+    customerPhone: "",
+    delivery: [],
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  // async componentDidMount() {
-  //   const items = await axios.get().then((result) => {
-  //     this.setState({
-  //       items: result.data,
-  //     });
-  //     //console.log(result.data);
-  //   });
-  // }
+  async componentDidMount() {
+    // const items = await axios.get().then((result) => {
+    //   this.setState({
+    //     items: result.data,
+    //   });
+    //   console.log(result.data);
+    // });
+    const delivery = await axios
+      .get("http://localhost:9091/delivery/getDeliveryById/" + 9)
+      .then((result) => {
+        this.setState({
+          orderNo: result.data.orderNo,
+          description: result.data.description,
+          address: result.data.address,
+          customerName: result.data.customerName,
+          customerPhone: result.data.customerPhone,
+        });
+        console.log(result.data);
+      });
+  }
 
-  // edit(id) {
-  //   axios.get("").then((res) => {
-  //     this.setState({
-  //       deliveryNo: res.data.deliveryNo,
-  //       orderNo: res.data.orderNo,
-  //       description: res.data.description,
-  //       address: res.data.address,
-  //       customerName: res.data.customerName,
-  //       customerPhone: res.data.customerPhone,
-  //     });
-  //   });
-  // }
+  edit(deliveryNo) {
+    axios
+      .get("http://localhost:9091/delivery/getDeliveryById/" + deliveryNo)
+      .then((res) => {
+        this.setState({
+          // deliveryNo: res.data.deliveryNo,
+          orderNo: res.data.orderNo,
+          description: res.data.description,
+          address: res.data.address,
+          customerName: res.data.customerName,
+          customerPhone: res.data.customerPhone,
+        });
+        console.log(res);
+      });
+  }
 
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -86,10 +103,10 @@ export default class UpdateDelivery extends Component {
                     class="form-control"
                     type="text"
                     id="licenseNo"
-                    name="licenseNo"
+                    name="orderNo"
                     placeholder="License No"
                     required
-                    value={this.state.licenseNo}
+                    value={this.state.orderNo}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -101,10 +118,10 @@ export default class UpdateDelivery extends Component {
                     class="form-control"
                     type="text"
                     id="name"
-                    name="name"
+                    name="description"
                     placeholder="Driver Name"
                     required
-                    value={this.state.name}
+                    value={this.state.description}
                     onChange={this.handleChange}
                   />
                 </div>
