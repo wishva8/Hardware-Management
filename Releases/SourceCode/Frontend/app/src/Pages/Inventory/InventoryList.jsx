@@ -9,6 +9,7 @@ import axios from "axios";
 import { deleteInventoryURL, inventoryURL } from "../../Services/endpoints";
 import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import generatePDFItems from "./InventoryReport";
 
 export default class InventoryList extends Component {
   constructor(props) {
@@ -99,7 +100,12 @@ export default class InventoryList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Item
             </button>
-            <button type="submit" className="Item-Button-Report">
+            <button
+              className="Item-Button-Report"
+              onClick={() => {
+                generatePDFItems(this.state.items);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
