@@ -27,16 +27,20 @@ public class User {
     @Column(name = "phone_no")
     private String phoneNo;
 
+    @Column(name = "password")
+    private String password;
+
     public User() {
     }
 
-    public User(String nicNo, String name, String address, int userType, String email, String phoneNo) {
+    public User(String nicNo, String name, String address, int userType, String email, String phoneNo, String password) {
         this.nicNo = nicNo;
         this.name = name;
         this.address = address;
         this.userType = userType;
         this.email = email;
         this.phoneNo = phoneNo;
+        this.password = password;
     }
 
     public String getNicNo() {
@@ -85,5 +89,13 @@ public class User {
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -114,7 +114,7 @@ export default class OrderList extends Component {
             </button>
           </div>
           <div className="row">
-            <table class="table table-bordered  order">
+            <table class="table table-bordered  order" id="myTable">
               <tr class="orderListItems">
                 <th className="ps-4">Order ID</th>
                 <th className="ps-4">Order Description</th>
