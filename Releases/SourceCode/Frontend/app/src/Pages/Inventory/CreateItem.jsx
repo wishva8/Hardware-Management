@@ -146,25 +146,6 @@ export default class CreateItem extends Component {
                     />
                   </div>
                 </div>
-                {/* <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">
-                    Inventory No:
-                  </label>
-                  <div className="ui fluid col-sm-9">
-                    <select
-                      className="form-control"
-                      name="inventoryNo"
-                      // value={this.state.value1}
-                      onChange={this.handleChange}
-                    >
-                      <option value1="INV1">INV1</option>
-                      <option value1="INV2">INV2</option>
-                      <option value1="INV3">INV3</option>
-                      <option value1="INV4">INV4</option>
-                      <option value1="INV5">INV5</option>
-                    </select>
-                  </div>
-                </div> */}
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Quantity :</label>
                   <div className="col-sm-9">

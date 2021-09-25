@@ -17,19 +17,17 @@ public class InventoryController {
     InventoryService inventoryService;
 
     @PostMapping("/addItem")
-    public Inventory addInventory(@RequestBody Inventory inventory){
-        return inventoryService.addInventoryItem(inventory);
-    }
+    public Inventory addInventory(@RequestBody Inventory inventory){return inventoryService.addInventoryItem(inventory);}
 
     @GetMapping("/allInventory")
     public List<Inventory> getAllInventory(){return inventoryService.getAllInventories();}
 
     @PutMapping("/updateInventoryDetails")
-    public Inventory updateInventory(@RequestBody Inventory inventory) { return inventoryService.updateInverntory(inventory);}
+    public Inventory updateInventory(@RequestBody Inventory inventory){ return inventoryService.updateInverntory(inventory);}
 
     @GetMapping("/getInventoryById/{id}")
     public Optional<Inventory> getInventoryById(@PathVariable int id){ return inventoryService.getInventoryById(id);}
 
-    @DeleteMapping("/deleteDeliveryById/{id}")
+    @DeleteMapping("/deleteInventoryById/{id}")
     public boolean deleteInventoryById(@PathVariable int id){ return  inventoryService.deleteInventory(id);}
 }

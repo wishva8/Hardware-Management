@@ -6,17 +6,22 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
+import {
+  getDeliveryURLbyId,
+  updateDeliveryURL,
+} from "../../Services/endpoints";
 
 export default class UpdateDelivery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deliveryNo: "",
+      deliveryNo: 0,
       orderNo: "",
       description: "",
       address: "",
       customerName: "",
-      customerPhone: "",
+      customerPhoneNumber: "",
+      delivery: [],
     };
   }
 
@@ -24,49 +29,40 @@ export default class UpdateDelivery extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  // async componentDidMount() {
-  //   const items = await axios.get().then((result) => {
-  //     this.setState({
-  //       items: result.data,
-  //     });
-  //     //console.log(result.data);
-  //   });
-  // }
+  async componentDidMount() {
+    let id = localStorage.getItem("updateId");
+    await axios.get(getDeliveryURLbyId + id).then((result) => {
+      this.setState({
+        orderNo: result.data.orderNo,
+        description: result.data.description,
+        address: result.data.address,
+        customerName: result.data.customerName,
+        customerPhoneNumber: result.data.customerPhoneNumber,
+      });
+    });
+  }
 
-  // edit(id) {
-  //   axios.get("").then((res) => {
-  //     this.setState({
-  //       deliveryNo: res.data.deliveryNo,
-  //       orderNo: res.data.orderNo,
-  //       description: res.data.description,
-  //       address: res.data.address,
-  //       customerName: res.data.customerName,
-  //       customerPhone: res.data.customerPhone,
-  //     });
-  //   });
-  // }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let id = localStorage.getItem("updateId");
+    const data = {
+      deliveryNo: id,
+      orderNo: this.state.orderNo,
+      description: this.state.description,
+      address: this.state.address,
+      customerName: this.state.customerName,
+      customerPhoneNumber: this.state.customerPhoneNumber,
+    };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const data = {
-
-  //     deliveryNo: this.state.deliveryNo,
-  //     orderNo: this.state.orderNo,
-  //     description: this.state.description,
-  //     customerName: this.state.customerName,
-  //     customerPhone: this.state.customerPhone,
-  //   };
-  //   console.log("Data to send", data);
-
-  //   const res = axios.put(addOrderURL, data).then(() => {
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Update Successful!!!",
-  //     }).then(() => {
-  //       window.location.reload(false);
-  //     });
-  //   });
-  // };
+    axios.put(updateDeliveryURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Update Successful!!!",
+      }).then(() => {
+        window.location.reload(false);
+      });
+    });
+  };
 
   render() {
     return (
@@ -80,31 +76,31 @@ export default class UpdateDelivery extends Component {
           <div className="Delivery-Update-Body-Container">
             <form onSubmit={this.handleSubmit}>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">License No :</label>
+                <label className="col-sm-3 col-form-label">Order No. :</label>
                 <div class="col-sm-9">
                   <input
                     class="form-control"
                     type="text"
-                    id="licenseNo"
-                    name="licenseNo"
-                    placeholder="License No"
+                    id="orderNo"
+                    name="orderNo"
+                    placeholder="Order No"
                     required
-                    value={this.state.licenseNo}
+                    value={this.state.orderNo}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Name :</label>
+                <label className="col-sm-3 col-form-label">Description :</label>
                 <div class="col-sm-9">
                   <input
                     class="form-control"
                     type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Driver Name"
+                    id="description"
+                    name="description"
+                    placeholder="Description"
                     required
-                    value={this.state.name}
+                    value={this.state.description}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -117,7 +113,7 @@ export default class UpdateDelivery extends Component {
                     type="text"
                     id="address"
                     name="address"
-                    placeholder="Driver Address"
+                    placeholder="Address"
                     required
                     value={this.state.address}
                     onChange={this.handleChange}
@@ -125,35 +121,20 @@ export default class UpdateDelivery extends Component {
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Vehicle No :</label>
+                <label className="col-sm-3 col-form-label">
+                  Customer Name:
+                </label>
                 <div class="col-sm-9">
                   <input
                     class="form-control"
                     type="text"
-                    id="vehicleNo"
-                    name="vehicleNo"
-                    placeholder="Vehicle No"
+                    id="customerName"
+                    name="customerName"
+                    placeholder="Customer Name"
                     required
-                    value={this.state.vehicleNo}
+                    value={this.state.customerName}
                     onChange={this.handleChange}
                   />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">
-                  Vehicle Type :
-                </label>
-                <div class="col-sm-9">
-                  <select
-                    class="form-control"
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                  >
-                    <option value="Lorry">Lorry</option>
-                    <option value="Tipper">Tipper</option>
-                    <option value="Land Master">Land Master</option>
-                    <option value="Flat Bed">Flat Bed</option>
-                  </select>
                 </div>
               </div>
               <div className="mb-3 row">
@@ -162,11 +143,11 @@ export default class UpdateDelivery extends Component {
                   <input
                     class="form-control"
                     type="Number"
-                    id="phoneNo"
-                    name="phoneNo"
+                    id="customerPhoneNumber"
+                    name="customerPhoneNumber"
                     placeholder="0766157878"
                     required
-                    value={this.state.phoneNo}
+                    value={this.state.customerPhoneNumber}
                     onChange={this.handleChange}
                   />
                 </div>

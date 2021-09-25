@@ -5,11 +5,12 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { getOrders } from "../../Services/orders";
 import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+import { deleteOrderURL } from "../../Services/endpoints";
+import generatePDFOrders from "./OrderReport";
 
 export default class OrderList extends Component {
   state = {
@@ -28,7 +29,7 @@ export default class OrderList extends Component {
   };
 
   async componentDidMount() {
-    const orders = await axios.get(orderURL).then((result) => {
+    await axios.get(orderURL).then((result) => {
       // console.log(result.data);
       this.setState({
         orders: result.data,
@@ -74,11 +75,9 @@ export default class OrderList extends Component {
             "Your order " + orderId + " has been deleted.",
             "success"
           );
-          axios
-            .delete("http://localhost:9091/orders/deleteOrderById/" + orderId)
-            .then(() => {
-              this.componentDidMount();
-            });
+          axios.delete(deleteOrderURL + orderId).then(() => {
+            this.componentDidMount();
+          });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
@@ -105,7 +104,12 @@ export default class OrderList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Order
             </button>
-            <button type="submit" className="Order-Button-Report">
+            <button
+              className="Order-Button-Report"
+              onClick={() => {
+                generatePDFOrders(this.state.orders);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
@@ -141,7 +145,19 @@ export default class OrderList extends Component {
                       {order.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />
+                      <Link
+                        to={{
+                          pathname: "/updateOrder",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem("updateId", order.orderId);
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

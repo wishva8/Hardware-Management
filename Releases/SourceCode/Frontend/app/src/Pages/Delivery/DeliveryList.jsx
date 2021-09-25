@@ -10,10 +10,11 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { deliveryURL } from "../../Services/endpoints";
+import { deleteDeliveryURL, deliveryURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
 import Swal from "sweetalert2";
 import generatePDF from "./DeliverReportGenaration";
+import { Link } from "react-router-dom";
 
 export default class DeliveryList extends Component {
   state = {
@@ -28,19 +29,13 @@ export default class DeliveryList extends Component {
   };
 
   async componentDidMount() {
-    
-    const deliveries = await axios.get(deliveryURL).then((result) => {
+    await axios.get(deliveryURL).then((result) => {
       this.setState({
         deliveries: result.data,
       });
       // console.log("Display data", result.data);
     });
   }
-  setRedirect = () => {
-    this.setState({
-      redirect: true,
-    });
-  };
 
   delete(deliveryNo) {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -68,13 +63,9 @@ export default class DeliveryList extends Component {
             "Your delivery " + deliveryNo + " has been deleted.",
             "success"
           );
-          axios
-            .delete(
-              "http://localhost:9091/delivery/deleteDeliveryById/" + deliveryNo
-            )
-            .then(() => {
-              this.componentDidMount();
-            });
+          axios.delete(deleteDeliveryURL + deliveryNo).then(() => {
+            this.componentDidMount();
+          });
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
@@ -87,12 +78,18 @@ export default class DeliveryList extends Component {
         }
       });
   }
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    });
+  };
 
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to="/createDelivery" />;
     }
   };
+
   render() {
     const { deliveries } = this.state;
     return (
@@ -145,7 +142,22 @@ export default class DeliveryList extends Component {
                       {delivery.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <FontAwesomeIcon size="2x" icon={faEdit} />{" "}
+                      <Link
+                        to={{
+                          pathname: "/updateDelivery",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem(
+                              "updateId",
+                              delivery.deliveryNo
+                            );
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

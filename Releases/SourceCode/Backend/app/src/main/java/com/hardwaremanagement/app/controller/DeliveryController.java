@@ -17,9 +17,7 @@ public class DeliveryController {
     DeliveryService deliveryService;
 
     @PostMapping("/addDelivery")
-    public Delivery addDelivery (@RequestBody Delivery delivery){
-        return deliveryService.addDelivery(delivery);
-    }
+    public Delivery addDelivery (@RequestBody Delivery delivery){return deliveryService.addDelivery(delivery);}
 
     @GetMapping("/allDeliveries")
     public List<Delivery> getAllDeliveries(){ return deliveryService.getAllDeliveries();}
