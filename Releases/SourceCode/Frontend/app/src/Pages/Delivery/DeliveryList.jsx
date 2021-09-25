@@ -14,12 +14,9 @@ import { deleteDeliveryURL, deliveryURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
 import Swal from "sweetalert2";
 import generatePDF from "./DeliverReportGenaration";
+import { Link } from "react-router-dom";
 
 export default class DeliveryList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     deliveryNo: 0,
     orderNo: "",
@@ -32,7 +29,7 @@ export default class DeliveryList extends Component {
   };
 
   async componentDidMount() {
-    const deliveries = await axios.get(deliveryURL).then((result) => {
+    await axios.get(deliveryURL).then((result) => {
       this.setState({
         deliveries: result.data,
       });
@@ -93,19 +90,6 @@ export default class DeliveryList extends Component {
     }
   };
 
-  // setEdit = () => {
-  //   this.setState({
-  //     redirect: true,
-  //   });
-  // };
-
-  // renderEdit = () => {
-  //   if (this.state.redirect) {
-  //     console.log(this.props);
-  //     return <Redirect to="/updateDelivery" />;
-  //   }
-  // };
-
   render() {
     const { deliveries } = this.state;
     return (
@@ -158,13 +142,22 @@ export default class DeliveryList extends Component {
                       {delivery.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <FontAwesomeIcon
-                        size="2x"
-                        icon={faEdit}
-                        to="/updateDelivery"
-                        // onClick={this.setEdit}
-                      />
-                      {/* {this.renderEdit()} */}
+                      <Link
+                        to={{
+                          pathname: "/updateDelivery",
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          size="1x"
+                          icon={faEdit}
+                          onClick={() => {
+                            localStorage.setItem(
+                              "updateId",
+                              delivery.deliveryNo
+                            );
+                          }}
+                        />
+                      </Link>
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

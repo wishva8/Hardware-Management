@@ -31,6 +31,7 @@ export default class UpdateItems extends Component {
     let invenID = localStorage.getItem("updateId");
     await axios.get(getInventoryURLbyID + invenID).then((result) => {
       this.setState({
+        inventoryNo: result.data.inventoryNo,
         itemNo: result.data.itemNo,
         itemCategory: result.data.itemCategory,
         description: result.data.description,
@@ -78,6 +79,24 @@ export default class UpdateItems extends Component {
           </div>
           <div className="Item-Update-Body-Container">
             <form onSubmit={this.handleSubmit}>
+              <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">
+                  Inventory No. :
+                </label>
+                <div class="col-sm-9">
+                  <input
+                    class="form-control"
+                    type="Number"
+                    id="inventoryNo"
+                    name="inventoryNo"
+                    readOnly="true"
+                    placeholder="Inventory No."
+                    required
+                    value={this.state.inventoryNo}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
               <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">Item No. :</label>
                 <div class="col-sm-9">
@@ -141,7 +160,6 @@ export default class UpdateItems extends Component {
                   />
                 </div>
               </div>
-
               <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">Quantity :</label>
                 <div class="col-sm-9">

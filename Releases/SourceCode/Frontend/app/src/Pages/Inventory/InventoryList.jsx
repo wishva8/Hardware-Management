@@ -30,7 +30,6 @@ export default class InventoryList extends Component {
       this.setState({
         items: result.data,
       });
-      //console.log(result.data);
     });
   }
 
@@ -107,6 +106,7 @@ export default class InventoryList extends Component {
           <div className="row">
             <table className="table table-bordered  Inventory">
               <tr className="InventoryListItems">
+                <th className="ps-4">Inventory ID</th>
                 <th className="ps-4">Item No.</th>
                 <th className="ps-4">Description</th>
                 <th className="ps-4">Item Category</th>
@@ -120,6 +120,7 @@ export default class InventoryList extends Component {
                     key={item.itemNo}
                     className="InventoryListItems text-white"
                   >
+                    <td className="ps-4">{item.inventoryNo}</td>
                     <td className="ps-4">{item.itemNo}</td>
                     <td className="ps-4">{item.description}</td>
                     <td className="ps-4">{item.itemCategory}</td>
@@ -129,7 +130,6 @@ export default class InventoryList extends Component {
                       <Link
                         to={{
                           pathname: "/updateItem",
-                          data: item.inventoryNo,
                         }}
                       >
                         <FontAwesomeIcon

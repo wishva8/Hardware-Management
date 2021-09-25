@@ -34,5 +34,6 @@ export const deliveryControllerURL = baseURL + "delivery/";
 export const deliveryURL = deliveryControllerURL + "allDeliveries";
 export const addDeliveryURL = deliveryControllerURL + "addDelivery";
 export const deleteDeliveryURL = deliveryControllerURL + "deleteDeliveryById/";
-export const getDeliveryURLbyId = deliveryControllerURL + "getDriverById/";
-export const updateDeliveryURL = deliveryControllerURL + "updateDrivers";
+export const getDeliveryURLbyId = deliveryControllerURL + "getDeliveryById/";
+export const updateDeliveryURL =
+  deliveryControllerURL + "updateDeliveryDetails";
