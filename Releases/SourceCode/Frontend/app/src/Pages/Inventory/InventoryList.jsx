@@ -107,7 +107,7 @@ export default class InventoryList extends Component {
             </button>
           </div>
           <div className="row">
-            <table className="table table-bordered  Inventory">
+            <table className="table table-bordered  Inventory" id="myTable">
               <tr className="InventoryListItems">
                 <th className="ps-4">Item No.</th>
                 <th className="ps-4">Description</th>

@@ -113,7 +113,7 @@ export default class DriverList extends Component {
             </button>
           </div>
           <div className="row">
-            <table className="table table-bordered  driverList">
+            <table className="table table-bordered  driverList" id="myTable">
               <tr className="driverListItems">
                 <th className="ps-4">License No</th>
                 <th className="ps-4">Name</th>

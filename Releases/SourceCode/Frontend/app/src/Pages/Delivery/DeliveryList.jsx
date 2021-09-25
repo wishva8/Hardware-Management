@@ -28,11 +28,12 @@ export default class DeliveryList extends Component {
   };
 
   async componentDidMount() {
+    
     const deliveries = await axios.get(deliveryURL).then((result) => {
       this.setState({
         deliveries: result.data,
       });
-      console.log("Display data", result.data);
+      // console.log("Display data", result.data);
     });
   }
   setRedirect = () => {
@@ -119,7 +120,7 @@ export default class DeliveryList extends Component {
             </button>
           </div>
           <div className="row">
-            <table class="table table-bordered  DeliveryList">
+            <table class="table table-bordered  DeliveryList" id="myTable">
               <tr class="DeliveryListItems">
                 <th className="ps-4">Order No</th>
                 <th className="ps-4">Description</th>
