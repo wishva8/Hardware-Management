@@ -10,6 +10,7 @@ com/hardwaremanagement/app/service/InventoryService.class
 com/hardwaremanagement/app/service/impl/UserServiceImpl.class
 com/hardwaremanagement/app/SpmappApplication.class
 com/hardwaremanagement/app/controller/UserController.class
+com/hardwaremanagement/app/controller/LoginController.class
 com/hardwaremanagement/app/model/User.class
 com/hardwaremanagement/app/service/OrderService.class
 com/hardwaremanagement/app/service/impl/DriverServiceImpl.class
@@ -21,6 +22,7 @@ com/hardwaremanagement/app/repository/DeliveryRepository.class
 com/hardwaremanagement/app/model/Delivery.class
 com/hardwaremanagement/app/service/impl/DeliveryServiceImpl.class
 com/hardwaremanagement/app/repository/OrderRepository.class
+com/hardwaremanagement/app/dao/LoginDao.class
 com/hardwaremanagement/app/service/DriverService.class
 com/hardwaremanagement/app/repository/InventoryRepository.class
 com/hardwaremanagement/app/service/impl/InventoryServiceImpl.class
