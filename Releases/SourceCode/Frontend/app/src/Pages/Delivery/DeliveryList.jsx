@@ -13,6 +13,7 @@ import axios from "axios";
 import { deleteDeliveryURL, deliveryURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
 import Swal from "sweetalert2";
+import generatePDF from "./DeliverReportGenaration";
 
 export default class DeliveryList extends Component {
   constructor(props) {
@@ -113,15 +114,21 @@ export default class DeliveryList extends Component {
         <div className="content-layer">
           <SearchHeader topic="Delivery Management" />
           <div className="DeliveryRow text-end">
-            {this.renderRedirect()}
+            {/* {this.renderRedirect()} */}
             <button
-              type="submit"
+              type="button"
               className="Delivery-Button-List-Add"
-              onClick={this.setRedirect}
+              // onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Delivery
             </button>
-            <button type="reset" className="Delivery-Button-Report">
+            <button
+              type="button"
+              className="Delivery-Button-Report"
+              onClick={() => {
+                generatePDF(this.state.deliveries);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
