@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\OrderService.java
 C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\InventoryController.java
 C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\repository\DeliveryRepository.java
@@ -24,3 +25,31 @@ C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardwa
 C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\impl\DriverServiceImpl.java
 C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\UserController.java
 C:\Users\Himantha Amarathunga\Documents\SLIIT Material\Harware Management\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\model\Driver.java
+=======
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\repository\UserRepository.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\SpmappApplication.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\DriverController.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\model\Driver.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\model\Delivery.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\impl\InventoryServiceImpl.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\DeliveryService.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\OrderController.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\model\User.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\model\Order.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\impl\OrderServiceImpl.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\repository\DriverRepository.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\repository\InventoryRepository.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\InventoryService.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\InventoryController.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\UserController.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\impl\DriverServiceImpl.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\controller\DeliveryController.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\UserService.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\model\Inventory.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\repository\DeliveryRepository.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\repository\OrderRepository.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\DriverService.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\impl\DeliveryServiceImpl.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\OrderService.java
+G:\SLIIT Workspace\SPM Project\Hardware-Management\Releases\SourceCode\Backend\app\src\main\java\com\hardwaremanagement\app\service\impl\UserServiceImpl.java
+>>>>>>> 6157ff8020f17107a03791c9044903f8e71cb784
