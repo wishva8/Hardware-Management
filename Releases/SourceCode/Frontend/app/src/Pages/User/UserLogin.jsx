@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./UserLogin.css";
 import { imagePath } from "../../Services";
+import axios from "axios";
+import { userLoginURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class UserLogin extends Component {
   constructor(props) {
@@ -8,15 +11,16 @@ export default class UserLogin extends Component {
     this.state = {
       username: "",
       password: "",
-      isChecked: false,
+      name: ""
+      // isChecked: false,
     };
   }
 
-  toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    });
-  };
+  // toggleChange = () => {
+  //   this.setState({
+  //     isChecked: !this.state.isChecked,
+  //   });
+  // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -26,32 +30,50 @@ export default class UserLogin extends Component {
     e.preventDefault();
     const data = {
       username: this.state.username,
-    password: this.state.password,
-    isChecked: this.state.isChecked,
+      password: this.state.password,
+      // isChecked: this.state.isChecked,
     }
     console.log(data);
+    axios.post(userLoginURL, data).then((res) => {
+      console.log(res);
+      if (res.data==='UNAUTHORIZED') {
+        window.location = "/userLogin";
+        
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful!!"
+          
+        }).then(() => {
+          localStorage.setItem("name", res.data.name);
+          window.location = "/dashboard";
+
+        })
+      }
+      
+    })
   };
 
   render() {
     return (
       <div className="UserLogin">
-          <div className="d-flex justify-content-center">
-            <img src={imagePath + `logo.png`} alt="" className="logo-login" />
-          </div>
+        <div className="d-flex justify-content-center">
+          <img src={imagePath + `logo.png`} alt="" className="logo-login" />
+        </div>
         <div className="User-Login-Heading-Container">
           <h3 className="Login-User-Heading">Admin Login</h3>
         </div>
         <div className="User-Login-Body-Container">
           <form onSubmit={this.handleSubmit}>
             <div className="mb-4 row">
-              <label className="col-sm-10 col-form-label">Username :</label>
+              <label className="col-sm-10 col-form-label">Email :</label>
               <div className="col-sm-10">
                 <input
                   className="form-control"
                   type="text"
                   id="username"
                   name="username"
-                  placeholder="Username"
+                  placeholder="Email"
                   required
                   value={this.state.username}
                   onChange={this.handleChange}
@@ -74,14 +96,14 @@ export default class UserLogin extends Component {
               </div>
             </div>
             <div className="LoginRow">
-                <div className="checkbox">
+              {/* <div className="checkbox">
             <input
                 type="checkbox"
                 checked={this.state.isChecked}
                 onChange={this.toggleChange}
               />
-            <label className="rememberMe">Remember Me</label>
-            </div>
+            <label className="rememberMe">Remember Me</label> */}
+              {/* </div> */}
               <button type="submit" className="User-Button-Login">
                 Login
               </button>

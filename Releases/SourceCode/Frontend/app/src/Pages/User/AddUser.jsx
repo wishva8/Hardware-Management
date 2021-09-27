@@ -4,18 +4,24 @@ import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
+import axios from "axios";
+import { addUserURL } from "../../Services/endpoints";
+import Swal from "sweetalert2";
 
 export default class AddUser extends Component {
-  state = {
-    nicNo: "",
-    name: "",
-    address: "",
-    userType: "",
-    email: "",
-    phoneNo: "",
-    password: "",
-    rePassword: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      nicNo: "",
+      name: "",
+      address: "",
+      userType: "",
+      email: "",
+      phoneNo: "",
+      password: "",
+      rePassword: "",
+    };
+  }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -34,49 +40,59 @@ export default class AddUser extends Component {
       rePassword: this.state.rePassword,
     };
     console.log(data);
-    // try {
-    // const res = addUser(this.state);
+    const res = axios.post(addUserURL, data).then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Insert Successful!!",
+      }).then(() => {
+        window.location.reload(false);
+      })
+    })
+  }
+  //   console.log(data);
+  //   try {
+  //   const res = addUser(this.state);
 
-    // }catch (error) {
-    //   console.log(error);
-    // }
-    //  alert(this.state.value);
-    // e.preventDefault();
-    // if (this.state.password === this.state.rePassword) {
-    // sendDetailsToServer();
-    // } else {
-    //   this.showError("Passwords do not match");
-    // }
-    // e.preventDefault();
-    // fetch("/", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify ({
-    //     nicNo: this.state.nicNo,
-    //     name: this.state.name,
-    //     address: this.state.address,
-    //     userType: this.state.userType,
-    //     email: this.state.email,
-    //     phoneNo: this.state.phoneNo,
-    //     password: this.state.password,
-    //     rePassword: this.state.rePassword,
-    //   })
-    // }).then(this.setState({
-    //   nicNo: "",
-    //   name: "",
-    //   address: "",
-    //   userType: "",
-    //   email: "",
-    //   phoneNo: "",
-    //   password: "",
-    //   rePassword: "",
-    // })
-    // )
-    // .then((res) => res.json())
-    // .catch((err) => console.log(err))
-  };
+  //   }catch (error) {
+  //     console.log(error);
+  //   }
+  //    alert(this.state.value);
+  //   e.preventDefault();
+  //   if (this.state.password === this.state.rePassword) {
+  //   sendDetailsToServer();
+  //   } else {
+  //     this.showError("Passwords do not match");
+  //   }
+  //   e.preventDefault();
+  //   fetch("/", {
+  //     method: "post",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify ({
+  //       nicNo: this.state.nicNo,
+  //       name: this.state.name,
+  //       address: this.state.address,
+  //       userType: this.state.userType,
+  //       email: this.state.email,
+  //       phoneNo: this.state.phoneNo,
+  //       password: this.state.password,
+  //       rePassword: this.state.rePassword,
+  //     })
+  //   }).then(this.setState({
+  //     nicNo: "",
+  //     name: "",
+  //     address: "",
+  //     userType: "",
+  //     email: "",
+  //     phoneNo: "",
+  //     password: "",
+  //     rePassword: "",
+  //   })
+  //   )
+  //   .then((res) => res.json())
+  //   .catch((err) => console.log(err))
+  // };
 
   reset() {
     const res = {
@@ -153,13 +169,13 @@ export default class AddUser extends Component {
                   <select
                     className="form-control"
                     name="userType"
-                    // value={this.state.value}
+                    value={this.state.userType}
                     onChange={this.handleChange}
                   >
                     <option hidden>-Select-</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Cashier">Cashier</option>
-                    <option value="Accountant">Accountant </option>
+                    <option value="1">Manager</option>
+                    <option value="2">Cashier</option>
+                    <option value="3">Accountant </option>
                   </select>
                 </div>
               </div>
@@ -202,7 +218,7 @@ export default class AddUser extends Component {
                     type="password"
                     id="password"
                     name="password"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Password"
                     required
                     // value={this.state.password}

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header(props) {
+  
   return (
     <div className="header">
       <div className="row">
@@ -63,7 +64,7 @@ export default function Header(props) {
                 height="32"
                 className="rounded-circle me-2"
               />
-              <strong>Admin</strong>
+              <strong>{localStorage.getItem("name")??"User"}</strong>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-dark text-small shadow"
