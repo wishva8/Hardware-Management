@@ -9,6 +9,7 @@ import axios from "axios";
 import { deleteInventoryURL, inventoryURL } from "../../Services/endpoints";
 import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import generatePDFItems from "./InventoryReport";
 
 export default class InventoryList extends Component {
   constructor(props) {
@@ -30,7 +31,6 @@ export default class InventoryList extends Component {
       this.setState({
         items: result.data,
       });
-      //console.log(result.data);
     });
   }
 
@@ -100,13 +100,19 @@ export default class InventoryList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Item
             </button>
-            <button type="submit" className="Item-Button-Report">
+            <button
+              className="Item-Button-Report"
+              onClick={() => {
+                generatePDFItems(this.state.items);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
           <div className="row">
-            <table className="table table-bordered  Inventory">
+            <table className="table table-bordered  Inventory" id="myTable">
               <tr className="InventoryListItems">
+                <th className="ps-4">Inventory ID</th>
                 <th className="ps-4">Item No.</th>
                 <th className="ps-4">Description</th>
                 <th className="ps-4">Item Category</th>
@@ -120,6 +126,7 @@ export default class InventoryList extends Component {
                     key={item.itemNo}
                     className="InventoryListItems text-white"
                   >
+                    <td className="ps-4">{item.inventoryNo}</td>
                     <td className="ps-4">{item.itemNo}</td>
                     <td className="ps-4">{item.description}</td>
                     <td className="ps-4">{item.itemCategory}</td>
@@ -129,7 +136,6 @@ export default class InventoryList extends Component {
                       <Link
                         to={{
                           pathname: "/updateItem",
-                          data: item.inventoryNo,
                         }}
                       >
                         <FontAwesomeIcon

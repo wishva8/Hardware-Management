@@ -16,10 +16,7 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @PostMapping("/addOrder")
-    public Order createOrder(@RequestBody Order order){
-        return orderService.addOrder(order);
-    }
+    @PostMapping("/addOrder") public Order createOrder(@RequestBody Order order){return orderService.addOrder(order);}
 
     @GetMapping("/allOrders")
     public List<Order> getAllOrders(){return orderService.getAllOrders();}

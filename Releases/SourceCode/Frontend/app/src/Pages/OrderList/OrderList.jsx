@@ -10,6 +10,7 @@ import { orderURL } from "../../Services/endpoints";
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import { deleteOrderURL } from "../../Services/endpoints";
+import generatePDFOrders from "./OrderReport";
 
 export default class OrderList extends Component {
   state = {
@@ -103,12 +104,17 @@ export default class OrderList extends Component {
             >
               <FontAwesomeIcon icon={faPlus} /> Add Order
             </button>
-            <button type="submit" className="Order-Button-Report">
+            <button
+              className="Order-Button-Report"
+              onClick={() => {
+                generatePDFOrders(this.state.orders);
+              }}
+            >
               <FontAwesomeIcon icon={faDownload} /> Report
             </button>
           </div>
           <div className="row">
-            <table class="table table-bordered  order">
+            <table class="table table-bordered  order" id="myTable">
               <tr class="orderListItems">
                 <th className="ps-4">Order ID</th>
                 <th className="ps-4">Order Description</th>
