@@ -45,54 +45,10 @@ export default class AddUser extends Component {
         icon: "success",
         title: "Insert Successful!!",
       }).then(() => {
-        window.location.reload(false);
-      })
-    })
-  }
-  //   console.log(data);
-  //   try {
-  //   const res = addUser(this.state);
-
-  //   }catch (error) {
-  //     console.log(error);
-  //   }
-  //    alert(this.state.value);
-  //   e.preventDefault();
-  //   if (this.state.password === this.state.rePassword) {
-  //   sendDetailsToServer();
-  //   } else {
-  //     this.showError("Passwords do not match");
-  //   }
-  //   e.preventDefault();
-  //   fetch("/", {
-  //     method: "post",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify ({
-  //       nicNo: this.state.nicNo,
-  //       name: this.state.name,
-  //       address: this.state.address,
-  //       userType: this.state.userType,
-  //       email: this.state.email,
-  //       phoneNo: this.state.phoneNo,
-  //       password: this.state.password,
-  //       rePassword: this.state.rePassword,
-  //     })
-  //   }).then(this.setState({
-  //     nicNo: "",
-  //     name: "",
-  //     address: "",
-  //     userType: "",
-  //     email: "",
-  //     phoneNo: "",
-  //     password: "",
-  //     rePassword: "",
-  //   })
-  //   )
-  //   .then((res) => res.json())
-  //   .catch((err) => console.log(err))
-  // };
+        window.location = "/";
+      });
+    });
+  };
 
   reset() {
     const res = {
@@ -128,7 +84,6 @@ export default class AddUser extends Component {
                     name="nicNo"
                     placeholder="951234567V"
                     required
-                    // value={this.state.nicNo}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -143,7 +98,6 @@ export default class AddUser extends Component {
                     name="name"
                     placeholder="John Doe"
                     required
-                    // value={this.state.name}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -158,7 +112,6 @@ export default class AddUser extends Component {
                     name="address"
                     placeholder="110/C, Town Hall, Colombo"
                     required
-                    // value={this.state.address}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -189,7 +142,6 @@ export default class AddUser extends Component {
                     name="email"
                     placeholder="abc@abc.com"
                     required
-                    // value={this.state.email}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -205,7 +157,6 @@ export default class AddUser extends Component {
                     name="phoneNo"
                     placeholder="0766157878"
                     required
-                    // value={this.state.phoneNo}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -221,7 +172,6 @@ export default class AddUser extends Component {
                     // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     placeholder="Password"
                     required
-                    // value={this.state.password}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -238,7 +188,6 @@ export default class AddUser extends Component {
                     name="rePassword"
                     placeholder="Confirm Password"
                     required
-                    // value={this.state.rePassword}
                     onChange={this.handleChange}
                   />
                 </div>

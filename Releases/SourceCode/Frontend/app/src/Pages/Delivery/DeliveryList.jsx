@@ -33,7 +33,6 @@ export default class DeliveryList extends Component {
       this.setState({
         deliveries: result.data,
       });
-      // console.log("Display data", result.data);
     });
   }
 
@@ -66,10 +65,7 @@ export default class DeliveryList extends Component {
           axios.delete(deleteDeliveryURL + deliveryNo).then(() => {
             this.componentDidMount();
           });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
             "Your " + deliveryNo + " delivery record is safe :)",
@@ -98,11 +94,11 @@ export default class DeliveryList extends Component {
         <div className="content-layer">
           <SearchHeader topic="Delivery Management" />
           <div className="DeliveryRow text-end">
-            {/* {this.renderRedirect()} */}
+            {this.renderRedirect()}
             <button
               type="button"
               className="Delivery-Button-List-Add"
-              // onClick={this.setRedirect}
+              onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Delivery
             </button>
@@ -142,22 +138,14 @@ export default class DeliveryList extends Component {
                       {delivery.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <Link
-                        to={{
-                          pathname: "/updateDelivery",
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faEdit}
+                        onClick={() => {
+                          localStorage.setItem("updateId", delivery.deliveryNo);
+                          window.location = "/updateDelivery";
                         }}
-                      >
-                        <FontAwesomeIcon
-                          size="1x"
-                          icon={faEdit}
-                          onClick={() => {
-                            localStorage.setItem(
-                              "updateId",
-                              delivery.deliveryNo
-                            );
-                          }}
-                        />
-                      </Link>
+                      />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

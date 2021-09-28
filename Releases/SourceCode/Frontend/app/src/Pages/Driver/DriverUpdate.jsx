@@ -49,7 +49,7 @@ export default class DriverUpdate extends Component {
         icon: "success",
         title: "Update Successful!!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/driverList";
       });
     });
   };
@@ -73,6 +73,7 @@ export default class DriverUpdate extends Component {
                 <label className="col-sm-3 col-form-label">License No :</label>
                 <div class="col-sm-9">
                   <input
+                    style={{ backgroundColor: "#345454" }}
                     class="form-control"
                     type="text"
                     id="licenceNo"

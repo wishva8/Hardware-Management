@@ -59,7 +59,7 @@ export default class UpdateDelivery extends Component {
         icon: "success",
         title: "Update Successful!!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/deliveryList";
       });
     });
   };

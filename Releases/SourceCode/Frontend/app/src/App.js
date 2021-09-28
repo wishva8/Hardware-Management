@@ -1,4 +1,4 @@
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import "./App.css";
 import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
 import OrderList from "./Pages/OrderList/OrderList";
@@ -21,6 +21,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          <Route exact path="/">
+            <UserLogin />
+          </Route>
           <Route path="/orderList">
             <OrderList />
           </Route>
@@ -41,9 +44,6 @@ function App() {
           </Route>
           <Route path="/createItem">
             <CreateItem />
-          </Route>
-          <Route path="/userLogin">
-            <UserLogin />
           </Route>
           <Route path="/inventoryList">
             <InventoryList />
@@ -73,4 +73,3 @@ function App() {
 }
 
 export default App;
-

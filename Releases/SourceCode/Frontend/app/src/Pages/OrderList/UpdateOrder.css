@@ -5,7 +5,6 @@
   opacity: 85%;
   background-repeat: no-repeat;
   background-size: cover;
-  /* margin-top: 100px; */
   background-color: #021010;
 }
 
@@ -61,4 +60,8 @@
   text-align: center;
   font-weight: bold;
   color: #9ce6b7;
+}
+
+.updateId {
+  color: black;
 }

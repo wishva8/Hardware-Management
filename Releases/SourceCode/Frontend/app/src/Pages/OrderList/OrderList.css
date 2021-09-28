@@ -10,7 +10,6 @@
 .order {
   width: 100%;
   color: #9ce6b7;
-  /* margin-top: 8%; */
   border-radius: 15px;
   font-size: 18px;
 }
@@ -36,14 +35,12 @@ th:last-child {
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  /* margin-left: 74%; */
 }
 .Order-Button-Report {
   background-color: #ccf1da;
   color: #0c6464;
   padding: 12px;
   border: soild 1px #0c6464;
-  /* margin: 10px 0; */
   width: 12%;
   border-radius: 15px;
   cursor: pointer;

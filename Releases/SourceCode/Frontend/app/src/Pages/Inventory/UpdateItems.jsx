@@ -52,14 +52,13 @@ export default class UpdateItems extends Component {
       unitPrice: this.state.unitPrice,
       quantity: this.state.quantity,
     };
-    console.log("Data to send", data);
     axios.put(updateInventoryURL, data).then((res) => {
       console.log(res.data);
       Swal.fire({
         icon: "success",
         title: "Update Successful!!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/inventoryList";
       });
     });
   };
@@ -85,6 +84,7 @@ export default class UpdateItems extends Component {
                 </label>
                 <div class="col-sm-9">
                   <input
+                    style={{ backgroundColor: "#345454" }}
                     class="form-control"
                     type="Number"
                     id="inventoryNo"
@@ -176,11 +176,6 @@ export default class UpdateItems extends Component {
                 </div>
               </div>
               <div className="ItemRow">
-                {/* <Link
-                  to={{
-                    pathname: "/inventoryList",
-                  }}
-                > */}
                 <button
                   type="submit"
                   className="Item-Button-Update"
@@ -188,7 +183,6 @@ export default class UpdateItems extends Component {
                 >
                   <FontAwesomeIcon icon={faCheckCircle} /> Update Item
                 </button>
-                {/* </Link> */}
               </div>
             </form>
           </div>

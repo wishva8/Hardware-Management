@@ -72,22 +72,18 @@ export default class AdminDashboard extends Component {
       "th",
       "th",
     ];
-    // test.toString().split("").pop();
+
     var date =
       time.getDate() + dateName[time.getDate().toString().split("").pop()];
 
     var year = time.getFullYear();
 
     var dateArrange = date + " of " + month + ", " + year;
-    // console.log(year);
-    // const timeTag = document.getElementById("time");
-    // timeTag.value = timeArrange;
-    // console.log(timeTag);
+
     const timeTag = document.getElementById("time");
     const dateTag = document.getElementById("date");
     timeTag.innerHTML = timeArrange;
     dateTag.innerHTML = dateArrange;
-    // this.setState({ time: timeArrange });
   }
   render() {
     return (

@@ -14,15 +14,19 @@ export default function SideNav() {
     <div>
       <div className="d-flex flex-column flex-shrink-0 p-3 sidebar">
         <Link to="/dashboard">
-        <a
-          href="/"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-        >
-          <div className="d-flex justify-content-center">
-            <img src={imagePath + `logo.png`} alt="" className="logo-sidebar" />
-          </div>
-          <span className="fs-4"></span>
-        </a>
+          <a
+            href="/"
+            className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+          >
+            <div className="d-flex justify-content-center">
+              <img
+                src={imagePath + `logo.png`}
+                alt=""
+                className="logo-sidebar"
+              />
+            </div>
+            <span className="fs-4"></span>
+          </a>
         </Link>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">

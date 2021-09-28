@@ -10,7 +10,6 @@
 .Inventory {
   width: 100%;
   color: #9ce6b7;
-  /* margin-top: 8%; */
   border-radius: 15px;
   font-size: 18px;
 }
@@ -37,7 +36,6 @@ th:last-child {
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
-  /* margin-left: 74%; */
 }
 .Item-Button-Report {
   background-color: #ccf1da;

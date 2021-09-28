@@ -52,7 +52,7 @@ export default class UpdateOrder extends Component {
       itemId: this.state.itemId,
       quantity: this.state.quantity,
       unitPrice: this.state.unitPrice,
-      totalPrice: this.state.totalPrice,
+      totalPrice: this.state.quantity*this.state.unitPrice,
       date: this.state.date,
       customerName: this.state.customerName,
       customerPhoneNo: this.state.customerPhoneNo,
@@ -65,7 +65,7 @@ export default class UpdateOrder extends Component {
         icon: "success",
         title: "Update Successful!!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/orderList";
       });
     });
   };
@@ -88,9 +88,10 @@ export default class UpdateOrder extends Component {
               <form onSubmit={this.handleSubmit}>
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Order Id. :</label>
-                  <div className="col-sm-9">
+                  <div className="col-sm-9 ">
                     <input
-                      className="form-control"
+                      style={{ backgroundColor: "#345454" }}
+                      className="form-control "
                       type="text"
                       id="orderId"
                       name="orderId"
@@ -134,21 +135,7 @@ export default class UpdateOrder extends Component {
                     />
                   </div>
                 </div>
-                <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">Quantity :</label>
-                  <div className="col-sm-9">
-                    <input
-                      className="form-control"
-                      type="Number"
-                      id="quantity"
-                      name="quantity"
-                      placeholder="Quantity"
-                      required
-                      value={this.state.quantity}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
+                
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Unit Price :
@@ -167,18 +154,35 @@ export default class UpdateOrder extends Component {
                   </div>
                 </div>
                 <div className="mb-3 row">
+                  <label className="col-sm-3 col-form-label">Quantity :</label>
+                  <div className="col-sm-9">
+                    <input
+                      className="form-control"
+                      type="Number"
+                      id="quantity"
+                      name="quantity"
+                      placeholder="Quantity"
+                      required
+                      value={this.state.quantity}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Total Price :
                   </label>
                   <div className="col-sm-9">
                     <input
                       className="form-control"
+                      style={{ backgroundColor: "#345454" }}
                       type="Number"
                       id="totalPrice"
                       name="totalPrice"
                       placeholder="Total Price"
                       required
-                      value={this.state.totalPrice}
+                      readOnly="true"
+                      value={this.state.quantity*this.state.unitPrice}
                       onChange={this.handleChange}
                     />
                   </div>

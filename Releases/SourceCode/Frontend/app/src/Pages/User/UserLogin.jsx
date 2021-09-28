@@ -4,6 +4,7 @@ import { imagePath } from "../../Services";
 import axios from "axios";
 import { userLoginURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export default class UserLogin extends Component {
   constructor(props) {
@@ -11,16 +12,9 @@ export default class UserLogin extends Component {
     this.state = {
       username: "",
       password: "",
-      name: ""
-      // isChecked: false,
+      name: "",
     };
   }
-
-  // toggleChange = () => {
-  //   this.setState({
-  //     isChecked: !this.state.isChecked,
-  //   });
-  // };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -31,27 +25,22 @@ export default class UserLogin extends Component {
     const data = {
       username: this.state.username,
       password: this.state.password,
-      // isChecked: this.state.isChecked,
-    }
+    };
     console.log(data);
     axios.post(userLoginURL, data).then((res) => {
       console.log(res);
-      if (res.data==='UNAUTHORIZED') {
+      if (res.data === "UNAUTHORIZED") {
         window.location = "/userLogin";
-        
       } else {
         Swal.fire({
           icon: "success",
-          title: "Login Successful!!"
-          
+          title: "Login Successful!!",
         }).then(() => {
           localStorage.setItem("name", res.data.name);
           window.location = "/dashboard";
-
-        })
+        });
       }
-      
-    })
+    });
   };
 
   render() {
@@ -96,17 +85,12 @@ export default class UserLogin extends Component {
               </div>
             </div>
             <div className="LoginRow">
-              {/* <div className="checkbox">
-            <input
-                type="checkbox"
-                checked={this.state.isChecked}
-                onChange={this.toggleChange}
-              />
-            <label className="rememberMe">Remember Me</label> */}
-              {/* </div> */}
               <button type="submit" className="User-Button-Login">
                 Login
               </button>
+              <Link className="RegLink" to="/addUser">
+                Create Account
+              </Link>
             </div>
           </form>
         </div>

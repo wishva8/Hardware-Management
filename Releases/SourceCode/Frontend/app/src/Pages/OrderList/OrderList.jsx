@@ -7,7 +7,7 @@ import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { orderURL } from "../../Services/endpoints";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import { deleteOrderURL } from "../../Services/endpoints";
 import generatePDFOrders from "./OrderReport";
@@ -30,7 +30,6 @@ export default class OrderList extends Component {
 
   async componentDidMount() {
     await axios.get(orderURL).then((result) => {
-      // console.log(result.data);
       this.setState({
         orders: result.data,
       });
@@ -60,7 +59,7 @@ export default class OrderList extends Component {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Are you want to delete " + orderId + " order?",
+        title: "Do you want to delete " + orderId + " order?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -72,7 +71,7 @@ export default class OrderList extends Component {
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your order " + orderId + " has been deleted.",
+            "The order " + orderId + " has been deleted.",
             "success"
           );
           axios.delete(deleteOrderURL + orderId).then(() => {
@@ -81,7 +80,7 @@ export default class OrderList extends Component {
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your " + orderId + " order record is safe :)",
+            "The " + orderId + " order record is safe :)",
             "error"
           );
         }
@@ -145,19 +144,14 @@ export default class OrderList extends Component {
                       {order.status ? "Completed" : "Pending"}
                     </td>
                     <td className="ps-4">
-                      <Link
-                        to={{
-                          pathname: "/updateOrder",
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faEdit}
+                        onClick={() => {
+                          localStorage.setItem("updateId", order.orderId);
+                          window.location = "/updateOrder";
                         }}
-                      >
-                        <FontAwesomeIcon
-                          size="1x"
-                          icon={faEdit}
-                          onClick={() => {
-                            localStorage.setItem("updateId", order.orderId);
-                          }}
-                        />
-                      </Link>
+                      />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

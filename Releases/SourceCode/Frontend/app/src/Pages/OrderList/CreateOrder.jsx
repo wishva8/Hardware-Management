@@ -12,7 +12,6 @@ export default class CreateOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //orderId: "",
       description: "",
       itemId: "",
       quantity: 0,
@@ -32,32 +31,29 @@ export default class CreateOrder extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      //orderId: this.state.orderId,
       description: this.state.description,
       itemId: this.state.itemId,
       quantity: this.state.quantity,
       unitPrice: this.state.unitPrice,
-      totalPrice: this.state.totalPrice,
+      totalPrice: this.state.quantity * this.state.unitPrice,
       date: this.state.date,
       customerName: this.state.customerName,
       customerPhoneNo: this.state.customerPhoneNo,
       status: this.state.status,
     };
-    console.log("Data to send", data);
 
     const res = axios.post(addOrderURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/orderList";
       });
     });
   };
 
   reset() {
     const res = {
-      //orderId: "",
       description: "",
       itemId: "",
       unitPrice: 0,
@@ -83,18 +79,15 @@ export default class CreateOrder extends Component {
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">Item No. :</label>
                   <div className="ui fluid col-sm-9">
-                    <select
+                    <input
                       className="form-control"
+                      type="text"
+                      id="itemId"
                       name="itemId"
-                      // value={this.state.value}
+                      placeholder="Item Id"
+                      required
                       onChange={this.handleChange}
-                    >
-                      <option hidden>-Select-</option>
-                      <option value="ITM001">ITM001</option>
-                      <option value="ITM002">ITM002</option>
-                      <option value="ITM003">ITM003</option>
-                      <option value="ITM004">ITM004</option>
-                    </select>
+                    />
                   </div>
                 </div>
                 <div className="mb-3 row">
@@ -109,7 +102,18 @@ export default class CreateOrder extends Component {
                       name="unitPrice"
                       placeholder="Unit Price"
                       required
-                      // value={this.state.unitPrice}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 row">
+                  <label className="col-sm-3 col-form-label">Quantity :</label>
+                  <div className="ui fluid col-sm-9">
+                    <input
+                      className="form-control"
+                      name="quantity"
+                      type="number"
+                      placeholder="Quantity"
                       onChange={this.handleChange}
                     />
                   </div>
@@ -122,11 +126,13 @@ export default class CreateOrder extends Component {
                     <input
                       className="form-control"
                       type="Number"
+                      style={{ backgroundColor: "#345454" }}
                       id="totalPrice"
                       name="totalPrice"
                       placeholder="Total Price"
+                      readOnly="true"
                       required
-                      // value={this.state.unitPrice}
+                      value={this.state.unitPrice*this.state.quantity}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -141,7 +147,6 @@ export default class CreateOrder extends Component {
                       name="date"
                       placeholder="Order Date"
                       required
-                      // value={this.state.orderDate}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -158,7 +163,6 @@ export default class CreateOrder extends Component {
                       name="customerName"
                       placeholder="Customer Name"
                       required
-                      // value={this.state.customerName}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -175,24 +179,11 @@ export default class CreateOrder extends Component {
                       name="customerPhoneNo"
                       placeholder="Customer Phone Number"
                       required
-                      // value={this.state.customerName}
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
-                <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">Quantity :</label>
-                  <div className="ui fluid col-sm-9">
-                    <input
-                      className="form-control"
-                      name="quantity"
-                      type="number"
-                      placeholder="Quantity"
-                      // value={this.state.value}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
+                
                 <div className="mb-3 row">
                   <label className="col-sm-3 col-form-label">
                     Description :
@@ -205,7 +196,6 @@ export default class CreateOrder extends Component {
                       name="description"
                       placeholder="Order Description"
                       required
-                      // value={this.state.description}
                       onChange={this.handleChange}
                     />
                   </div>
