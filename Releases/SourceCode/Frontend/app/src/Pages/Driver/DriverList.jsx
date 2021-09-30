@@ -6,7 +6,6 @@ import {
   faTrash,
   faDownload,
   faPlus,
-  faClosedCaptioning,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
@@ -30,7 +29,6 @@ export default class DriverList extends Component {
 
   async componentDidMount() {
     const drivers = await axios.get(driverURL).then((result) => {
-      console.log(result.data);
       this.setState({
         drivers: result.data,
       });
@@ -76,7 +74,6 @@ export default class DriverList extends Component {
             "success"
           );
           axios.delete(deleteDriverURL + licenceNo).then(() => {
-            console.log(licenceNo);
             this.componentDidMount();
           });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -95,7 +92,7 @@ export default class DriverList extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <SearchHeader topic="Drivers" />
+          <SearchHeader topic="Driver Management" />
           <div className="DriverRow">
             {this.renderRedirect()}
             <button
@@ -138,19 +135,14 @@ export default class DriverList extends Component {
                     <td className="ps-4">{driver.vehicleType}</td>
                     <td className="ps-4">{driver.phoneNo}</td>
                     <td className="ps-4">
-                      <Link
-                        to={{
-                          pathname: "/updateDriver",
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faEdit}
+                        onClick={() => {
+                          localStorage.setItem("updateId", driver.licenceNo);
+                          window.location = "/updateDriver";
                         }}
-                      >
-                        <FontAwesomeIcon
-                          size="1x"
-                          icon={faEdit}
-                          onClick={() => {
-                            localStorage.setItem("updateId", driver.licenceNo);
-                          }}
-                        />
-                      </Link>
+                      />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

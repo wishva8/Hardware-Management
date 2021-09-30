@@ -42,7 +42,7 @@ export default class CreateDelivery extends Component {
         icon: "success",
         title: "Insert Successful!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/deliveryList";
       });
     });
   };

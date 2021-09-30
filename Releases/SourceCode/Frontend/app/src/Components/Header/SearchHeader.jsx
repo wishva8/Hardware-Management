@@ -70,11 +70,6 @@ export default class SearchHeader extends Component {
                 className="dropdown-menu dropdown-menu-dark text-small shadow"
                 aria-labelledby="dropdownUser1"
               >
-                {/* <li>
-              <a className="dropdown-item" href="#">
-                New project...
-              </a>
-            </li> */}
                 <li>
                   <a className="dropdown-item" href="#">
                     Settings

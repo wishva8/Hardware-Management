@@ -37,3 +37,12 @@ export const deleteDeliveryURL = deliveryControllerURL + "deleteDeliveryById/";
 export const getDeliveryURLbyId = deliveryControllerURL + "getDeliveryById/";
 export const updateDeliveryURL =
   deliveryControllerURL + "updateDeliveryDetails";
+
+//User APIs
+export const userControllerURL = baseURL + "user/";
+export const addUserURL = userControllerURL + "addUser";
+export const userURL = userControllerURL + "allUsers";
+
+//Login APIs
+export const loginControllerURL = baseURL + "login/"
+export const userLoginURL = loginControllerURL + "auth";

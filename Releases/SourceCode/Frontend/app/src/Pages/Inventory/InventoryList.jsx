@@ -133,19 +133,14 @@ export default class InventoryList extends Component {
                     <td className="ps-4">{item.unitPrice}</td>
                     <td className="ps-4">{item.quantity}</td>
                     <td className="ps-4">
-                      <Link
-                        to={{
-                          pathname: "/updateItem",
+                      <FontAwesomeIcon
+                        size="2x"
+                        icon={faEdit}
+                        onClick={() => {
+                          localStorage.setItem("updateId", item.inventoryNo);
+                          window.location = "/updateItem";
                         }}
-                      >
-                        <FontAwesomeIcon
-                          size="1x"
-                          icon={faEdit}
-                          onClick={() => {
-                            localStorage.setItem("updateId", item.inventoryNo);
-                          }}
-                        />
-                      </Link>
+                      />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}

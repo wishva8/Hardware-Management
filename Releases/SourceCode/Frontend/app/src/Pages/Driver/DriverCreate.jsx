@@ -35,13 +35,12 @@ export default class DriverCreate extends Component {
       vehicleType: this.state.vehicleType,
       phoneNo: this.state.phoneNo,
     };
-    console.log(data);
     const res = axios.post(addDriverURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!",
       }).then(() => {
-        window.location.reload(false);
+        window.location = "/driverList";
       });
     });
   };
@@ -78,7 +77,6 @@ export default class DriverCreate extends Component {
                     name="licenceNo"
                     placeholder="License No"
                     required
-                    // value={this.state.licenseNo}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -93,7 +91,6 @@ export default class DriverCreate extends Component {
                     name="name"
                     placeholder="Driver Name"
                     required
-                    // value={this.state.name}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -108,7 +105,6 @@ export default class DriverCreate extends Component {
                     name="address"
                     placeholder="Driver Address"
                     required
-                    // value={this.state.address}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -123,7 +119,6 @@ export default class DriverCreate extends Component {
                     name="vehicleNo"
                     placeholder="Vehicle No"
                     required
-                    // value={this.state.vehicleNo}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -136,7 +131,6 @@ export default class DriverCreate extends Component {
                   <select
                     className="form-control"
                     name="vehicleType"
-                    // value={this.state.vehicleType}
                     onChange={this.handleChange}
                   >
                     <option hidden>-Select-</option>
@@ -158,7 +152,6 @@ export default class DriverCreate extends Component {
                     pattern="[0-9]{10}"
                     placeholder="0766157878"
                     required
-                    // value={this.state.phoneNo}
                     onChange={this.handleChange}
                   />
                 </div>

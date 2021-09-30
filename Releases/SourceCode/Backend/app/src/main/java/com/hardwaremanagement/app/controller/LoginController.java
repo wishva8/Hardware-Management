@@ -6,10 +6,7 @@ import com.hardwaremanagement.app.model.User;
 import com.hardwaremanagement.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -19,22 +16,28 @@ public class LoginController {
     @Autowired
     UserRepository userRepository;
 
-    User user = null;
+    User user = new User();
     String username;
     String password;
 
-    @GetMapping
-    public Object getUserDetails(LoginDao loginDao){
+    @PostMapping("/auth")
+    public Object getUserDetails(@RequestBody LoginDao loginDao){
 
-        user = userRepository.findUserByEmail(loginDao.getUsername());
+            user = userRepository.findUserByEmail(loginDao.getUsername());
 
-        username = user.getEmail();
-        password = user.getPassword();
+            username = user.getEmail();
+            password = user.getPassword();
 
-        if((username.equals(loginDao.getPassword()) && (password.equals(loginDao.getPassword())))){
-            return user;
-        }
-        else return HttpStatus.UNAUTHORIZED;
+        System.out.println(username + "||" + password);
+        System.out.println(loginDao.getUsername() + "||" + loginDao.getPassword());
+
+
+            if (username.toString().equals(loginDao.getUsername()) && password.toString().equals(loginDao.getPassword())) {
+                return user;
+
+            } else return HttpStatus.UNAUTHORIZED;
+
+
     }
 
 }
