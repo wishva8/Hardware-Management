@@ -74,7 +74,8 @@ export default class CreateItem extends Component {
                       type="text"
                       id="itemNo"
                       name="itemNo"
-                      placeholder="Item No"
+                      pattern="[A-Z,0-9]{6}"
+                      placeholder="ITM000"
                       required
                       onChange={this.handleChange}
                     />
@@ -125,7 +126,7 @@ export default class CreateItem extends Component {
                       type="Number"
                       id="unitPrice"
                       name="unitPrice"
-                      placeholder="Unit Price"
+                      placeholder="200"
                       required
                       onChange={this.handleChange}
                     />
@@ -139,7 +140,7 @@ export default class CreateItem extends Component {
                       type="Number"
                       id="quantity"
                       name="quantity"
-                      placeholder="Quantity"
+                      placeholder="20"
                       required
                       onChange={this.handleChange}
                     />
