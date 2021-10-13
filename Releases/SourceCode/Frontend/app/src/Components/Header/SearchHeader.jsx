@@ -64,7 +64,7 @@ export default class SearchHeader extends Component {
                   height="32"
                   className="rounded-circle me-2"
                 />
-                <strong>Admin</strong>
+                <strong>{localStorage.getItem("name") ?? "User"}</strong>
               </a>
               <ul
                 className="dropdown-menu dropdown-menu-dark text-small shadow"
@@ -84,7 +84,7 @@ export default class SearchHeader extends Component {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="/">
                     Sign out
                   </a>
                 </li>
