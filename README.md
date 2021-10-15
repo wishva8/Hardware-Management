@@ -24,6 +24,18 @@ Database - mySQL
 
 How to get started
 
+Deploying the backend
+1) Open the app folder in the backend directory.
+2) open up the command prompt in the app folder.
+3) Execute 'mvn clean install' to install the dependencies.
+4) Execute 'mvn clean spring-boot:run' to deploy the backend.
+
+Deploying the frontend
+1) Open the app folder in the frontend directory.
+2) open up the command prompt in the app folder.
+3) Execute 'npm install' to install the node modules.
+4) Execute 'npm start' to deploy the frontend.
+
 Prerequisites
 
 Procedure of setting up prerequisites and run the project
