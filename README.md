@@ -38,9 +38,9 @@ Deploying the frontend
 
 Prerequisites
 
-The user must have installed maven prior to setting up this project.
-The user must have installed node globally in their system prior to setting up this project.
-The user must have installed java to the system before running this program.
+1) The user must have installed maven prior to setting up this project.
+2) The user must have installed node globally in their system prior to setting up this project.
+3) The user must have installed java to the system before running this program.
 
 Procedure of setting up prerequisites and run the project
 
